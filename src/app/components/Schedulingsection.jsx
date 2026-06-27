@@ -2,6 +2,13 @@
  
 import Image from "next/image";
 import { useState } from "react";
+import SchedulingSection1 from '../../assets/SchedulingSection1.svg';
+import SchedulingSection2 from '../../assets/SchedulingSection2.svg';
+import SchedulingSection3 from '../../assets/SchedulingSection3.svg';
+import SchedulingListIcon from '../../assets/SchedulingListIcon.svg';
+import SchedulingRightImage from '../../assets/SchedulingRightImage.svg';
+import SchedulingSectionCard1 from '../../assets/SchedulingSectionCard1.svg'
+import SchedulingSectionCard2 from '../../assets/SchedulingSectionCard2.svg'
  
 // ═══════════════════════════════════════════════════════════════════
 // FLOATING CARD POSITIONS — move via these constants
@@ -32,19 +39,19 @@ const SOCIALS = [
 // TAB DATA
 // ═══════════════════════════════════════════════════════════════════
 const TABS = [
-  { icon: "", label: "Scheduling" },
-  { icon: "", label: "Analytics" },
-  { icon: "", label: "Engagement" },
+  { icon: SchedulingSection1, label: "Collection" },
+  { icon: SchedulingSection2, label: "Scheduling" },
+  { icon: SchedulingSection3, label: "Automation" },
 ];
  
 // ═══════════════════════════════════════════════════════════════════
 // LIST ITEMS
 // ═══════════════════════════════════════════════════════════════════
 const LIST_ITEMS = [
-  "Schedule posts across all platforms",
-  "AI-powered caption suggestions",
-  "Bulk upload and calendar view",
-  "Auto-publish at peak times",
+  "Multi-Platform Posting",
+  "Hashtag & Caption Manager",
+  "Content Calendar View",
+  "Mobile & Desktop Access",
 ];
  
 // ═══════════════════════════════════════════════════════════════════
@@ -158,7 +165,7 @@ export default function SchedulingSection() {
                 textTransform: "uppercase", color: "#25D16F",
                 margin: 0,
               }}>
-                Smart Scheduling
+                OPTIMIZE, AUTOMATE AND SUCCEED
               </p>
  
               {/* Tabs row */}
@@ -201,7 +208,7 @@ export default function SchedulingSection() {
                 lineHeight: "52.8px", letterSpacing: "-0.96px",
                 color: "#191C1E", margin: 0, maxWidth: 466,
               }}>
-                Schedule Smarter,<br />Grow Faster
+                Unlock Powerful<br />Social Media Tool
               </h2>
  
               {/* Sub-header */}
@@ -211,7 +218,7 @@ export default function SchedulingSection() {
                 lineHeight: "31.2px", color: "#006B58",
                 margin: 0, maxWidth: 466,
               }}>
-                One calendar. Every channel. Zero stress.
+                Social Media Scheduling Solution
               </p>
  
               {/* Paragraph */}
@@ -221,8 +228,9 @@ export default function SchedulingSection() {
                 lineHeight: "28.8px", color: "#3C4A3F",
                 margin: 0, maxWidth: 466,
               }}>
-                Plan weeks of content in minutes. MyYarns lets you queue, reschedule
-                and auto-publish across every platform from a single drag-and-drop calendar.
+                Plan, create, schedule and publish across all
+                platforms from one dashboard. Effortlessly manage
+                weeks of content in hours.
               </p>
  
               {/* List */}
@@ -231,10 +239,10 @@ export default function SchedulingSection() {
                   <div key={item} style={{ display: "flex", flexDirection: "row", gap: 12, alignItems: "center" }}>
                     <div style={{
                       width: 24.67, height: 24.67, borderRadius: "9999px",
-                      padding: 4, flexShrink: 0,
+                      padding: 0, flexShrink: 0,
                       display: "flex", alignItems: "center", justifyContent: "center",
                     }}>
-                      <CheckCircle size={24.67} />
+                      <Image src={SchedulingListIcon} alt="" style={{width: '150%'}}/>
                     </div>
                     <span style={{
                       fontFamily: "'Manrope', sans-serif",
@@ -285,12 +293,16 @@ export default function SchedulingSection() {
             <div style={{
               flex: 1, position: "relative",
               minHeight: 698,
+              border: '1px solid #BBCBBC4D',
+              background: '#ffffff4d',
+              padding: 15,
+              borderRadius: 16
             }}>
  
               {/* Main image */}
               <div style={{
                 width: "100%", height: 698, borderRadius: 16, overflow: "hidden",
-                background: "#e8f5f0", position: "relative",
+                background: "#e8f5f0", position: "relative", padding: 5
               }}>
                 {/* Shadow circle — top right. Move via SHADOW_CIRCLE_TOP_RIGHT */}
                 <div aria-hidden style={{
@@ -310,7 +322,7 @@ export default function SchedulingSection() {
                   filter: "blur(64px)",
                   pointerEvents: "none", zIndex: 1,
                 }} />
-                {/* <Image src="/images/scheduling-preview.png" fill style={{ objectFit: "cover" }} alt="" /> */}
+                <Image src={SchedulingRightImage} fill style={{ objectFit: "cover" }} alt="" />
                 <div style={{
                   width: "100%", height: "100%",
                   display: "flex", alignItems: "center", justifyContent: "center",
@@ -327,7 +339,7 @@ export default function SchedulingSection() {
                     display: "flex", alignItems: "center", justifyContent: "center",
                     flexShrink: 0,
                   }}>
-                    <CalendarIcon size={22} color="#1A5C38" />
+                    <Image src={SchedulingSectionCard1} alt  style={{widows: '22%'}}/>
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <span style={{
@@ -335,12 +347,12 @@ export default function SchedulingSection() {
                       fontWeight: 700, fontSize: 12,
                       lineHeight: "12px", letterSpacing: "0.6px",
                       color: "#3C4A3F", textTransform: "uppercase",
-                    }}>Scheduled Today</span>
+                    }}>Instagram Growth</span>
                     <span style={{
                       fontFamily: "'Plus Jakarta Sans', sans-serif",
                       fontWeight: 700, fontSize: 24,
                       lineHeight: "31.2px", color: "#191C1E",
-                    }}>12 Posts</span>
+                    }}>+24.8%</span>
                   </div>
                 </div>
               </FloatCard>
@@ -359,7 +371,7 @@ export default function SchedulingSection() {
                   textTransform: "uppercase", color: "#3C4A3F",
                   margin: "0 0 16px",
                 }}>
-                  Platform Reach
+                  CHANNEL PERFORMANCE
                 </p>
  
                 {/* Social bars */}
@@ -408,12 +420,10 @@ export default function SchedulingSection() {
                   {/* Icon box */}
                   <div style={{
                     width: 48, height: 48, borderRadius: 8,
-                    background: "rgba(0,109,63,0.10)",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     flexShrink: 0,
                   }}>
-                    {/* <Image src="/icons/posts.svg" width={24} height={24} alt="" /> */}
-                    <CalendarIcon size={20} color="#1A5C38" />
+                    <Image src={SchedulingSectionCard2} width={50} height={50} alt="" />
                   </div>
                   {/* Text */}
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -422,7 +432,7 @@ export default function SchedulingSection() {
                       fontWeight: 700, fontSize: 12,
                       lineHeight: "12px", letterSpacing: "0.6px",
                       color: "#3C4A3F", textTransform: "uppercase",
-                    }}>Posts This Week</span>
+                    }}>Scheduled Today</span>
                     <span style={{
                       fontFamily: "'Plus Jakarta Sans', sans-serif",
                       fontWeight: 700, fontSize: 24,

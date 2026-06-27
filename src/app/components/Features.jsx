@@ -2,6 +2,25 @@
  
 import Image from "next/image";
 import { useState } from "react";
+import FeaturesMainImage from '../../assets/Features-image.svg';
+import FeaturesIcon1 from '../../assets/FeaturesIcon1.svg';
+import FeaturesIcon2 from '../../assets/FeaturesIcon2.svg';
+import FeaturesIcon3 from '../../assets/FeaturesIcon3.svg';
+import FeaturesStar from '../../assets/FeaturesStar.svg';
+import FeaturesMockupVisual from '../../assets/FeaturesMockupVisual.svg';
+import TeamCollab from '../../assets/TeamCollab.svg';
+import TeamCollabIcon from '../../assets/TeamCollabIcon.svg';
+import Robot from '../../assets/Robot.svg';
+import AnalyticsIcon from '../../assets/AnalyticsIcon.svg';
+import APIIcon from '../../assets/APIIcon.svg';
+import APILogo1 from '../../assets/APILogo1.svg';
+import APILogo2 from '../../assets/APILogo2.svg';
+import APILogo3 from '../../assets/APILogo3.svg';
+import APILogo4 from '../../assets/APILogo4.svg';
+import APILogo5 from '../../assets/APILogo5.svg';
+
+const logos = [APILogo1, APILogo2, APILogo3, APILogo4];
+
  
 // ═══════════════════════════════════════════════════════════════════
 // BACKGROUND BLOBS — move via these constants
@@ -19,9 +38,9 @@ const CIRCLE_BOTTOM_RIGHT = { right: -30, bottom: -50, size: 100 }; // bottom-ri
 // FEATURE CARDS DATA
 // ═══════════════════════════════════════════════════════════════════
 const TOP_FEATURES = [
-  { title: "Unified Inbox", sub: "Every message, every channel. One clean place to respond." },
-  { title: "Smart Scheduling", sub: "Queue posts across platforms and let automation handle the rest." },
-  { title: "Deep Analytics", sub: "Track reach, engagement and growth with clear visual reports." },
+  { title: "All-In-One Platform", sub: "Every channel unified into a single, high-performance workspace.", icon: FeaturesIcon1 },
+  { title: "Advanced AI Analytics", sub: "Real-time insights that help you understand your audience better.", icon: FeaturesIcon2},
+  { title: "Time Save Automate", sub: "Intelligent bots handle FAQs 24/7 so your team can focus on growth.", icon: FeaturesIcon3 },
 ];
  
 // ═══════════════════════════════════════════════════════════════════
@@ -101,7 +120,7 @@ function ArrowRight({ size = 14, color = "#1A5C38" }) {
 // ═══════════════════════════════════════════════════════════════════
 // FEATURE ROW ITEM (top section left column)
 // ═══════════════════════════════════════════════════════════════════
-function FeatureItem({ title, sub }) {
+function FeatureItem({ title, sub, Icon }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div
@@ -125,8 +144,7 @@ function FeatureItem({ title, sub }) {
           background: "rgba(0,209,126,0.1)",
           display: "flex", alignItems: "center", justifyContent: "center",
         }}>
-          {/* <Image src="/icons/feature.svg" width={56} height={56} alt="" /> */}
-          <ChatIcon size={22} />
+          <Image src={Icon} width={26} height={26} alt="" />
         </div>
       </div>
  
@@ -186,7 +204,7 @@ export default function Features() {
  
             {/* Left — 3 stacked feature items */}
             <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
-              {TOP_FEATURES.map((f) => <FeatureItem key={f.title} {...f} />)}
+              {TOP_FEATURES.map((f) => <FeatureItem key={f.title} {...f} Icon={f.icon} />)}
             </div>
  
             {/* Right — hero image */}
@@ -209,8 +227,7 @@ export default function Features() {
               >
                 {/* Replace with your image */}
                 <div style={{ width: "100%", height: "100%", background: "#e8f5f0", display: "flex", alignItems: "center", justifyContent: "center", color: "#aaa", fontSize: 14 }}>
-                  {/* <Image src="/images/features-hero.png" fill style={{ objectFit: "cover" }} alt="" /> */}
-                  Image goes here
+                  <Image src={FeaturesMainImage} fill style={{ objectFit: "cover" }} alt="" />
                 </div>
               </div>
             </div>
@@ -226,7 +243,7 @@ export default function Features() {
  
           {/* Plain pill */}
           <PlainPill bg="#E6FAF2" border="1px solid rgba(0,109,63,0.10)">
-            <StarInCircle />
+            <Image src={FeaturesStar} alt="star" style={{width: '6%'}} />
             <span style={{
               fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 14,
               lineHeight: "12px", letterSpacing: "0.6px", textTransform: "uppercase",
@@ -330,13 +347,11 @@ export default function Features() {
               {/* Right image slot */}
               <div style={{
                 width: 346, minHeight: 220, borderRadius: 12,
-                border: "1px solid rgba(187,203,188,0.3)",
-                padding: 16, flexShrink: 0, background: "#f6faf8",
+                padding: 0, flexShrink: 0, background: "transparent",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 color: "#aaa", fontSize: 13,
               }}>
-                {/* <Image src="/images/inbox-preview.png" fill style={{ objectFit: "cover", borderRadius: 12 }} alt="" /> */}
-                Image goes here
+                <Image src={FeaturesMockupVisual} style={{ objectFit: "cover", borderRadius: 12, width:'120%' }} alt="" />
               </div>
             </div>
  
@@ -350,11 +365,10 @@ export default function Features() {
               {/* Icon */}
               <div style={{
                 width: 48, height: 48, borderRadius: 12,
-                background: "rgba(0,209,126,0.1)",
+                background: "#A7B8D533",
                 display: "flex", alignItems: "center", justifyContent: "center",
               }}>
-                {/* <Image src="/icons/team.svg" width={48} height={48} alt="" /> */}
-                <ChatIcon size={22} />
+                <Image src={TeamCollabIcon} width={30} height={30} alt="" />
               </div>
  
               <h3 style={{
@@ -366,19 +380,13 @@ export default function Features() {
                 fontFamily: "'Manrope', sans-serif", fontWeight: 400,
                 fontSize: 18, lineHeight: "24px", color: "#3C4A3F", margin: 0, flex: 1,
               }}>
-                Assign conversations, set roles and keep your whole team in sync without chaos.
+                Assign conversations, add internal
+                notes, and set SLA timers. Everyone
+                works from the same live environment.
               </p>
  
               {/* Image slot */}
-              <div style={{
-                width: "100%", height: 40, borderRadius: 8,
-                background: "#f0f4f1", border: "1px solid rgba(187,203,188,0.3)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                color: "#aaa", fontSize: 12,
-              }}>
-                {/* <Image src="/images/team-avatars.png" width={336} height={40} alt="" /> */}
-                Image goes here
-              </div>
+              <Image src={TeamCollab} width={300} height={300} alt="" />
             </div>
           </div>
  
@@ -421,7 +429,7 @@ export default function Features() {
                   background: "rgba(0,209,126,0.1)",
                   display: "flex", alignItems: "center", justifyContent: "center",
                 }}>
-                  <ChatIcon size={22} />
+                  <Image src={Robot} width={30} height={30} alt="" />
                 </div>
                 <PlainPill bg="rgba(0,209,126,0.1)" border="none">
                   <span style={{
@@ -447,7 +455,7 @@ export default function Features() {
  
               {/* Feature tags */}
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                {["Instant replies", "Human handover"].map((tag) => (
+                {["24/7 Availability", "FAQ Ready"].map((tag) => (
                   <div key={tag} style={{
                     display: "inline-flex", alignItems: "center", gap: 8,
                     borderRadius: 8, border: "1px solid rgba(187,203,188,0.3)",
@@ -477,18 +485,19 @@ export default function Features() {
                   background: "rgba(0,209,126,0.1)",
                   display: "flex", alignItems: "center", justifyContent: "center",
                 }}>
-                  <ChatIcon size={22} />
+                  <Image src={AnalyticsIcon} width={30} height={30} alt="" />
                 </div>
                 <h3 style={{
                   fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700,
                   fontSize: 24, lineHeight: "31.2px", color: "#191C1E", margin: 0,
-                }}>Analytics Dashboard</h3>
+                }}>Advanced AI Analytics</h3>
                 <p style={{
                   fontFamily: "'Manrope', sans-serif", fontWeight: 400,
                   fontSize: 18, lineHeight: "24px", color: "#3C4A3F", margin: 0,
                 }}>
-                  Track every metric that matters. Spot trends early and make
-                  data-driven decisions that grow your brand faster.
+                  Response times, satisfaction
+                  scores, agent performance —
+                  all in real-time.
                 </p>
               </div>
  
@@ -508,7 +517,7 @@ export default function Features() {
                     <span style={{
                       fontFamily: "'Manrope', sans-serif", fontWeight: 700,
                       fontSize: 30, lineHeight: "36px", color: "white",
-                    }}>1.2s</span>
+                    }}>1.4m</span>
                     <TrendDown />
                     <span style={{
                       fontFamily: "'Manrope', sans-serif", fontWeight: 700,
@@ -532,7 +541,7 @@ export default function Features() {
                     <span style={{
                       fontFamily: "'Manrope', sans-serif", fontWeight: 700,
                       fontSize: 30, lineHeight: "36px", color: "white",
-                    }}>94%</span>
+                    }}>4.9/5</span>
                     <TrendUp />
                     <span style={{
                       fontFamily: "'Manrope', sans-serif", fontWeight: 700,
@@ -556,10 +565,10 @@ export default function Features() {
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: 12,
-                  background: "rgba(0,209,126,0.1)",
+                  background: "#BBCBBC33",
                   display: "flex", alignItems: "center", justifyContent: "center",
                 }}>
-                  <ChatIcon size={22} />
+                  <Image src={APIIcon} width={30} height={30} alt="" />
                 </div>
                 <PlainPill bg="#E6E8EA" border="none">
                   <span style={{
@@ -573,7 +582,7 @@ export default function Features() {
               <h3 style={{
                 fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700,
                 fontSize: 24, lineHeight: "31.2px", color: "#191C1E", margin: 0,
-              }}>Seamless Integrations</h3>
+              }}>API & Integrations</h3>
  
               <p style={{
                 fontFamily: "'Manrope', sans-serif", fontWeight: 400,
@@ -618,29 +627,37 @@ export default function Features() {
               gap: 16, alignContent: "start",
             }}>
               {/* 4 small image slots — first row (3) + second row first col (1) */}
-              {[0,1,2,3].map(i => (
-                <div key={i} style={{
-                  height: 80, borderRadius: 24, padding: 24,
-                  background: "#f6faf8", border: "1px solid rgba(187,203,188,0.3)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  color: "#ccc", fontSize: 12,
-                  ...(i === 3 ? { gridColumn: "1" } : {}),
-                }}>
-                  {/* <Image src={`/images/integration-${i+1}.png`} fill style={{ objectFit: "contain" }} alt="" /> */}
-                  img
+              {logos.map((logo, i) => (
+                <div
+                  key={i}
+                  style={{
+                    height: 80,
+                    borderRadius: 24,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    ...(i === 3 ? { gridColumn: "1" } : {}),
+                  }}
+                >
+                  <Image
+                    src={logo}
+                    width={200}
+                    height={200}
+                    style={{ objectFit: "contain", maxHeight: 80, width: "auto" }}
+                    alt={`API Logo ${i + 1}`}
+                  />
                 </div>
               ))}
               {/* Last wide dashed slot */}
               <div style={{
                 gridColumn: "2 / span 2", gridRow: 2,
-                height: 88, borderRadius: 24, padding: 16,
+                height: 88, borderRadius: 24, padding: 0,
                 background: "transparent",
-                border: "1px dashed rgba(187,203,188,0.6)",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 color: "#ccc", fontSize: 12,
               }}>
-                {/* <Image src="/images/integration-5.png" fill style={{ objectFit: "contain" }} alt="" /> */}
-                img
+                <Image src={APILogo5} width={500} height={500} style={{ objectFit: "contain" }} alt="" />
+                
               </div>
             </div>
           </div>

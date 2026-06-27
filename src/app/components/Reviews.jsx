@@ -11,30 +11,30 @@ const REVIEWS = [
     pill:     "SAVE MONEY",
     pillBg:   "#E6FAF2",
     pillColor:"#25D16F",
-    review:   "MyYarns completely transformed how we handle our social media. We went from spending hours every week manually posting to having everything scheduled in advance. The AI suggestions alone saved us a full day of work each month.",
-    initials: "AO",
-    name:     "Adeola Okafor",
-    position: "CEO, Tivio Logistics",
+    review:   "We switched from Freshdesk which cost us $180/month in dollars. MyYarns does everything and more for ₦25,000/month. Support is actually fast —the  team is Nigerian.",
+    initials: "KA",
+    name:     "Kunle Adeyemi",
+    position: "Founder, TechBridge Abuja",
     avatar:   null, // set to "/images/avatar1.png" to use a photo instead
   },
   {
-    pill:     "GROW FASTER",
+    pill:     "",
     pillBg:   "#E6FAF2",
     pillColor:"#25D16F",
-    review:   "Before MyYarns, our engagement was flat. Within three weeks of using the platform our reach doubled and we started actually getting leads from Instagram. The analytics dashboard makes it so easy to see what's working.",
-    initials: "FK",
-    name:     "Fatima Kabir",
-    position: "Brand Manager, NovaTech NG",
+    review:   "Before MyYarns, managing our social media was overwhelming. Now we plan and schedule weeks of content in just a few hours. The AI replies handle 70% of our customer enquiries automatically.",
+    initials: "AO",
+    name:     "Amanda Okafor",
+    position: "Owner, FasterGov Lagos",
     avatar:   null,
   },
   {
-    pill:     "SAVE TIME",
+    pill:     "",
     pillBg:   "#E6FAF2",
     pillColor:"#25D16F",
-    review:   "The unified inbox is a game changer. All our DMs and comments from every platform in one place — no more switching between apps. Our response time dropped by 70% and customers actually notice the difference.",
-    initials: "EB",
-    name:     "Emmanuel Bello",
-    position: "Head of Growth, Konga",
+    review:   "Our response time dropped from 4 hours to under 5 minutes. The unified inbox means I no longer jump between 6 apps. MyYarns paid for itself in the firstweek.",
+    initials: "FN",
+    name:     "Funmi Nwoye",
+    position: "Marketing Lead",
     avatar:   null,
   },
 ];
@@ -253,7 +253,7 @@ export default function Reviews() {
               lineHeight: "52.8px", letterSpacing: "-0.96px",
               color: "#191C1E", textAlign: "center", margin: 0,
             }}>
-              Loved by teams across Africa
+              Our Customers Are Saying
             </h2>
             <p style={{
               fontFamily: "'Manrope', sans-serif",
@@ -261,7 +261,7 @@ export default function Reviews() {
               lineHeight: "28.8px", color: "#3C4A3F",
               textAlign: "center", margin: 0,
             }}>
-              Real results. Real people.
+              Success Stories From Users
             </p>
           </div>
  

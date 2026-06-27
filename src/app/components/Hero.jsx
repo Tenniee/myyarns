@@ -1,22 +1,33 @@
 "use client";
  
 import Image from "next/image";
- 
+import mainImage from '../../assets/SaaS-platform-visualization.svg'
+import blob1 from '../../assets/Overlay+Border+OverlayBlur1-blob.svg'
+import blob2 from '../../assets/Overlay+Border+OverlayBlur-blob.svg'
+import blob3 from '../../assets/Overlay+Border+OverlayBlur2-blob.svg'
+import blob4 from '../../assets/Overlay+Border+OverlayBlur3-blob.svg'
+import blob5 from '../../assets/Telegram-Icon-blob.svg'
+import blob6 from '../../assets/Threads-Icon-blob.svg'
+import blob7 from '../../assets/WhatsApp-Icon-blob.svg'
+import blob8 from '../../assets/X(Twitter)-Icon-blob.svg'
+import blob9 from '../../assets/YouTube-Icon-blob.svg'
+import TrustAvatars from '../../assets/ContainerTrustAvatars.svg'
 // ═══════════════════════════════════════════════════════════════════
 // IMAGE SOURCES — swap these paths, nothing else needs to change
 // ═══════════════════════════════════════════════════════════════════
-const MAIN_IMAGE_SRC     = "/images/hero-main.png";
-const TRUST_AVATARS_SRC  = "/images/trust-avatars.png";
+const MAIN_IMAGE_SRC     = mainImage;
+const TRUST_AVATARS_SRC  = TrustAvatars;
  
 // 7 floating square/circle thumbnails
 const SQUARE_IMGS = [
-  "/images/sq1.png",
-  "/images/sq2.png",
-  "/images/sq3.png",
-  "/images/sq4.png",
-  "/images/sq5.png",
-  "/images/sq6.png", // ← circle variant
-  "/images/sq7.png", // ← circle variant
+  blob1,
+  blob9,
+  blob7,
+  blob4,
+  blob5,
+  blob3,
+  blob6, // ← circle variant
+  blob9, // ← circle variant
 ];
  
 // which of the 7 above are rendered as circles (0-based index)
@@ -24,8 +35,8 @@ const CIRCLE_SQ_INDICES = [5, 6];
  
 // 2 stacked circle images on the right edge
 const STACKED_CIRCLE_IMGS = [
-  "/images/circle1.png",
-  "/images/circle2.png",
+  blob8,
+  blob2,
 ];
  
 // ═══════════════════════════════════════════════════════════════════
@@ -33,20 +44,20 @@ const STACKED_CIRCLE_IMGS = [
 // Each object accepts: top, bottom, left, right (all in px)
 // ═══════════════════════════════════════════════════════════════════
 const POS = {
-  mainImage:     { bottom: 60,  left: 0          },
-  cardTopRight:  { top: 0,      right: -20        },
+  mainImage:     { bottom: -30,  left: -50          },
+  cardTopRight:  { top: 100,      right: 20        },
   cardBotLeft:   { bottom: 20,  left: -30         },
-  stackCircle1:  { top: 180,    right: -20        },
-  stackCircle2:  { top: 240,    right: -20        },
+  stackCircle1:  { top: 150,    right: -70        },
+  stackCircle2:  { top: 240,    right: -70        },
   // 7 square/circle thumbs — add/remove entries freely
   squares: [
-    { top: 390, left: 10  },
-    { top: 390, left: 100 },
-    { top: 390, left: 190 },
-    { top: 390, left: 280 },
-    { top: 390, left: 370 },
-    { top: 460, left: 55  }, // circle
-    { top: 460, left: 145 }, // circle
+    { top: 490, left: 330  },
+    { top: 430, left: 190 },
+    { top: -60, left: -40 },
+    { top: -210, left: -90 },
+    { top: -20, left: 580 },
+    { top: -220, left: -40  }, // circle
+    { top: -200, left: -65 }, // circle
   ],
 };
  
@@ -188,7 +199,7 @@ export default function Hero() {
                   style={{
                     fontFamily:  "'Inter', sans-serif",
                     fontSize:    16,
-                    background:  "linear-gradient(90deg, #00D17E, #006D3F)",
+                    background:  "#25D16F",
                     borderRadius: 9999,
                     height:      55,
                     paddingLeft:  32,
@@ -236,8 +247,8 @@ export default function Hero() {
                     className="flex items-center justify-center shrink-0
                                transition-transform duration-200 group-hover:scale-110"
                     style={{
-                      width:        36,
-                      height:       36,
+                      width:        26,
+                      height:       26,
                       borderRadius: "9999px",
                       background:   "#3C4A3F",
                     }}
@@ -256,7 +267,7 @@ export default function Hero() {
                   <Image
                     src={TRUST_AVATARS_SRC}
                     alt="Trusted team avatars"
-                    fill
+                    
                     className="object-contain"
                   />
                 </div>
@@ -289,15 +300,22 @@ export default function Hero() {
               <div
                 className="absolute fa scale-in"
                 style={{
-                  width:        580,
-                  height:       324,
+                  width:        730,
+                  height:       474,
                   borderRadius: 24,
-                  overflow:     "hidden",
-                  boxShadow:    "0 8px 10px -6px rgba(0,0,0,0.1), 0 20px 25px -5px rgba(0,0,0,0.1)",
                   ...POS.mainImage,
                 }}
               >
-                <Image src={MAIN_IMAGE_SRC} alt="Platform preview" fill className="object-cover" />
+                <Image
+                  src={MAIN_IMAGE_SRC}
+                  alt="Platform preview"
+                  fill
+                  className="object-cover"
+                  style={{
+                    borderRadius: 24,
+                    filter: "drop-shadow(0 8px 10px rgba(0,0,0,0.1)) drop-shadow(0 20px 25px rgba(0,0,0,0.1))",
+                  }}
+                />
               </div>
  
               {/* ── Top-right growth rate card ── */}
@@ -398,7 +416,7 @@ export default function Hero() {
               {/* ── 7 square / circle thumbnails ── */}
               {SQUARE_IMGS.map((src, i) => {
                 const isCircle = CIRCLE_SQ_INDICES.includes(i);
-                const size     = isCircle ? 58 : 77;
+                const size     = isCircle ? 78 : 97;
                 const pos      = POS.squares[i] ?? { top: 440, left: i * 90 };
                 const anim     = SQ_ANIM[i] ?? "fa";
                 return (
@@ -409,12 +427,23 @@ export default function Hero() {
                       width:        size,
                       height:       size,
                       borderRadius: isCircle ? "9999px" : 16,
-                      overflow:     "hidden",
-                      boxShadow:    "0 8px 10px -6px rgba(0,0,0,0.1), 0 20px 25px -5px rgba(0,0,0,0.1)",
+                      background:   "transparent",
+                      position:     "relative",   // ← needed for fill to work
+                      overflow:     "hidden",     // ← clips image to the rounded corners
                       ...pos,
                     }}
                   >
-                    <Image src={src} alt={`Thumbnail ${i + 1}`} fill className="object-cover" />
+                    <Image
+                      src={src}
+                      alt={`Thumbnail ${i + 1}`}
+                      fill
+                      style={{ objectFit: "cover", 
+                        padding: 0,
+                        transformOrigin: "center center" , 
+                        objectPosition: "center" ,
+                        filter: "drop-shadow(0 8px 10px rgba(0,0,0,0.1)) drop-shadow(0 20px 25px rgba(0,0,0,0.1))",
+                      }} 
+                    />
                   </div>
                 );
               })}
@@ -428,16 +457,21 @@ export default function Hero() {
                     key={`stk-${i}`}
                     className={`absolute ${anim}`}
                     style={{
-                      width:        52.8,
-                      height:       52.8,
-                      borderRadius: "9999px",
-                      overflow:     "hidden",
-                      border:       "1px solid rgba(0,0,0,0.08)",
-                      boxShadow:    "0 8px 10px -6px rgba(0,0,0,0.1), 0 20px 25px -5px rgba(0,0,0,0.1)",
+                      width:  62.8,
+                      height: 62.8,
+                      background: 'transparent',
                       ...pos,
                     }}
                   >
-                    <Image src={src} alt={`Circle ${i + 1}`} fill className="object-cover" />
+                    <Image
+                      src={src}
+                      alt={`Circle ${i + 1}`}
+                      fill
+                      style={{
+                        objectFit:    "cover",
+                        borderRadius: "9999px",
+                      }}
+                    />
                   </div>
                 );
               })}

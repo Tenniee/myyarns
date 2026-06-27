@@ -260,10 +260,10 @@ export default function Results() {
         {/* ── Stats row ── */}
         <div style={{ display: "flex", alignItems: "stretch" }}>
           {STATS.map((stat, i) => (
-            <>
+            <div key={i}>
               <StatCol key={stat.pill} {...stat} />
               {i < STATS.length - 1 && <StatDivider key={`div-${i}`} />}
-            </>
+            </div>
           ))}
         </div>
  

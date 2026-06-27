@@ -2,12 +2,13 @@
 // MARQUEE ITEMS — edit text here
 // ═══════════════════════════════════════════════════════════════════
 const MARQUEE_ITEMS = [
-  "Manage your content",
-  "Engage your audience",
-  "Grow your brand",
-  "Schedule with ease",
-  "Analyze performance",
-  "All in one place",
+  "Analytics",
+  "Instagram DMs",
+  "Facebook Messenger",
+  "WhatsApp Business",
+  "LinkedIn Messages",
+  "Twitter / X DMs",
+  "Telegram Bot",
 ];
  
 // ═══════════════════════════════════════════════════════════════════
