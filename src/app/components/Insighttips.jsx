@@ -2,27 +2,30 @@
  
 import Image from "next/image";
 import { useState } from "react";
- 
+import FirstImage from '../../assets/InsightImage1.svg';
+import SecondImage from '../../assets/InsightImage2.svg';
+import ThirdImage from '../../assets/InsightImage3.svg'; 
+
 // ═══════════════════════════════════════════════════════════════════
 // BLOG CARDS DATA — edit here
 // ═══════════════════════════════════════════════════════════════════
 const CARDS = [
   {
-    image:    null, // set to "/images/blog1.png"
+    image:    FirstImage, // set to "/images/blog1.png"
     tag:      "Social Media · 16 May 2026",
     title:    "How To Optimize Your Social Media Response Time For Maximum Efficiency",
     excerpt:  "Learn how Nigerian businesses cut DM response time by 10x using AI-powered social inbox tools.",
     link:     "#",
   },
   {
-    image:    null,
+    image:    SecondImage,
     tag:      "AI & Automation · 10 May 2026",
     title:    "5 Ways AI Chatbots Are Transforming Customer Service For African SMEs",
     excerpt:  "Discover how automated assistants are helping small businesses scale their support without increasing headcount.",
     link:     "#",
   },
   {
-    image:    null,
+    image:    ThirdImage,
     tag:      "Analytics · 5 May 2026",
     title:    "Why Nigerian Businesses Are Leaving Freshdesk For Naira-Billed Alternatives",
     excerpt:  "A deep dive into the shifting landscape of SaaS billing and the rise of local customer support platforms.",

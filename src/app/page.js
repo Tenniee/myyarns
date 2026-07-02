@@ -11,6 +11,7 @@ import Insighttips from "./components/Insighttips";
 import Pricing from "./components/Pricing";
 import CTASection from "./components/Ctasection";
 import Footer from "./components/Footer";
+import Integration from "./components/Integration";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Features />
       <SocialManagement />
       <SchedulingSection />
+      <Integration />
       <Reviews />
       <Insighttips />
       <Pricing />

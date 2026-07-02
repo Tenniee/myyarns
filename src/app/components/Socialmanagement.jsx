@@ -7,6 +7,7 @@ import BottomImage from '../../assets/Primary _SmartManagement_Visual(L-Side Ben
 import SocialMediaIcon1 from '../../assets/SocialManagementIcon1.svg';
 import SocialMediaIcon2 from '../../assets/SocialManagementIcon2.svg';
 import SocialMediaIcon3 from '../../assets/SocialManagementIcon3.svg';
+import Lightning from '../../assets/SocialMediaLightning.svg';
  
 // ═══════════════════════════════════════════════════════════════════
 // FLOATING CARD POSITION — move here
@@ -49,10 +50,7 @@ function ArrowRight({ color = "white", size = 18 }) {
  
 function LightningIcon({ color = "#25D16F", width = 24, height = 30 }) {
   return (
-    <svg width={width} height={height} viewBox="0 0 24 30" fill="none"
-      stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polygon points="13 2 3 14 12 14 11 28 21 16 12 16 13 2" fill={color} stroke="none" />
-    </svg>
+    <Image src={Lightning} width={width} height={height} alt="" />
   );
 }
  
@@ -285,7 +283,7 @@ export default function SocialManagement() {
                       lineHeight: "12px", letterSpacing: "1.2px",
                       textTransform: "uppercase", color: "#3C4A3F",
                     }}>
-                      Engagement
+                      Live Tracking
                     </span>
                   </div>
   
@@ -296,7 +294,7 @@ export default function SocialManagement() {
                     lineHeight: "20px", color: "#3C4A3F",
                     margin: 0,
                   }}>
-                    This week's rate
+                    Response Rate
                   </p>
   
                   {/* Line 3 — big number + lightning */}
@@ -307,7 +305,7 @@ export default function SocialManagement() {
                       lineHeight: "36px", color: "#191C1E",
                       flex: 1,
                     }}>
-                      +84%
+                      99.8%
                     </span>
                     <LightningIcon />
                   </div>

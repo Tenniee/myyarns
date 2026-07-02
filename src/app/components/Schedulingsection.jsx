@@ -7,8 +7,12 @@ import SchedulingSection2 from '../../assets/SchedulingSection2.svg';
 import SchedulingSection3 from '../../assets/SchedulingSection3.svg';
 import SchedulingListIcon from '../../assets/SchedulingListIcon.svg';
 import SchedulingRightImage from '../../assets/SchedulingRightImage.svg';
-import SchedulingSectionCard1 from '../../assets/SchedulingSectionCard1.svg'
-import SchedulingSectionCard2 from '../../assets/SchedulingSectionCard2.svg'
+import SchedulingSectionCard1 from '../../assets/SchedulingSectionCard1.svg';
+import SchedulingSectionCard2 from '../../assets/SchedulingSectionCard2.svg';
+
+import SchedulingCardIcon from '../../assets/SchedulingCard.svg';
+import SchedulingCalendarIcon from '../../assets/SchedulingCalendar.svg';
+import SchedulingLightningIcon from '../../assets/SchedulingLightning.svg';
  
 // ═══════════════════════════════════════════════════════════════════
 // FLOATING CARD POSITIONS — move via these constants
@@ -39,9 +43,9 @@ const SOCIALS = [
 // TAB DATA
 // ═══════════════════════════════════════════════════════════════════
 const TABS = [
-  { icon: SchedulingSection1, label: "Collection" },
-  { icon: SchedulingSection2, label: "Scheduling" },
-  { icon: SchedulingSection3, label: "Automation" },
+  { icon: SchedulingCardIcon, label: "Collection" },
+  { icon: SchedulingCalendarIcon, label: "Scheduling" },
+  { icon: SchedulingLightningIcon, label: "Automation" },
 ];
  
 // ═══════════════════════════════════════════════════════════════════
@@ -91,7 +95,34 @@ function CalendarIcon({ size = 20, color = "#3C4A3F" }) {
 }
  
 function TabIcon({ label }) {
-  const icons = { Scheduling: "📅", Analytics: "📊", Engagement: "💬" };
+  const icons = 
+  { Scheduling: 
+    (
+      <Image
+        src={SchedulingCalendarIcon}
+        alt="Scheduling"
+        width={15}
+        height={15}
+      />
+    ), 
+    Collection: 
+    (
+      <Image
+        src={SchedulingCardIcon}
+        alt="Scheduling"
+        width={15}
+        height={15}
+      />
+    ), 
+    Automation: (
+      <Image
+        src={SchedulingLightningIcon}
+        alt="Scheduling"
+        width={15}
+        height={15}
+      />
+    ), 
+  };
   return <span style={{ fontSize: 13 }}>{icons[label]}</span>;
 }
  
