@@ -103,13 +103,13 @@ export default function Navbar() {
               className="w-full text-[15px] rounded-[7px] px-4 py-2.5 bg-transparent"
               style={{ color: "#2F4E3C", border: "1px solid #2F4E3C" }}
             >
-              Sign in
+              Log in
             </button>
             <button
               className="w-full text-[15px] text-white rounded-[7px] px-4 py-2.5"
-              style={{ background: "#C04A2A", boxShadow: "0 3px 0 #955A00" }}
+              style={{ background: "#25D16F", boxShadow: "0 3px 0 #9EF3DA" }}
             >
-              Get a mailbox
+              Get Started
             </button>
           </div>
         </div>

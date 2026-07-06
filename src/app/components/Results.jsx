@@ -104,6 +104,7 @@ function GlassPill({ children, hasDot = false, size = "lg" }) {
 function StatCol({ number, suffix, subtext, pill }) {
   return (
     <div
+      className="results-stat-col"
       style={{
         display:       "flex",
         flexDirection: "column",
@@ -115,11 +116,10 @@ function StatCol({ number, suffix, subtext, pill }) {
       {/* Big number — Manrope 800 */}
       <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
         <span
+          className="results-stat-number"
           style={{
             fontFamily:    "'Manrope', sans-serif",
             fontWeight:    800,
-            fontSize:      96,
-            lineHeight:    "70.4px",
             letterSpacing: "-1.92px",
             color:         "white",
           }}
@@ -127,11 +127,10 @@ function StatCol({ number, suffix, subtext, pill }) {
           {number}
         </span>
         <span
+          className="results-stat-suffix"
           style={{
             fontFamily:    "'Manrope', sans-serif",
             fontWeight:    800,
-            fontSize:      24,
-            lineHeight:    "70.4px",
             letterSpacing: "-1.92px",
             color:         "#25D16F",
           }}
@@ -142,6 +141,7 @@ function StatCol({ number, suffix, subtext, pill }) {
  
       {/* Subtext — Inter 500 */}
       <p
+        className="results-stat-subtext"
         style={{
           fontFamily: "'Inter', sans-serif",
           fontWeight: 500,
@@ -179,6 +179,7 @@ function StatCol({ number, suffix, subtext, pill }) {
 function StatDivider() {
   return (
     <div
+      className="results-stat-divider"
       style={{
         display:    "flex",
         alignItems: "center",
@@ -194,15 +195,89 @@ function StatDivider() {
 export default function Results() {
   return (
     <section
-      className="page-x-pad"
+      className="page-x-pad results-section"
       style={{
         background:    "#1A5C38",
-        paddingTop:    80,
-        paddingBottom: 80,
         position:      "relative",
         overflow:      "hidden",
       }}
     >
+      {/* Responsive overrides — inline styles above set the desktop defaults,
+          these media queries adjust them for narrower viewports */}
+      <style>{`
+        .results-section {
+          padding-top: 80px;
+          padding-bottom: 80px;
+        }
+        .results-heading {
+          margin-bottom: 64px;
+        }
+        .results-stats-row {
+          display: flex;
+          align-items: stretch;
+        }
+        .results-stat-divider {
+          padding: 16px 0;
+        }
+        .results-stat-divider > div {
+          width: 1px;
+          height: 100%;
+        }
+        .results-stat-number {
+          font-size: 96px;
+          line-height: 70.4px;
+        }
+        .results-stat-suffix {
+          font-size: 24px;
+          line-height: 70.4px;
+        }
+ 
+        @media (max-width: 900px) {
+          .results-section {
+            padding-top: 56px;
+            padding-bottom: 56px;
+          }
+          .results-heading {
+            margin-bottom: 40px;
+          }
+          .results-stats-row {
+            flex-direction: column;
+            gap: 40px;
+          }
+          .results-stat-divider {
+            display: none;
+          }
+          .results-stat-col {
+            width: 100%;
+          }
+          .results-stat-subtext {
+            max-width: 320px !important;
+          }
+        }
+ 
+        @media (max-width: 480px) {
+          .results-section {
+            padding-top: 40px;
+            padding-bottom: 40px;
+          }
+          .results-heading {
+            margin-bottom: 32px;
+          }
+          .results-stat-number {
+            font-size: 64px;
+            line-height: 1.1;
+          }
+          .results-stat-suffix {
+            font-size: 18px;
+            line-height: 1.1;
+          }
+          .results-stat-subtext {
+            font-size: 14px !important;
+            line-height: 22px !important;
+          }
+        }
+      `}</style>
+ 
       {/* ── Big decorative circle — layered over text via zIndex ── */}
       <div
         aria-hidden
@@ -212,6 +287,8 @@ export default function Results() {
           height:       BIG_CIRCLE.height,
           top:          BIG_CIRCLE.top,
           right:        BIG_CIRCLE.right,
+          maxWidth:     "80vw",
+          maxHeight:    "80vw",
           borderRadius: "9999px",
           background:   "rgba(0,209,126,0.20)",
           opacity:      0.15,
@@ -242,10 +319,11 @@ export default function Results() {
  
         {/* ── Heading — left aligned ── */}
         <h2
+          className="results-heading"
           style={{
             fontFamily:    "'Plus Jakarta Sans', sans-serif",
             fontWeight:    700,
-            fontSize:      "clamp(36px, 5vw, 60px)",
+            fontSize:      "clamp(32px, 6vw, 60px)",
             lineHeight:    1.1,
             letterSpacing: "-1px",
             color:         "white",
@@ -258,12 +336,12 @@ export default function Results() {
         </h2>
  
         {/* ── Stats row ── */}
-        <div style={{ display: "flex", alignItems: "stretch" }}>
+        <div className="results-stats-row">
           {STATS.map((stat, i) => (
-            <div key={i}>
+            <>
               <StatCol key={stat.pill} {...stat} />
               {i < STATS.length - 1 && <StatDivider key={`div-${i}`} />}
-            </div>
+            </>
           ))}
         </div>
  

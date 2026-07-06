@@ -1,5 +1,5 @@
 "use client";
-
+ 
 import Image from "next/image";
 import { useState } from "react";
 import BackgroundImage from '../../assets/Integration-bg.svg';
@@ -12,13 +12,13 @@ import InstagramBlob from '../../assets/Instagram.svg';
 import XBlob from '../../assets/Integration-X.svg';
 import YoutubBlob from '../../assets/YouTube.svg';
 import GirlImage from '../../assets/smiling-young-woman-engaged-with-her-smartphone1.svg';
-
+ 
 // ═══════════════════════════════════════════════════════════════════
 // IMAGE SOURCES — swap paths here
 // ═══════════════════════════════════════════════════════════════════
 const BG_IMAGE       = BackgroundImage;
 const PERSON_IMAGE   = GirlImage;
-
+ 
 // Left floating images — 4 items
 // { src, width, height, radius } — tweak size/radius per image
 const LEFT_FLOATS = [
@@ -27,7 +27,7 @@ const LEFT_FLOATS = [
   { src: WhatsappBlob, width: 100,  height: 100,  radius: 12 },
   { src: XBlob, width: 50,  height: 50,  radius: 16 },
 ];
-
+ 
 // Right floating images — 4 items
 const RIGHT_FLOATS = [
   { src: ThreadsBlob, width: 80,  height: 80,  radius: 16 },
@@ -35,7 +35,7 @@ const RIGHT_FLOATS = [
   { src: LinkedInBlob, width: 90,  height: 90,  radius: 12 },
   { src: YoutubBlob, width: 72,  height: 72,  radius: 16 },
 ];
-
+ 
 // ═══════════════════════════════════════════════════════════════════
 // FLOATING IMAGE POSITIONS — move these to reposition any image
 // positions are relative to the person image container
@@ -46,14 +46,14 @@ const LEFT_POS = [
   { top: 360,  left: -72  },
   { top: 480,  left: -88  },
 ];
-
+ 
 const RIGHT_POS = [
   { top:  80,  right: -80 },
   { top: 210,  right: -76 },
   { top: 350,  right: -92 },
   { top: 520,  right: -88 },
 ];
-
+ 
 // ═══════════════════════════════════════════════════════════════════
 // GLASS PILL — same final version we agreed on
 // ═══════════════════════════════════════════════════════════════════
@@ -69,7 +69,7 @@ const GLIMMER_BORDER = `conic-gradient(
   rgba(255,255,255,0.70)  400deg
 )`;
 const MASK = "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)";
-
+ 
 function GlassPill({ children }) {
   return (
     <div style={{ position: "relative", display: "inline-flex" }}>
@@ -108,7 +108,7 @@ function GlassPill({ children }) {
     </div>
   );
 }
-
+ 
 // ═══════════════════════════════════════════════════════════════════
 // ARROW RIGHT
 // ═══════════════════════════════════════════════════════════════════
@@ -121,15 +121,17 @@ function ArrowRight({ color = "white", size = 16 }) {
     </svg>
   );
 }
-
+ 
 // ═══════════════════════════════════════════════════════════════════
 // FLOATING IMAGE — resonates left↔right toward the person image
 // side: "left" pulses right (toward center), "right" pulses left
+// Hidden below the "integration-float" breakpoint — see <style> below.
 // ═══════════════════════════════════════════════════════════════════
 function FloatImg({ src, width, height, radius, pos, side, delay = 0 }) {
   const animName = side === "left" ? "resL" : "resR";
   return (
     <div
+      className="integration-float"
       style={{
         position:     "absolute",
         ...pos,
@@ -153,13 +155,13 @@ function FloatImg({ src, width, height, radius, pos, side, delay = 0 }) {
     </div>
   );
 }
-
+ 
 // ═══════════════════════════════════════════════════════════════════
 // MAIN COMPONENT
 // ═══════════════════════════════════════════════════════════════════
 export default function Integration() {
   const [btnHov, setBtnHov] = useState(false);
-
+ 
   return (
     <>
       <style>{`
@@ -173,23 +175,121 @@ export default function Integration() {
           0%,100% { transform: translateX(0px); }
           50%      { transform: translateX(-8px); }
         }
-
-        /* ── Mobile: 768px and below — hide right image container only ── */
-        @media (max-width: 768px) {
+ 
+        .integration-section {
+          max-height: 700px;
+        }
+        .integration-flex {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          gap: 48px;
+        }
+        .integration-left {
+          width: 478px;
+        }
+        .integration-headline {
+          font-size: 40px;
+          line-height: 48px;
+        }
+        .integration-paragraph {
+          font-size: 19px;
+          line-height: 30.88px;
+        }
+        .integration-cta {
+          padding: 20px 40px;
+        }
+        .integration-cta-text {
+          font-size: 16px;
+        }
+        .integration-right-container {
+          width: 425px;
+          height: 638px;
+          margin-right: 120px;
+        }
+ 
+        /* ── Large tablets / small laptops — tighten spacing, shrink photo ── */
+        @media (max-width: 1150px) {
           .integration-right-container {
-            display: none !important;
+            width: 340px;
+            height: 500px;
+            margin-right: 40px;
+          }
+          .integration-left {
+            width: 420px;
+          }
+        }
+ 
+        /* ── Tablets and below — stack text above image, drop the floating
+             icons since their absolute offsets would overflow a narrow column ── */
+        @media (max-width: 900px) {
+          .integration-section {
+            max-height: none;
+          }
+          .integration-flex {
+            flex-direction: column;
+            gap: 40px;
+          }
+          .integration-left {
+            width: 100%;
+            align-items: center;
+            text-align: center;
+          }
+          .integration-headline {
+            font-size: 32px;
+            line-height: 40px;
+          }
+          .integration-paragraph {
+            font-size: 17px;
+            line-height: 27px;
+          }
+          .integration-cta {
+            align-self: center !important;
+          }
+          .integration-float {
+            display: none;
+          }
+          .integration-right-container {
+            width: 100%;
+            max-width: 340px;
+            height: 420px;
+            margin-right: 0;
+          }
+        }
+ 
+        /* ── Phones — trim further, drop the photo and its space entirely ── */
+        @media (max-width: 480px) {
+          .integration-headline {
+            font-size: 26px;
+            line-height: 33px;
+          }
+          .integration-paragraph {
+            font-size: 15px;
+            line-height: 24px;
+          }
+          .integration-cta {
+            padding: 16px 28px !important;
+          }
+          .integration-cta-text {
+            font-size: 14px !important;
+          }
+          .integration-right-container {
+            display: none;
+          }
+          .integration-flex {
+            gap: 0;
           }
         }
       `}</style>
-
-      <section style={{
+ 
+      <section className="integration-section" style={{
         position:   "relative",
         width:      "100%",
-        maxHeight:   700,
         overflow:   "hidden",
         padding:     10,
       }}>
-
+ 
         {/* ── Background image ── */}
         <div style={{
           position: "absolute", inset: 0, zIndex: 0,
@@ -197,29 +297,25 @@ export default function Integration() {
           {/* swap src with BG_IMAGE when ready */}
           <Image src={BG_IMAGE} fill style={{ objectFit: "cover" }} alt="" />
         </div>
-
+ 
         {/* ── Content ── */}
         <div
           className="page-x-pad"
           style={{ position: "relative", zIndex: 1, paddingTop: 80, paddingBottom: 80 }}
         >
           <div className="page-container">
-            <div style={{
-              display:        "flex",
-              flexDirection:  "row",
-              alignItems:     "center",
-              justifyContent: "space-between",
-              gap:             48,
-            }}>
-
+            <div className="integration-flex">
+ 
               {/* ══ LEFT TEXT ══ */}
-              <div style={{
-                width:         478,
-                flexShrink:    0,
-                display:       "flex",
-                flexDirection: "column",
-                gap:            31.4,
-              }}>
+              <div
+                className="integration-left"
+                style={{
+                  flexShrink:    0,
+                  display:       "flex",
+                  flexDirection: "column",
+                  gap:            31.4,
+                }}
+              >
                 {/* Glass pill */}
                 <GlassPill>
                   <span style={{
@@ -233,35 +329,38 @@ export default function Integration() {
                     Our Seamless Integration
                   </span>
                 </GlassPill>
-
+ 
                 {/* Headline */}
-                <h2 style={{
-                  fontFamily:    "'Plus Jakarta Sans', sans-serif",
-                  fontWeight:    700,
-                  fontSize:      40,
-                  lineHeight:    "48px",
-                  letterSpacing: 0,
-                  color:         "white",
-                  margin:         0,
-                  whiteSpace:    "pre-line",
-                }}>
+                <h2
+                  className="integration-headline"
+                  style={{
+                    fontFamily:    "'Plus Jakarta Sans', sans-serif",
+                    fontWeight:    700,
+                    letterSpacing: 0,
+                    color:         "white",
+                    margin:         0,
+                    whiteSpace:    "pre-line",
+                  }}
+                >
                   {"Seamless Integration\nOf Effortless\nManagement"}
                 </h2>
-
+ 
                 {/* Paragraph */}
-                <p style={{
-                  fontFamily: "'Manrope', sans-serif",
-                  fontWeight: 400,
-                  fontSize:   19,
-                  lineHeight: "30.88px",
-                  color:      "rgba(255,255,255,0.80)",
-                  margin:      0,
-                }}>
+                <p
+                  className="integration-paragraph"
+                  style={{
+                    fontFamily: "'Manrope', sans-serif",
+                    fontWeight: 400,
+                    color:      "rgba(255,255,255,0.80)",
+                    margin:      0,
+                  }}
+                >
                   Connect all your favourite social platforms in one place for smooth team management and seamlessly integrate your tools.
                 </p>
-
+ 
                 {/* CTA button */}
                 <button
+                  className="integration-cta"
                   onMouseEnter={() => setBtnHov(true)}
                   onMouseLeave={() => setBtnHov(false)}
                   style={{
@@ -272,23 +371,21 @@ export default function Integration() {
                     borderRadius:  9999,
                     background:    "#25D16F",
                     border:        "none",
-                    paddingTop:    20,
-                    paddingBottom: 20,
-                    paddingLeft:   40,
-                    paddingRight:  40,
                     cursor:        "pointer",
                     transition:    "opacity 0.15s, transform 0.15s",
                     opacity:       btnHov ? 0.88 : 1,
                     transform:     btnHov ? "scale(1.02)" : "scale(1)",
                   }}
                 >
-                  <span style={{
-                    fontFamily: "'Manrope', sans-serif",
-                    fontWeight: 700,
-                    fontSize:   16,
-                    lineHeight: "24px",
-                    color:      "white",
-                  }}>
+                  <span
+                    className="integration-cta-text"
+                    style={{
+                      fontFamily: "'Manrope', sans-serif",
+                      fontWeight: 700,
+                      lineHeight: "24px",
+                      color:      "white",
+                    }}
+                  >
                     One-Click Integration
                   </span>
                   <span style={{
@@ -300,16 +397,13 @@ export default function Integration() {
                   </span>
                 </button>
               </div>
-
+ 
               {/* ══ RIGHT: person image + floating images ══ */}
               <div className="integration-right-container" style={{
                 position: "relative",
-                width:     425,
-                height:    638,
                 flexShrink:0,
-                marginRight: '120px',
               }}>
-
+ 
                 {/* Left floating images */}
                 {LEFT_FLOATS.map((img, i) => (
                   <FloatImg
@@ -323,7 +417,7 @@ export default function Integration() {
                     delay={i * 0.4}
                   />
                 ))}
-
+ 
                 {/* Person image */}
                 <div style={{
                   position:     "relative",
@@ -334,7 +428,7 @@ export default function Integration() {
                 }}>
                   <Image src={PERSON_IMAGE} fill style={{ objectFit: "cover" }} alt="Integration" />
                 </div>
-
+ 
                 {/* Right floating images */}
                 {RIGHT_FLOATS.map((img, i) => (
                   <FloatImg
@@ -348,7 +442,7 @@ export default function Integration() {
                     delay={i * 0.4}
                   />
                 ))}
-
+ 
               </div>
             </div>
           </div>
