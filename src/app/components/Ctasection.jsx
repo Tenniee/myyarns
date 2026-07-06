@@ -36,87 +36,255 @@ export default function CTASection() {
   const [btnHov, setBtnHov] = useState(false);
  
   return (
-    <div style={{
-      background:     "#25D16F",
-      paddingTop:     72,
-      paddingBottom:  72,
-      paddingLeft:    100,
-      paddingRight:   100,
-      position:       "relative",
-      overflow:       "hidden",
-    }}>
+    <div className="cta-outer">
+      <style>{`
+        .cta-outer {
+          background: #25D16F;
+          padding: 72px 100px;
+          position: relative;
+          overflow: hidden;
+        }
+ 
+        .cta-circle {
+          position: absolute;
+          width: 256px;
+          height: 256px;
+          border-radius: 9999px;
+          pointer-events: none;
+          z-index: 0;
+        }
+ 
+        .cta-inner {
+          position: relative;
+          z-index: 1;
+          max-width: 1240px;
+          margin: 0 auto;
+          border: 1px solid rgba(187,203,188,0.10);
+          padding: 64px;
+          box-shadow: 0 8px 10px -6px rgba(0,109,63,0.05), 0 20px 25px -5px rgba(0,109,63,0.05);
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          gap: 48px;
+          background: #00D17E;
+        }
+ 
+        .cta-left {
+          flex: 0 0 531px;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+ 
+        .cta-heading {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 700;
+          font-size: clamp(28px, 3vw, 40px);
+          line-height: 1.08;
+          letter-spacing: 0;
+          color: white;
+          margin: 0;
+        }
+ 
+        .cta-subtext {
+          font-family: 'Manrope', sans-serif;
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 28.8px;
+          color: rgba(255,255,255,0.85);
+          margin: 0;
+          max-width: 460px;
+        }
+ 
+        .cta-right {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          min-width: 0;
+        }
+ 
+        .cta-input-row {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          border-radius: 9999px;
+          border: 1px solid rgba(187,203,188,0.20);
+          box-shadow: inset 0 2px 4px 1px rgba(0,0,0,0.05);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          background: #FFFFFF;
+          padding: 6px;
+          gap: 12px;
+        }
+ 
+        .cta-input {
+          flex: 1;
+          min-width: 0;
+          background: transparent;
+          border: none;
+          outline: none;
+          font-family: 'Manrope', sans-serif;
+          font-size: 16px;
+          line-height: 24px;
+          color: #6B7280;
+          padding-left: 20px;
+        }
+ 
+        .cta-button {
+          flex-shrink: 0;
+          border-radius: 9999px;
+          background: #25D16F;
+          padding: 21.5px 32px 22.5px;
+          border: none;
+          cursor: pointer;
+          font-family: 'Manrope', sans-serif;
+          font-weight: 700;
+          font-size: 15px;
+          line-height: 12px;
+          letter-spacing: 0.6px;
+          color: white;
+          white-space: nowrap;
+          transition: opacity 0.15s, transform 0.15s;
+        }
+ 
+        .cta-button.hover {
+          opacity: 0.88;
+          transform: scale(1.02);
+        }
+ 
+        .cta-checks {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 16px;
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+ 
+        .cta-check-item {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 4px;
+          padding-bottom: 1px;
+        }
+ 
+        .cta-check-label {
+          font-family: 'Manrope', sans-serif;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 15px;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          color: white;
+        }
+ 
+        /* ── Tablet ── */
+        @media (max-width: 900px) {
+          .cta-outer {
+            padding: 56px 40px;
+          }
+ 
+          .cta-inner {
+            padding: 40px;
+            gap: 32px;
+          }
+ 
+          .cta-left {
+            flex-basis: 45%;
+          }
+        }
+ 
+        /* ── Mobile: stack left/right, center everything ── */
+        @media (max-width: 700px) {
+          .cta-outer {
+            padding: 48px 20px;
+          }
+ 
+          .cta-inner {
+            flex-direction: column;
+            align-items: stretch;
+            padding: 32px 24px;
+            gap: 28px;
+            text-align: center;
+          }
+ 
+          .cta-left {
+            flex-basis: auto;
+            align-items: center;
+          }
+ 
+          .cta-subtext {
+            max-width: none;
+          }
+ 
+          .cta-input-row {
+            flex-wrap: wrap;
+            border-radius: 24px;
+            padding: 10px;
+          }
+ 
+          .cta-input {
+            flex: 1 1 100%;
+            padding: 10px 12px;
+            text-align: center;
+          }
+ 
+          .cta-button {
+            flex: 1 1 100%;
+            padding: 16px 24px;
+          }
+ 
+          .cta-checks {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+          }
+        }
+ 
+        /* ── Small mobile ── */
+        @media (max-width: 400px) {
+          .cta-outer {
+            padding: 40px 16px;
+          }
+ 
+          .cta-inner {
+            padding: 24px 16px;
+          }
+ 
+          .cta-checks {
+            gap: 10px;
+          }
+ 
+          .cta-check-label {
+            font-size: 10.5px;
+          }
+        }
+      `}</style>
  
       {/* Top-left circle — move via CIRCLE_TL */}
-      <div aria-hidden style={{
-        position:     "absolute",
-        top:          CIRCLE_TL.top,
-        left:         CIRCLE_TL.left,
-        width:        256,
-        height:       256,
-        borderRadius: "9999px",
-        background:   "#9EF3DA",
-        pointerEvents:"none",
-        zIndex:        0,
+      <div aria-hidden className="cta-circle" style={{
+        top:        CIRCLE_TL.top,
+        left:       CIRCLE_TL.left,
+        background: "#9EF3DA",
       }} />
  
       {/* Bottom-right circle — move via CIRCLE_BR */}
-      <div aria-hidden style={{
-        position:     "absolute",
-        bottom:       CIRCLE_BR.bottom,
-        right:        CIRCLE_BR.right,
-        width:        256,
-        height:       256,
-        borderRadius: "9999px",
-        background:   "#1A5C38",
-        pointerEvents:"none",
-        zIndex:        0,
+      <div aria-hidden className="cta-circle" style={{
+        bottom:     CIRCLE_BR.bottom,
+        right:      CIRCLE_BR.right,
+        background: "#1A5C38",
       }} />
  
       {/* ── Inner rectangle ── */}
-      <div style={{
-        position:      "relative",
-        zIndex:         1,
-        maxWidth:       1240,
-        margin:         "0 auto",
-        border:         "1px solid rgba(187,203,188,0.10)",
-        padding:        64,
-        boxShadow:
-          "0 8px 10px -6px rgba(0,109,63,0.05), 0 20px 25px -5px rgba(0,109,63,0.05)",
-        display:        "flex",
-        flexDirection:  "row",
-        justifyContent: "space-between",
-        alignItems:     "center",
-        gap:             48,
-        background: '#00D17E',
-      }}>
+      <div className="cta-inner">
  
         {/* ── LEFT: heading + subtext ── */}
-        <div style={{
-          flex:          "0 0 531px",
-          display:       "flex",
-          flexDirection: "column",
-          gap:            16,
-        }}>
-          <h2 style={{
-            fontFamily:    "'Plus Jakarta Sans', sans-serif",
-            fontWeight:    700,
-            fontSize:      "clamp(28px, 3vw, 40px)",
-            lineHeight:    "43.2px",
-            letterSpacing: 0,
-            color:         "white",
-            margin:         0,
-          }}>
-            Grow Your Brand Faster
-          </h2>
-          <p style={{
-            fontFamily: "'Manrope', sans-serif",
-            fontWeight: 400,
-            fontSize:   20,
-            lineHeight: "28.8px",
-            color:      "rgba(255,255,255,0.85)",
-            margin:      0,
-            maxWidth:   460,
-          }}>
+        <div className="cta-left">
+          <h2 className="cta-heading">Grow Your Brand Faster</h2>
+          <p className="cta-subtext">
             Schedule, analyze, and engage across all social
             channels with the platform built for African market
             dynamics.
@@ -124,101 +292,34 @@ export default function CTASection() {
         </div>
  
         {/* ── RIGHT: input + check row ── */}
-        <div style={{
-          flex:          1,
-          display:       "flex",
-          flexDirection: "column",
-          gap:            16,
-        }}>
+        <div className="cta-right">
  
           {/* Pill-shaped input */}
-          <div style={{
-            display:             "flex",
-            flexDirection:       "row",
-            alignItems:          "center",
-            borderRadius:        9999,
-            border:              "1px solid rgba(187,203,188,0.20)",
-            boxShadow:           "inset 0 2px 4px 1px rgba(0,0,0,0.05)",
-            backdropFilter:      "blur(12px)",
-            WebkitBackdropFilter:"blur(12px)",
-            background:          "#FFFFFF",
-            padding:              6,
-            gap:                  12,
-          }}>
+          <div className="cta-input-row">
             <input
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
               placeholder="Enter your work email"
-              style={{
-                flex:        1,
-                background:  "transparent",
-                border:      "none",
-                outline:     "none",
-                fontFamily:  "'Manrope', sans-serif",
-                fontSize:    16,
-                lineHeight:  "24px",
-                color:       "#6B7280",
-                paddingLeft: 20,
-              }}
+              className="cta-input"
             />
  
             {/* Subscribe Free button */}
             <button
               onMouseEnter={() => setBtnHov(true)}
               onMouseLeave={() => setBtnHov(false)}
-              style={{
-                flexShrink:    0,
-                borderRadius:  9999,
-                background:    "#25D16F",
-                paddingTop:    21.5,
-                paddingBottom: 22.5,
-                paddingLeft:   32,
-                paddingRight:  32,
-                border:        "none",
-                cursor:        "pointer",
-                fontFamily:    "'Manrope', sans-serif",
-                fontWeight:    700,
-                fontSize:      15,
-                lineHeight:    "12px",
-                letterSpacing: "0.6px",
-                color:         "white",
-                whiteSpace:    "nowrap",
-                transition:    "opacity 0.15s, transform 0.15s",
-                opacity:       btnHov ? 0.88 : 1,
-                transform:     btnHov ? "scale(1.02)" : "scale(1)",
-              }}
+              className={`cta-button${btnHov ? " hover" : ""}`}
             >
               Subscribe Free
             </button>
           </div>
  
           {/* Check items row */}
-          <div style={{
-            display:      "flex",
-            flexDirection:"row",
-            gap:           16,
-            paddingLeft:   16,
-            paddingRight:  16,
-          }}>
+          <div className="cta-checks">
             {CHECK_ITEMS.map(label => (
-              <div key={label} style={{
-                display:       "flex",
-                flexDirection: "row",
-                alignItems:    "center",
-                gap:            4,
-                paddingBottom:  1,
-              }}>
+              <div key={label} className="cta-check-item">
                 <WhiteCheck />
-                <span style={{
-                  fontFamily:    "'Manrope', sans-serif",
-                  fontWeight:    400,
-                  fontSize:      12,
-                  lineHeight:    "15px",
-                  letterSpacing: "0.5px",
-                  textTransform: "uppercase",
-                  color:         "white",
-                }}>{label}</span>
+                <span className="cta-check-label">{label}</span>
               </div>
             ))}
           </div>

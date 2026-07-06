@@ -134,8 +134,8 @@ function PricingCard({ plan }) {
       <div
         onMouseEnter={() => setHov(true)}
         onMouseLeave={() => setHov(false)}
+        className="pricing-card-middle"
         style={{
-          width: 434,
           borderRadius: 40,
           background: "white",
           flexShrink: 0,
@@ -146,14 +146,13 @@ function PricingCard({ plan }) {
           transition: "transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s",
           position: "relative",
           zIndex: hov ? 10 : 2,
-          // pill sits on the top border, so we need overflow visible
           overflow: "visible",
         }}
       >
-        {/* Most Popular pill — sits ON the border, centred at the top */}
+        {/* Most Popular pill */}
         <div style={{
           position: "absolute",
-          top: 10,          // half the pill height so border bisects it
+          top: 10,
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 10,
@@ -168,12 +167,12 @@ function PricingCard({ plan }) {
           }}>Most Popular</span>
         </div>
  
-        {/* Inner border box — slightly inset top/bottom so border is shorter than card */}
+        {/* Inner border box */}
         <div style={{
-          margin: "24px 16px",          // inset from card edges → border shorter than card height
+          margin: "24px 16px",
           borderRadius: 32,
           border: "2px solid #25D16F",
-          padding: "36px 32px 32px",   // extra top pad to clear the pill
+          padding: "36px 32px 32px",
           display: "flex",
           flexDirection: "column",
           gap: 1.5,
@@ -205,7 +204,7 @@ function PricingCard({ plan }) {
             }}>{plan.period}</span>
           </div>
  
-          {/* Button — outer shell (white 20% opacity) */}
+          {/* Button */}
           <div style={{
             borderRadius: 9999,
             background: "rgba(255,255,255,0.20)",
@@ -261,8 +260,8 @@ function PricingCard({ plan }) {
     <div
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
+      className="pricing-card-standard"
       style={{
-        width: 396, height: 628,
         borderRadius: 40,
         border: "1px solid white",
         padding: 32,
@@ -361,84 +360,258 @@ function PricingCard({ plan }) {
 // ═══════════════════════════════════════════════════════════════════
 export default function Pricing() {
   return (
-    <section className="page-x-pad" style={{ background: "white", paddingTop: 80, paddingBottom: 80 }}>
-      <div className="page-container">
+    <>
+      <style>{`
+        .pricing-x-pad {
+          padding-left: 100px;
+          padding-right: 100px;
+        }
  
-        {/* ── Top div ── */}
-        <div style={{
-          display: "flex", flexDirection: "row",
-          justifyContent: "space-between", alignItems: "center",
-          marginBottom: 64,
-        }}>
+        .pricing-container {
+          width: 100%;
+        }
  
-          {/* Left — price comparison */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <p style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 700, fontSize: 24, lineHeight: "31.2px",
-              color: "#1A5C38", margin: 0,
-            }}>MyYarns Growth = ₦24,500/agent.</p>
-            <div style={{
-              borderRadius: 8, background: "#25D16F",
-              padding: "2px 12px", display: "inline-flex", alignItems: "center",
-              width: "fit-content",
-            }}>
-              <span style={{
+        /* ── Top section ── */
+        .pricing-top {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 64px;
+          gap: 48px;
+        }
+ 
+        .pricing-top-left {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          flex-shrink: 0;
+        }
+ 
+        .pricing-top-right {
+          max-width: 690px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          align-items: flex-end;
+          text-align: right;
+          min-width: 60%;
+        }
+ 
+        .pricing-heading {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 800;
+          font-size: clamp(32px, 4vw, 48px);
+          line-height: 52.8px;
+          letter-spacing: -0.96px;
+          margin: 0;
+          text-align: right;
+        }
+ 
+        .pricing-subtext {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 31.2px;
+          color: #3C4A3F;
+          margin: 0;
+          text-align: right;
+        }
+ 
+        .pricing-desc {
+          font-family: 'Manrope', sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 28.8px;
+          color: #3C4A3F;
+          margin: 0;
+        }
+ 
+        /* ── Cards row ── */
+        .pricing-cards {
+          display: flex;
+          flex-direction: row;
+          gap: 24px;
+          justify-content: center;
+          align-items: center;
+          overflow-x: auto;
+          scroll-behavior: smooth;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+        }
+ 
+        .pricing-card-standard,
+        .pricing-card-middle {
+          width: 396px;
+          height: 628px;
+          scroll-snap-align: start;
+        }
+ 
+        .pricing-card-middle {
+          width: 434px;
+          height: auto;
+        }
+ 
+        /* ════════════════════════════════════════════════════════
+           RESPONSIVE BREAKPOINTS
+        ════════════════════════════════════════════════════════ */
+ 
+        /* ── Tablet: 1024px and below ── */
+        @media (max-width: 1024px) {
+          .pricing-x-pad {
+            padding-left: 48px;
+            padding-right: 48px;
+          }
+ 
+          .pricing-top {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 32px;
+          }
+ 
+          .pricing-top-right {
+            align-items: flex-start;
+            text-align: left;
+            min-width: auto;
+            max-width: 100%;
+          }
+ 
+          .pricing-heading,
+          .pricing-subtext {
+            text-align: left;
+          }
+ 
+          .pricing-card-standard,
+          .pricing-card-middle {
+            width: 350px;
+          }
+        }
+ 
+        /* ── Mobile: 768px and below ── */
+        @media (max-width: 768px) {
+          .pricing-x-pad {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+ 
+          .pricing-top {
+            margin-bottom: 40px;
+          }
+ 
+          .pricing-top-left {
+            width: 100%;
+          }
+ 
+          .pricing-heading {
+            font-size: clamp(24px, 5vw, 32px);
+            line-height: 1.2;
+            letter-spacing: 0;
+          }
+ 
+          .pricing-subtext {
+            font-size: 18px;
+            line-height: 24px;
+          }
+ 
+          .pricing-desc {
+            font-size: 14px;
+            line-height: 20px;
+          }
+ 
+          .pricing-cards {
+            flex-direction: column;
+            gap: 20px;
+            overflow-x: unset;
+            scroll-snap-type: none;
+          }
+ 
+          .pricing-card-standard,
+          .pricing-card-middle {
+            width: 100%;
+            height: auto;
+            scroll-snap-align: unset;
+          }
+        }
+ 
+        /* ── Small mobile: 480px and below ── */
+        @media (max-width: 480px) {
+          .pricing-x-pad {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+ 
+          .pricing-heading {
+            font-size: clamp(20px, 5vw, 28px);
+          }
+ 
+          .pricing-subtext {
+            font-size: 16px;
+          }
+ 
+          .pricing-desc {
+            font-size: 13px;
+          }
+ 
+          .pricing-card-standard,
+          .pricing-card-middle {
+            padding: 20px;
+          }
+        }
+      `}</style>
+ 
+      <section className="pricing-x-pad" style={{ background: "white", paddingTop: 80, paddingBottom: 80 }}>
+        <div className="pricing-container">
+ 
+          {/* ── Top div ── */}
+          <div className="pricing-top">
+ 
+            {/* Left — price comparison */}
+            <div className="pricing-top-left">
+              <p style={{
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 700, fontSize: 24, lineHeight: "31.2px", color: "white",
-              }}>67% cheaper.</span>
+                fontWeight: 700, fontSize: 24, lineHeight: "31.2px",
+                color: "#1A5C38", margin: 0,
+              }}>MyYarns Growth = ₦24,500/agent.</p>
+              <div style={{
+                borderRadius: 8, background: "#25D16F",
+                padding: "2px 12px", display: "inline-flex", alignItems: "center",
+                width: "fit-content",
+              }}>
+                <span style={{
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontWeight: 700, fontSize: 24, lineHeight: "31.2px", color: "white",
+                }}>67% cheaper.</span>
+              </div>
+            </div>
+ 
+            {/* Right — heading block */}
+            <div className="pricing-top-right">
+              <h2 className="pricing-heading">
+                <span style={{ color: "#191C1E" }}>Simple </span>
+                <span style={{ color: "#25D16F" }}>Pricing</span>
+              </h2>
+              <p className="pricing-subtext">Grow Your Brand Faster With Our All-in-One Platform</p>
+              <p className="pricing-desc">No FX headaches. No per-agent pricing. One flat Naira price covers your whole team.</p>
             </div>
           </div>
  
-          {/* Right — heading block */}
-          <div style={{
-            maxWidth: 690, display: "flex", flexDirection: "column",
-            gap: 12, alignItems: "flex-end", textAlign: "right", minWidth: '60%'
-          }}>
-            <h2 style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 800, fontSize: "clamp(32px, 4vw, 48px)",
-              lineHeight: "52.8px", letterSpacing: "-0.96px",
-              margin: 0, textAlign: 'right',
-            }}>
-              <span style={{ color: "#191C1E" }}>Simple </span>
-              <span style={{ color: "#25D16F" }}>Pricing</span>
-            </h2>
-            <p style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 500, fontSize: 24, lineHeight: "31.2px",
-              color: "#3C4A3F", margin: 0, textAlign: 'right'
-            }}>Grow Your Brand Faster With Our All-in-One Platform</p>
-            <p style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontWeight: 400, fontSize: 18, lineHeight: "28.8px",
-              color: "#3C4A3F", margin: 0,
-            }}>No FX headaches. No per-agent pricing. One flat Naira price covers your whole team.</p>
+          {/* ── Pricing cards ── */}
+          <div className="pricing-cards">
+            {PLANS.map((plan) => <PricingCard key={plan.id} plan={plan} />)}
           </div>
-        </div>
  
-        {/* ── Pricing cards ── */}
-        <div style={{
-          display: "flex", flexDirection: "row",
-          gap: 24, justifyContent: "center", alignItems: "center",
-        }}>
-          {PLANS.map((plan) => <PricingCard key={plan.id} plan={plan} />)}
         </div>
- 
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
- 
  
 // ═══════════════════════════════════════════════════════════════════
 // CTA SECTION
 // ═══════════════════════════════════════════════════════════════════
  
-// ── position constants for the corner circles ──
-const CTA_CIRCLE_TL = { top: -100, left: -100 };   // top-left: ~quadrant visible
-const CTA_CIRCLE_BR = { bottom: -100, right: -100 }; // bottom-right: ~quadrant visible
- 
+const CTA_CIRCLE_TL = { top: -100, left: -100 };
+const CTA_CIRCLE_BR = { bottom: -100, right: -100 };
 const CHECK_ITEMS = ["No credit card", "14-day free", "Cancel anytime"];
  
 function WhiteCheckCircle({ size = 11.67 }) {
@@ -456,139 +629,316 @@ export function CTASection() {
   const [btnHov, setBtnHov] = useState(false);
  
   return (
-    <div
-      style={{
-        background: "#25D16F",
-        paddingTop: 72, paddingBottom: 72,
-        paddingLeft: 100, paddingRight: 100,
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      {/* Top-left circle — move via CTA_CIRCLE_TL */}
-      <div aria-hidden style={{
-        position: "absolute",
-        top: CTA_CIRCLE_TL.top, left: CTA_CIRCLE_TL.left,
-        width: 256, height: 256, borderRadius: "9999px",
-        background: "#9EF3DA", pointerEvents: "none",
-      }} />
+    <>
+      <style>{`
+        .cta-x-pad {
+          padding-left: 100px;
+          padding-right: 100px;
+        }
  
-      {/* Bottom-right circle — move via CTA_CIRCLE_BR */}
-      <div aria-hidden style={{
-        position: "absolute",
-        bottom: CTA_CIRCLE_BR.bottom, right: CTA_CIRCLE_BR.right,
-        width: 256, height: 256, borderRadius: "9999px",
-        background: "#9EF3DA", pointerEvents: "none",
-      }} />
+        .cta-outer {
+          background: #25D16F;
+          padding-top: 72px;
+          padding-bottom: 72px;
+          position: relative;
+          overflow: hidden;
+        }
  
-      {/* Inner rectangle */}
-      <div style={{
-        position: "relative", zIndex: 1,
-        maxWidth: 1240, margin: "0 auto",
-        border: "1px solid rgba(187,203,188,0.10)",
-        borderRadius: 0,
-        padding: 64,
-        boxShadow: "0 8px 10px -6px rgba(0,109,63,0.05), 0 20px 25px -5px rgba(0,109,63,0.05)",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        gap: 48,
-      }}>
+        .cta-inner {
+          position: relative;
+          z-index: 1;
+          max-width: 1240px;
+          margin: 0 auto;
+          border: 1px solid rgba(187,203,188,0.10);
+          padding: 64px;
+          box-shadow: 0 8px 10px -6px rgba(0,109,63,0.05), 0 20px 25px -5px rgba(0,109,63,0.05);
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          gap: 48px;
+          background: #00D17E;
+        }
  
-        {/* Left — heading + subtext */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 531 }}>
-          <h2 style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            fontWeight: 700, fontSize: "clamp(28px, 3.5vw, 40px)",
-            lineHeight: "43.2px", letterSpacing: 0,
-            color: "white", margin: 0,
-          }}>
-            Start Growing Your Brand on Social Media Today
-          </h2>
-          <p style={{
-            fontFamily: "'Manrope', sans-serif",
-            fontWeight: 400, fontSize: 20,
-            lineHeight: "28.8px", color: "rgba(255,255,255,0.85)",
-            margin: 0,
-          }}>
-            Join 2,500+ teams already using MyYarns to manage, engage and grow across every platform from one place.
-          </p>
-        </div>
+        .cta-left {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          max-width: 531px;
+          flex-shrink: 0;
+        }
  
-        {/* Right — input + check items */}
-        <div style={{
-          flex: 1, maxWidth: 531,
-          display: "flex", flexDirection: "column", gap: 16,
-        }}>
-          {/* Pill input */}
-          <div style={{
-            display: "flex", flexDirection: "row", alignItems: "center",
-            borderRadius: 9999,
-            border: "1px solid rgba(187,203,188,0.20)",
-            boxShadow: "inset 0 2px 4px 1px rgba(0,0,0,0.05)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            background: "rgba(255,255,255,0.15)",
-            padding: 6, gap: 12,
-          }}>
-            <input
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder="Enter your work email"
-              style={{
-                flex: 1, background: "transparent", border: "none", outline: "none",
-                fontFamily: "'Manrope', sans-serif", fontSize: 16,
-                color: "white", paddingLeft: 20,
-              }}
-            />
-            <button
-              onMouseEnter={() => setBtnHov(true)}
-              onMouseLeave={() => setBtnHov(false)}
-              style={{
-                borderRadius: 9999, background: "#25D16F",
-                paddingTop: 21.5, paddingBottom: 22.5,
-                paddingLeft: 32, paddingRight: 32,
-                border: "none", cursor: "pointer",
-                fontFamily: "'Manrope', sans-serif",
-                fontWeight: 700, fontSize: 15,
-                lineHeight: "12px", letterSpacing: "0.6px",
-                color: "white", whiteSpace: "nowrap",
-                transform: btnHov ? "scale(1.03)" : "scale(1)",
-                transition: "transform 0.15s, opacity 0.15s",
-                opacity: btnHov ? 0.88 : 1,
-                background: btnHov ? "#1ab35a" : "#006D3F",
-              }}
-            >
-              Subscribe Free
-            </button>
-          </div>
+        .cta-heading {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 700;
+          font-size: clamp(28px, 3.5vw, 40px);
+          line-height: 43.2px;
+          letter-spacing: 0;
+          color: white;
+          margin: 0;
+        }
  
-          {/* Check items row */}
-          <div style={{
-            display: "flex", flexDirection: "row",
-            gap: 16, paddingLeft: 16, paddingRight: 16,
-          }}>
-            {CHECK_ITEMS.map(label => (
-              <div key={label} style={{
-                display: "flex", flexDirection: "row",
-                alignItems: "center", gap: 4,
-                paddingBottom: 1,
-              }}>
-                <WhiteCheckCircle />
-                <span style={{
-                  fontFamily: "'Manrope', sans-serif",
-                  fontWeight: 400, fontSize: 12,
-                  lineHeight: "15px", letterSpacing: "0.5px",
-                  textTransform: "uppercase", color: "white",
-                }}>{label}</span>
+        .cta-subtext {
+          font-family: 'Manrope', sans-serif;
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 28.8px;
+          color: rgba(255,255,255,0.85);
+          margin: 0;
+        }
+ 
+        .cta-right {
+          flex: 1;
+          max-width: 531px;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+ 
+        .cta-input-row {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          border-radius: 9999px;
+          border: 1px solid rgba(187,203,188,0.20);
+          box-shadow: inset 0 2px 4px 1px rgba(0,0,0,0.05);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          background: rgba(255,255,255,0.15);
+          padding: 6px;
+          gap: 12px;
+        }
+ 
+        .cta-input {
+          flex: 1;
+          min-width: 0;
+          background: transparent;
+          border: none;
+          outline: none;
+          font-family: 'Manrope', sans-serif;
+          font-size: 16px;
+          color: white;
+          padding-left: 20px;
+        }
+ 
+        .cta-input::placeholder {
+          color: rgba(255,255,255,0.7);
+        }
+ 
+        .cta-button {
+          flex-shrink: 0;
+          border-radius: 9999px;
+          background: #006D3F;
+          padding: 21.5px 32px 22.5px;
+          border: none;
+          cursor: pointer;
+          font-family: 'Manrope', sans-serif;
+          font-weight: 700;
+          font-size: 15px;
+          line-height: 12px;
+          letter-spacing: 0.6px;
+          color: white;
+          white-space: nowrap;
+          transition: background 0.15s, transform 0.15s;
+          transform: var(--cta-btn-transform, scale(1));
+        }
+ 
+        .cta-button:hover {
+          background: #1ab35a;
+          transform: scale(1.03);
+        }
+ 
+        .cta-checks {
+          display: flex;
+          flex-direction: row;
+          gap: 16px;
+          padding-left: 16px;
+          padding-right: 16px;
+          flex-wrap: wrap;
+        }
+ 
+        .cta-check-item {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 4px;
+          padding-bottom: 1px;
+        }
+ 
+        .cta-check-label {
+          font-family: 'Manrope', sans-serif;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 15px;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          color: white;
+        }
+ 
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+          .cta-x-pad {
+            padding-left: 48px;
+            padding-right: 48px;
+          }
+ 
+          .cta-inner {
+            padding: 48px;
+            gap: 32px;
+          }
+        }
+ 
+        @media (max-width: 768px) {
+          .cta-x-pad {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+ 
+          .cta-outer {
+            padding-top: 48px;
+            padding-bottom: 48px;
+          }
+ 
+          .cta-inner {
+            flex-direction: column;
+            align-items: stretch;
+            padding: 32px;
+            gap: 24px;
+            text-align: center;
+          }
+ 
+          .cta-left {
+            align-items: center;
+            max-width: none;
+            flex-shrink: unset;
+          }
+ 
+          .cta-right {
+            max-width: none;
+          }
+ 
+          .cta-input-row {
+            flex-wrap: wrap;
+          }
+ 
+          .cta-input {
+            flex: 1 1 100%;
+            padding: 10px 12px;
+            text-align: center;
+          }
+ 
+          .cta-button {
+            flex: 1 1 100%;
+            padding: 16px 24px;
+          }
+ 
+          .cta-checks {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+          }
+        }
+ 
+        @media (max-width: 480px) {
+          .cta-x-pad {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+ 
+          .cta-outer {
+            padding-top: 40px;
+            padding-bottom: 40px;
+          }
+ 
+          .cta-inner {
+            padding: 24px;
+          }
+ 
+          .cta-heading {
+            font-size: clamp(20px, 5vw, 28px);
+            line-height: 1.2;
+          }
+ 
+          .cta-subtext {
+            font-size: 16px;
+            line-height: 24px;
+          }
+ 
+          .cta-checks {
+            gap: 10px;
+          }
+ 
+          .cta-check-label {
+            font-size: 10px;
+          }
+        }
+      `}</style>
+ 
+      <div className="cta-outer">
+        {/* Top-left circle */}
+        <div aria-hidden style={{
+          position: "absolute",
+          top: CTA_CIRCLE_TL.top, left: CTA_CIRCLE_TL.left,
+          width: 256, height: 256, borderRadius: "9999px",
+          background: "#9EF3DA", pointerEvents: "none", zIndex: 0,
+        }} />
+ 
+        {/* Bottom-right circle */}
+        <div aria-hidden style={{
+          position: "absolute",
+          bottom: CTA_CIRCLE_BR.bottom, right: CTA_CIRCLE_BR.right,
+          width: 256, height: 256, borderRadius: "9999px",
+          background: "#9EF3DA", pointerEvents: "none", zIndex: 0,
+        }} />
+ 
+        {/* Inner content */}
+        <div className="cta-x-pad">
+          <div className="cta-inner">
+ 
+            {/* Left */}
+            <div className="cta-left">
+              <h2 className="cta-heading">
+                Start Growing Your Brand on Social Media Today
+              </h2>
+              <p className="cta-subtext">
+                Join 2,500+ teams already using MyYarns to manage, engage and grow across every platform from one place.
+              </p>
+            </div>
+ 
+            {/* Right */}
+            <div className="cta-right">
+              {/* Email input */}
+              <div className="cta-input-row">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  placeholder="Enter your work email"
+                  className="cta-input"
+                />
+                <button
+                  className="cta-button"
+                  onMouseEnter={() => setBtnHov(true)}
+                  onMouseLeave={() => setBtnHov(false)}
+                >
+                  Subscribe Free
+                </button>
               </div>
-            ))}
+ 
+              {/* Check items */}
+              <div className="cta-checks">
+                {CHECK_ITEMS.map(label => (
+                  <div key={label} className="cta-check-item">
+                    <WhiteCheckCircle />
+                    <span className="cta-check-label">{label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+ 
           </div>
         </div>
- 
       </div>
-    </div>
+    </>
   );
 }

@@ -15,7 +15,7 @@ const REVIEWS = [
     initials: "KA",
     name:     "Kunle Adeyemi",
     position: "Founder, TechBridge Abuja",
-    avatar:   null, // set to "/images/avatar1.png" to use a photo instead
+    avatar:   null,
   },
   {
     pill:     "",
@@ -51,7 +51,7 @@ function Star() {
 }
  
 // ═══════════════════════════════════════════════════════════════════
-// QUOTATION MARK (filled, like a 9 with solid top)
+// QUOTATION MARK
 // ═══════════════════════════════════════════════════════════════════
 function QuoteMark() {
   return (
@@ -69,6 +69,7 @@ function ReviewCard({ pill, pillBg, pillColor, review, initials, name, position,
  
   return (
     <div
+      className="review-card"
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{
@@ -80,8 +81,6 @@ function ReviewCard({ pill, pillBg, pillColor, review, initials, name, position,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
- 
-        // size transition
         width: hov ? 460 : 366,
         transition: [
           "width 0.35s cubic-bezier(0.34,1.56,0.64,1)",
@@ -110,18 +109,20 @@ function ReviewCard({ pill, pillBg, pillColor, review, initials, name, position,
         </div>
  
         {/* Pill */}
-        <div style={{
-          display: "inline-flex", alignItems: "center",
-          borderRadius: 9999, padding: "4px 12px",
-          background: pillBg,
-        }}>
-          <span style={{
-            fontFamily: "'Manrope', sans-serif",
-            fontWeight: 700, fontSize: 10,
-            lineHeight: "15px", letterSpacing: "0.5px",
-            textTransform: "uppercase", color: pillColor,
-          }}>{pill}</span>
-        </div>
+        {pill && (
+          <div style={{
+            display: "inline-flex", alignItems: "center",
+            borderRadius: 9999, padding: "4px 12px",
+            background: pillBg,
+          }}>
+            <span style={{
+              fontFamily: "'Manrope', sans-serif",
+              fontWeight: 700, fontSize: 10,
+              lineHeight: "15px", letterSpacing: "0.5px",
+              textTransform: "uppercase", color: pillColor,
+            }}>{pill}</span>
+          </div>
+        )}
       </div>
  
       {/* ── Review text ── */}
@@ -130,7 +131,6 @@ function ReviewCard({ pill, pillBg, pillColor, review, initials, name, position,
         fontWeight: 400, fontSize: 16,
         lineHeight: "24px", color: "#3C4A3F",
         margin: 0, flex: 1,
-        // clamp lines when collapsed, show all when hovered
         display: "-webkit-box",
         WebkitLineClamp: hov ? "unset" : 5,
         WebkitBoxOrient: "vertical",
@@ -224,55 +224,181 @@ export default function Reviews() {
           from { opacity: 0; transform: scale(0.85); }
           to   { opacity: 1; transform: scale(1); }
         }
+ 
+        .reviews-x-pad {
+          padding-left: 100px;
+          padding-right: 100px;
+        }
+ 
+        .reviews-container {
+          width: 100%;
+        }
+ 
+        .reviews-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 48px;
+        }
+ 
+        .reviews-label {
+          font-family: 'Manrope', sans-serif;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: 1.6px;
+          text-transform: uppercase;
+          color: #25D16F;
+          margin: 0;
+        }
+ 
+        .reviews-heading {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 800;
+          font-size: clamp(32px, 4vw, 48px);
+          line-height: 52.8px;
+          letter-spacing: -0.96px;
+          color: #191C1E;
+          text-align: center;
+          margin: 0;
+        }
+ 
+        .reviews-subtext {
+          font-family: 'Manrope', sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 28.8px;
+          color: #3C4A3F;
+          text-align: center;
+          margin: 0;
+        }
+ 
+        .reviews-cards {
+          display: flex;
+          flex-direction: row;
+          gap: 24px;
+          align-items: center;
+          justify-content: center;
+          overflow-x: hidden;
+          overflow-y: visible;
+        }
+ 
+        .review-card {
+          flex-shrink: 0;
+        }
+ 
+        /* ════════════════════════════════════════════════════════
+           RESPONSIVE BREAKPOINTS
+        ════════════════════════════════════════════════════════ */
+ 
+        /* ── Tablet: 1024px and below ── */
+        @media (max-width: 1024px) {
+          .reviews-x-pad {
+            padding-left: 48px;
+            padding-right: 48px;
+          }
+ 
+          .reviews-header {
+            margin-bottom: 40px;
+          }
+ 
+          .reviews-heading {
+            font-size: clamp(28px, 4vw, 40px);
+            letter-spacing: 0;
+          }
+ 
+          .reviews-subtext {
+            font-size: 16px;
+            line-height: 24px;
+          }
+ 
+          .review-card {
+            width: 320px !important;
+          }
+        }
+ 
+        /* ── Mobile: 768px and below ── */
+        @media (max-width: 768px) {
+          .reviews-x-pad {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+ 
+          .reviews-header {
+            margin-bottom: 32px;
+          }
+ 
+          .reviews-heading {
+            font-size: clamp(24px, 5vw, 32px);
+            letter-spacing: 0;
+            line-height: 1.2;
+          }
+ 
+          .reviews-subtext {
+            font-size: 14px;
+            line-height: 20px;
+          }
+ 
+          .reviews-cards {
+            flex-direction: column;
+            gap: 20px;
+            overflow-x: unset;
+            align-items: stretch;
+          }
+ 
+          .review-card {
+            width: 100% !important;
+            max-width: 100%;
+          }
+        }
+ 
+        /* ── Small mobile: 480px and below ── */
+        @media (max-width: 480px) {
+          .reviews-x-pad {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+ 
+          .reviews-heading {
+            font-size: clamp(20px, 5vw, 28px);
+          }
+ 
+          .reviews-label {
+            font-size: 12px;
+          }
+ 
+          .reviews-subtext {
+            font-size: 13px;
+          }
+ 
+          .review-card {
+            padding: 20px !important;
+          }
+        }
       `}</style>
  
       <section
-        className="page-x-pad"
+        className="reviews-x-pad"
         style={{ background: "white", paddingTop: 80, paddingBottom: 80 }}
       >
-        <div className="page-container">
+        <div className="reviews-container">
  
           {/* ── Header ── */}
-          <div style={{
-            display: "flex", flexDirection: "column",
-            alignItems: "center", gap: 12,
-            marginBottom: 48,
-          }}>
-            <p style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontWeight: 400, fontSize: 16,
-              lineHeight: "24px", letterSpacing: "1.6px",
-              textTransform: "uppercase", color: "#25D16F",
-              margin: 0,
-            }}>
+          <div className="reviews-header">
+            <p className="reviews-label">
               Social Proof
             </p>
-            <h2 style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 800, fontSize: "clamp(32px, 4vw, 48px)",
-              lineHeight: "52.8px", letterSpacing: "-0.96px",
-              color: "#191C1E", textAlign: "center", margin: 0,
-            }}>
+            <h2 className="reviews-heading">
               Our Customers Are Saying
             </h2>
-            <p style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontWeight: 400, fontSize: 18,
-              lineHeight: "28.8px", color: "#3C4A3F",
-              textAlign: "center", margin: 0,
-            }}>
+            <p className="reviews-subtext">
               Success Stories From Users
             </p>
           </div>
  
           {/* ── Cards row ── */}
-          {/* overflow-x hidden on wrapper so expanded card doesn't cause scroll */}
-          <div style={{
-            display: "flex", flexDirection: "row",
-            gap: 24, alignItems: "center",
-            justifyContent: "center",
-            overflowX: "hidden",
-          }}>
+          <div className="reviews-cards">
             {REVIEWS.map((r) => (
               <ReviewCard key={r.name} {...r} />
             ))}

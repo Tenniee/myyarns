@@ -1,5 +1,5 @@
 "use client";
- 
+
 import Image from "next/image";
 import { useState } from "react";
 import BackgroundImage from '../../assets/Integration-bg.svg';
@@ -12,13 +12,13 @@ import InstagramBlob from '../../assets/Instagram.svg';
 import XBlob from '../../assets/Integration-X.svg';
 import YoutubBlob from '../../assets/YouTube.svg';
 import GirlImage from '../../assets/smiling-young-woman-engaged-with-her-smartphone1.svg';
- 
+
 // ═══════════════════════════════════════════════════════════════════
 // IMAGE SOURCES — swap paths here
 // ═══════════════════════════════════════════════════════════════════
 const BG_IMAGE       = BackgroundImage;
 const PERSON_IMAGE   = GirlImage;
- 
+
 // Left floating images — 4 items
 // { src, width, height, radius } — tweak size/radius per image
 const LEFT_FLOATS = [
@@ -27,7 +27,7 @@ const LEFT_FLOATS = [
   { src: WhatsappBlob, width: 100,  height: 100,  radius: 12 },
   { src: XBlob, width: 50,  height: 50,  radius: 16 },
 ];
- 
+
 // Right floating images — 4 items
 const RIGHT_FLOATS = [
   { src: ThreadsBlob, width: 80,  height: 80,  radius: 16 },
@@ -35,7 +35,7 @@ const RIGHT_FLOATS = [
   { src: LinkedInBlob, width: 90,  height: 90,  radius: 12 },
   { src: YoutubBlob, width: 72,  height: 72,  radius: 16 },
 ];
- 
+
 // ═══════════════════════════════════════════════════════════════════
 // FLOATING IMAGE POSITIONS — move these to reposition any image
 // positions are relative to the person image container
@@ -46,14 +46,14 @@ const LEFT_POS = [
   { top: 360,  left: -72  },
   { top: 480,  left: -88  },
 ];
- 
+
 const RIGHT_POS = [
   { top:  80,  right: -80 },
   { top: 210,  right: -76 },
   { top: 350,  right: -92 },
   { top: 520,  right: -88 },
 ];
- 
+
 // ═══════════════════════════════════════════════════════════════════
 // GLASS PILL — same final version we agreed on
 // ═══════════════════════════════════════════════════════════════════
@@ -69,7 +69,7 @@ const GLIMMER_BORDER = `conic-gradient(
   rgba(255,255,255,0.70)  400deg
 )`;
 const MASK = "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)";
- 
+
 function GlassPill({ children }) {
   return (
     <div style={{ position: "relative", display: "inline-flex" }}>
@@ -108,7 +108,7 @@ function GlassPill({ children }) {
     </div>
   );
 }
- 
+
 // ═══════════════════════════════════════════════════════════════════
 // ARROW RIGHT
 // ═══════════════════════════════════════════════════════════════════
@@ -121,7 +121,7 @@ function ArrowRight({ color = "white", size = 16 }) {
     </svg>
   );
 }
- 
+
 // ═══════════════════════════════════════════════════════════════════
 // FLOATING IMAGE — resonates left↔right toward the person image
 // side: "left" pulses right (toward center), "right" pulses left
@@ -153,13 +153,13 @@ function FloatImg({ src, width, height, radius, pos, side, delay = 0 }) {
     </div>
   );
 }
- 
+
 // ═══════════════════════════════════════════════════════════════════
 // MAIN COMPONENT
 // ═══════════════════════════════════════════════════════════════════
 export default function Integration() {
   const [btnHov, setBtnHov] = useState(false);
- 
+
   return (
     <>
       <style>{`
@@ -173,8 +173,15 @@ export default function Integration() {
           0%,100% { transform: translateX(0px); }
           50%      { transform: translateX(-8px); }
         }
+
+        /* ── Mobile: 768px and below — hide right image container only ── */
+        @media (max-width: 768px) {
+          .integration-right-container {
+            display: none !important;
+          }
+        }
       `}</style>
- 
+
       <section style={{
         position:   "relative",
         width:      "100%",
@@ -182,7 +189,7 @@ export default function Integration() {
         overflow:   "hidden",
         padding:     10,
       }}>
- 
+
         {/* ── Background image ── */}
         <div style={{
           position: "absolute", inset: 0, zIndex: 0,
@@ -190,7 +197,7 @@ export default function Integration() {
           {/* swap src with BG_IMAGE when ready */}
           <Image src={BG_IMAGE} fill style={{ objectFit: "cover" }} alt="" />
         </div>
- 
+
         {/* ── Content ── */}
         <div
           className="page-x-pad"
@@ -204,7 +211,7 @@ export default function Integration() {
               justifyContent: "space-between",
               gap:             48,
             }}>
- 
+
               {/* ══ LEFT TEXT ══ */}
               <div style={{
                 width:         478,
@@ -226,7 +233,7 @@ export default function Integration() {
                     Our Seamless Integration
                   </span>
                 </GlassPill>
- 
+
                 {/* Headline */}
                 <h2 style={{
                   fontFamily:    "'Plus Jakarta Sans', sans-serif",
@@ -240,7 +247,7 @@ export default function Integration() {
                 }}>
                   {"Seamless Integration\nOf Effortless\nManagement"}
                 </h2>
- 
+
                 {/* Paragraph */}
                 <p style={{
                   fontFamily: "'Manrope', sans-serif",
@@ -252,7 +259,7 @@ export default function Integration() {
                 }}>
                   Connect all your favourite social platforms in one place for smooth team management and seamlessly integrate your tools.
                 </p>
- 
+
                 {/* CTA button */}
                 <button
                   onMouseEnter={() => setBtnHov(true)}
@@ -293,16 +300,16 @@ export default function Integration() {
                   </span>
                 </button>
               </div>
- 
+
               {/* ══ RIGHT: person image + floating images ══ */}
-              <div style={{
+              <div className="integration-right-container" style={{
                 position: "relative",
                 width:     425,
                 height:    638,
                 flexShrink:0,
                 marginRight: '120px',
               }}>
- 
+
                 {/* Left floating images */}
                 {LEFT_FLOATS.map((img, i) => (
                   <FloatImg
@@ -316,7 +323,7 @@ export default function Integration() {
                     delay={i * 0.4}
                   />
                 ))}
- 
+
                 {/* Person image */}
                 <div style={{
                   position:     "relative",
@@ -327,7 +334,7 @@ export default function Integration() {
                 }}>
                   <Image src={PERSON_IMAGE} fill style={{ objectFit: "cover" }} alt="Integration" />
                 </div>
- 
+
                 {/* Right floating images */}
                 {RIGHT_FLOATS.map((img, i) => (
                   <FloatImg
@@ -341,7 +348,7 @@ export default function Integration() {
                     delay={i * 0.4}
                   />
                 ))}
- 
+
               </div>
             </div>
           </div>

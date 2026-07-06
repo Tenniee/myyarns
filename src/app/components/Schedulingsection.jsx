@@ -9,21 +9,20 @@ import SchedulingListIcon from '../../assets/SchedulingListIcon.svg';
 import SchedulingRightImage from '../../assets/SchedulingRightImage.svg';
 import SchedulingSectionCard1 from '../../assets/SchedulingSectionCard1.svg';
 import SchedulingSectionCard2 from '../../assets/SchedulingSectionCard2.svg';
-
+ 
 import SchedulingCardIcon from '../../assets/SchedulingCard.svg';
 import SchedulingCalendarIcon from '../../assets/SchedulingCalendar.svg';
 import SchedulingLightningIcon from '../../assets/SchedulingLightning.svg';
  
 // ═══════════════════════════════════════════════════════════════════
-// FLOATING CARD POSITIONS — move via these constants
+// FLOATING CARD POSITIONS
 // ═══════════════════════════════════════════════════════════════════
-const CARD1_POS = { top: 40,  left: -30  }; // upper-left of image
-const CARD2_POS = { top: 120, right: -30 }; // upper-right of image
-const CARD3_POS = { bottom: 60, right: -20 }; // lower-right of image
+const CARD1_POS = { top: 40,  left: -30  };
+const CARD2_POS = { top: 120, right: -30 };
+const CARD3_POS = { bottom: 60, right: -20 };
  
 // ═══════════════════════════════════════════════════════════════════
-// SHADOW CIRCLES — move via these constants
-// top-right and bottom-left of the image
+// SHADOW CIRCLES
 // ═══════════════════════════════════════════════════════════════════
 const SHADOW_CIRCLE_TOP_RIGHT    = { top: -80,    right: -80   };
 const SHADOW_CIRCLE_BOTTOM_LEFT  = { bottom: -80, left: -80    };
@@ -61,35 +60,12 @@ const LIST_ITEMS = [
 // ═══════════════════════════════════════════════════════════════════
 // ICONS
 // ═══════════════════════════════════════════════════════════════════
-function CheckCircle({ color = "#25D16F", size = 24.67 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
-      stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-      style={{ flexShrink: 0 }}>
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="9 12 11 14 15 10" />
-    </svg>
-  );
-}
- 
 function ArrowRight({ color = "white", size = 18 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
       stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       <line x1="5" y1="12" x2="19" y2="12" />
       <polyline points="12 5 19 12 12 19" />
-    </svg>
-  );
-}
- 
-function CalendarIcon({ size = 20, color = "#3C4A3F" }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
-      stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="4" width="18" height="18" rx="2" />
-      <line x1="16" y1="2" x2="16" y2="6" />
-      <line x1="8" y1="2" x2="8" y2="6" />
-      <line x1="3" y1="10" x2="21" y2="10" />
     </svg>
   );
 }
@@ -109,7 +85,7 @@ function TabIcon({ label }) {
     (
       <Image
         src={SchedulingCardIcon}
-        alt="Scheduling"
+        alt="Collection"
         width={15}
         height={15}
       />
@@ -117,7 +93,7 @@ function TabIcon({ label }) {
     Automation: (
       <Image
         src={SchedulingLightningIcon}
-        alt="Scheduling"
+        alt="Automation"
         width={15}
         height={15}
       />
@@ -127,7 +103,7 @@ function TabIcon({ label }) {
 }
  
 // ═══════════════════════════════════════════════════════════════════
-// FLOATING CARD WRAPPER — handles float + hover lift animation
+// FLOATING CARD WRAPPER
 // ═══════════════════════════════════════════════════════════════════
 function FloatCard({ children, pos, animClass, style = {} }) {
   const [hov, setHov] = useState(false);
@@ -174,98 +150,318 @@ export default function SchedulingSection() {
         .fA { animation: floatA 5s ease-in-out infinite; }
         .fB { animation: floatB 6s ease-in-out 0.8s infinite; }
         .fC { animation: floatC 4.5s ease-in-out 1.4s infinite; }
+ 
+        .scheduling-x-pad {
+          padding-left: 100px;
+          padding-right: 100px;
+        }
+ 
+        .scheduling-container {
+          width: 100%;
+        }
+ 
+        .scheduling-wrapper {
+          display: flex;
+          flex-direction: row;
+          gap: 24px;
+          align-items: flex-start;
+        }
+ 
+        .scheduling-left {
+          flex: 0 0 514px;
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+        }
+ 
+        .scheduling-label {
+          font-family: 'Manrope', sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 12px;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+          color: #25D16F;
+          margin: 0;
+        }
+ 
+        .scheduling-heading {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 800;
+          font-size: clamp(32px, 3.5vw, 48px);
+          line-height: 52.8px;
+          letter-spacing: -0.96px;
+          color: #191C1E;
+          margin: 0;
+          max-width: 466px;
+        }
+ 
+        .scheduling-subhead {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 31.2px;
+          color: #006B58;
+          margin: 0;
+          max-width: 466px;
+        }
+ 
+        .scheduling-text {
+          font-family: 'Manrope', sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 28.8px;
+          color: #3C4A3F;
+          margin: 0;
+          max-width: 466px;
+        }
+ 
+        .scheduling-tabs {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+        }
+ 
+        .scheduling-tab {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          border-radius: 9999px;
+          border: none;
+          padding: 8px 16px;
+          cursor: pointer;
+          transition: background 0.2s;
+          font-family: 'Manrope', sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 12px;
+          letter-spacing: 0.6px;
+          white-space: nowrap;
+        }
+ 
+        .scheduling-right {
+          flex: 1;
+          position: relative;
+          min-height: 698px;
+          border: 1px solid #BBCBBC4D;
+          background: #ffffff4d;
+          padding: 15px;
+          border-radius: 16px;
+        }
+ 
+        .scheduling-image {
+          width: 100%;
+          height: 698px;
+          border-radius: 16px;
+          overflow: hidden;
+          background: #e8f5f0;
+          position: relative;
+          padding: 5px;
+        }
+ 
+        .scheduling-float {
+          display: block;
+        }
+ 
+        .scheduling-list {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+ 
+        /* ════════════════════════════════════════════════════════
+           RESPONSIVE BREAKPOINTS
+        ════════════════════════════════════════════════════════ */
+ 
+        /* ── Tablet: 1024px and below ── */
+        @media (max-width: 1024px) {
+          .scheduling-x-pad {
+            padding-left: 48px;
+            padding-right: 48px;
+          }
+ 
+          .scheduling-wrapper {
+            gap: 20px;
+          }
+ 
+          .scheduling-left {
+            flex: 0 0 auto;
+          }
+ 
+          .scheduling-heading {
+            max-width: 100%;
+          }
+ 
+          .scheduling-right {
+            min-height: 500px;
+          }
+ 
+          .scheduling-image {
+            height: 500px;
+          }
+ 
+          .scheduling-float {
+            display: none;
+          }
+        }
+ 
+        /* ── Mobile: 768px and below ── */
+        @media (max-width: 768px) {
+          .scheduling-x-pad {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+ 
+          .scheduling-wrapper {
+            flex-direction: column;
+            gap: 28px;
+            align-items: stretch;
+          }
+ 
+          .scheduling-left {
+            flex: 1;
+            gap: 24px;
+          }
+ 
+          .scheduling-heading {
+            font-size: clamp(24px, 5vw, 32px);
+            line-height: 1.2;
+            letter-spacing: 0;
+            max-width: none;
+          }
+ 
+          .scheduling-subhead {
+            font-size: 18px;
+            line-height: 26px;
+            max-width: none;
+          }
+ 
+          .scheduling-text {
+            font-size: 14px;
+            line-height: 20px;
+            max-width: none;
+          }
+ 
+          .scheduling-tabs {
+            flex-wrap: wrap;
+            gap: 8px;
+          }
+ 
+          .scheduling-tab {
+            padding: 8px 12px;
+            font-size: 11px;
+          }
+ 
+          .scheduling-right {
+            min-height: auto;
+            padding: 0;
+            border: none;
+            background: transparent;
+          }
+ 
+          .scheduling-image {
+            height: 300px;
+            border: 1px solid #BBCBBC4D;
+            background: #f5f5f5;
+            border-radius: 12px;
+          }
+ 
+          .scheduling-float {
+            display: none;
+          }
+ 
+          .scheduling-list {
+            gap: 12px;
+          }
+        }
+ 
+        /* ── Small mobile: 480px and below ── */
+        @media (max-width: 480px) {
+          .scheduling-x-pad {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+ 
+          .scheduling-heading {
+            font-size: clamp(20px, 5vw, 28px);
+          }
+ 
+          .scheduling-label {
+            font-size: 10px;
+          }
+ 
+          .scheduling-text {
+            font-size: 13px;
+            line-height: 18px;
+          }
+ 
+          .scheduling-left {
+            gap: 20px;
+          }
+ 
+          .scheduling-tab {
+            padding: 6px 10px;
+            font-size: 10px;
+          }
+ 
+          .scheduling-image {
+            height: 250px;
+          }
+        }
       `}</style>
  
-      <section className="page-x-pad" style={{ background: "white", paddingTop: 80, paddingBottom: 80 }}>
-        <div className="page-container">
-          <div style={{ display: "flex", flexDirection: "row", gap: 24, alignItems: "flex-start" }}>
+      <section className="scheduling-x-pad" style={{ background: "white", paddingTop: 80, paddingBottom: 80 }}>
+        <div className="scheduling-container">
+          <div className="scheduling-wrapper">
  
             {/* ══════════════ LEFT COLUMN ══════════════ */}
-            <div style={{
-              flex: "0 0 514px",
-              display: "flex", flexDirection: "column", gap: 32,
-              paddingTop: 16, paddingBottom: 16,
-              paddingLeft: 24, paddingRight: 24,
-            }}>
+            <div className="scheduling-left">
  
               {/* Category label */}
-              <p style={{
-                fontFamily: "'Manrope', sans-serif",
-                fontWeight: 700, fontSize: 12,
-                lineHeight: "12px", letterSpacing: "1.2px",
-                textTransform: "uppercase", color: "#25D16F",
-                margin: 0,
-              }}>
+              <p className="scheduling-label">
                 OPTIMIZE, AUTOMATE AND SUCCEED
               </p>
  
               {/* Tabs row */}
-              <div style={{ display: "flex", flexDirection: "row", gap: 8 }}>
+              <div className="scheduling-tabs">
                 {TABS.map((t, i) => {
                   const active = activeTab === i;
                   return (
                     <button
                       key={t.label}
                       onClick={() => setActiveTab(i)}
+                      className="scheduling-tab"
                       style={{
-                        display: "inline-flex", alignItems: "center", gap: 8,
-                        borderRadius: 9999, border: "none",
-                        paddingTop: 8, paddingBottom: 8,
-                        paddingLeft: 16, paddingRight: 16,
                         background: active ? "#25D16F" : "#ECEEF0",
-                        cursor: "pointer",
-                        transition: "background 0.2s",
+                        color: active ? "white" : "#3C4A3F",
                       }}
                     >
                       <TabIcon label={t.label} />
-                      <span style={{
-                        fontFamily: "'Manrope', sans-serif",
-                        fontWeight: 700, fontSize: 12,
-                        lineHeight: "12px", letterSpacing: "0.6px",
-                        color: active ? "white" : "#3C4A3F",
-                        whiteSpace: "nowrap",
-                      }}>
-                        {t.label}
-                      </span>
+                      <span>{t.label}</span>
                     </button>
                   );
                 })}
               </div>
  
               {/* Main headline */}
-              <h2 style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 800, fontSize: "clamp(32px, 3.5vw, 48px)",
-                lineHeight: "52.8px", letterSpacing: "-0.96px",
-                color: "#191C1E", margin: 0, maxWidth: 466,
-              }}>
+              <h2 className="scheduling-heading">
                 Unlock Powerful<br />Social Media Tool
               </h2>
  
               {/* Sub-header */}
-              <p style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 700, fontSize: 24,
-                lineHeight: "31.2px", color: "#006B58",
-                margin: 0, maxWidth: 466,
-              }}>
+              <p className="scheduling-subhead">
                 Social Media Scheduling Solution
               </p>
  
               {/* Paragraph */}
-              <p style={{
-                fontFamily: "'Manrope', sans-serif",
-                fontWeight: 400, fontSize: 18,
-                lineHeight: "28.8px", color: "#3C4A3F",
-                margin: 0, maxWidth: 466,
-              }}>
+              <p className="scheduling-text">
                 Plan, create, schedule and publish across all
                 platforms from one dashboard. Effortlessly manage
                 weeks of content in hours.
               </p>
  
               {/* List */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div className="scheduling-list">
                 {LIST_ITEMS.map((item) => (
                   <div key={item} style={{ display: "flex", flexDirection: "row", gap: 12, alignItems: "center" }}>
                     <div style={{
@@ -321,21 +517,11 @@ export default function SchedulingSection() {
             </div>
  
             {/* ══════════════ RIGHT COLUMN ══════════════ */}
-            <div style={{
-              flex: 1, position: "relative",
-              minHeight: 698,
-              border: '1px solid #BBCBBC4D',
-              background: '#ffffff4d',
-              padding: 15,
-              borderRadius: 16
-            }}>
+            <div className="scheduling-right">
  
               {/* Main image */}
-              <div style={{
-                width: "100%", height: 698, borderRadius: 16, overflow: "hidden",
-                background: "#e8f5f0", position: "relative", padding: 5
-              }}>
-                {/* Shadow circle — top right. Move via SHADOW_CIRCLE_TOP_RIGHT */}
+              <div className="scheduling-image">
+                {/* Shadow circle — top right */}
                 <div aria-hidden style={{
                   position: "absolute",
                   ...SHADOW_CIRCLE_TOP_RIGHT,
@@ -344,7 +530,7 @@ export default function SchedulingSection() {
                   filter: "blur(64px)",
                   pointerEvents: "none", zIndex: 1,
                 }} />
-                {/* Shadow circle — bottom left. Move via SHADOW_CIRCLE_BOTTOM_LEFT */}
+                {/* Shadow circle — bottom left */}
                 <div aria-hidden style={{
                   position: "absolute",
                   ...SHADOW_CIRCLE_BOTTOM_LEFT,
@@ -354,15 +540,10 @@ export default function SchedulingSection() {
                   pointerEvents: "none", zIndex: 1,
                 }} />
                 <Image src={SchedulingRightImage} fill style={{ objectFit: "cover" }} alt="" />
-                <div style={{
-                  width: "100%", height: "100%",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  color: "#aaa", fontSize: 14,
-                }}>Image goes here</div>
               </div>
  
-              {/* ── Floating card 1 — upper left (simple card) ── */}
-              <FloatCard pos={CARD1_POS} animClass="fA" style={{ padding: 16, minWidth: 212 }}>
+              {/* ── Floating card 1 — upper left ── */}
+              <FloatCard pos={CARD1_POS} animClass="fA scheduling-float" style={{ padding: 16, minWidth: 212 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                   <div style={{
                     width: 48, height: 48, borderRadius: 8,
@@ -370,7 +551,7 @@ export default function SchedulingSection() {
                     display: "flex", alignItems: "center", justifyContent: "center",
                     flexShrink: 0,
                   }}>
-                    <Image src={SchedulingSectionCard1} alt  style={{widows: '22%'}}/>
+                    <Image src={SchedulingSectionCard1} alt="" style={{width: '60%'}}/>
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <span style={{
@@ -391,7 +572,7 @@ export default function SchedulingSection() {
               {/* ── Floating card 2 — social stats ── */}
               <FloatCard
                 pos={CARD2_POS}
-                animClass="fB"
+                animClass="fB scheduling-float"
                 style={{ padding: 24, width: 256, borderRadius: 16 }}
               >
                 {/* Header */}
@@ -441,10 +622,10 @@ export default function SchedulingSection() {
                 </div>
               </FloatCard>
  
-              {/* ── Floating card 3 — lower right (posts scheduled) ── */}
+              {/* ── Floating card 3 — lower right ── */}
               <FloatCard
                 pos={CARD3_POS}
-                animClass="fC"
+                animClass="fC scheduling-float"
                 style={{ padding: 16, minWidth: 206 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
