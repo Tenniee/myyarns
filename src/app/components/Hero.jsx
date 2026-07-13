@@ -117,7 +117,7 @@ export default function Hero() {
     <>
       <style>{KEYFRAMES}</style>
  
-      <section className="page-x-pad bg-white relative overflow-hidden py-16 lg:py-24">
+      <section className="page-x-pad bg-white relative overflow-hidden py-4 lg:py-8">
  
         {/* ── Background glow circle ── */}
         <div

@@ -218,10 +218,18 @@ export default function Features() {
           display: flex;
           flex-direction: row;
           gap: 48px;
-          align-items: flex-start;
+          align-items: center;   /* ← both columns stretch to same height */
           padding-top: 80px;
           position: relative;
           z-index: 1;
+        }
+
+        .section1-right {
+          flex: 1;                /* ← takes equal space instead of fixed width */
+          max-height: 420px;      /* ← prevents it collapsing too small */
+          max-width: 751px;       /* ← won't grow beyond the original design width */
+          aspect-ratio: 16 / 10;   /* ← maintains proportions */
+          min-height: unset;
         }
  
         .section1-left {
@@ -229,12 +237,8 @@ export default function Features() {
           display: flex;
           flex-direction: column;
           gap: 16px;
-        }
- 
-        .section1-right {
-          flex-shrink: 0;
-          width: 751px;
-          height: 419px;
+          justify-content: space-between;  /* ← distributes cards evenly */
+          max-width: 480px;
         }
  
         @media (max-width: 1200px) {
@@ -616,7 +620,9 @@ export default function Features() {
               borderRadius: 24, overflow: "hidden",
               position: "relative", cursor: "pointer",
               transition: "transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.08)", 
+              lineHeight: 0,        // ← removes the descender gap
+              alignSelf: "flex-start",
             }}
               onMouseEnter={e => {
                 e.currentTarget.style.transform = "perspective(900px) rotateY(-4deg) rotateX(2deg) scale(1.02)";
@@ -627,7 +633,13 @@ export default function Features() {
                 e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.08)";
               }}
             >
-              <Image src={FeaturesMainImage} fill style={{ objectFit: "cover" }} alt="" />
+              <Image
+                src={FeaturesMainImage}
+                alt=""
+                width={751}
+                height={419}
+                style={{ width: "100%", height: "auto", borderRadius: 24 }}
+              />
             </div>
           </div>
         </div>

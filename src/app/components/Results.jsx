@@ -2,19 +2,19 @@ const STATS = [
   {
     number:  "10",
     suffix:  "x",
-    subtext: "Average engagement increase across all managed accounts",
+    subtext: "Faster response vs manual",
     pill:    "GROWTH MULTIPLIER",
   },
   {
     number:  "98",
     suffix:  "%",
-    subtext: "Of clients report improved brand visibility within 30 days",
+    subtext: "Customer satisfaction rate",
     pill:    "CLIENT SATISFACTION",
   },
   {
     number:  "80",
     suffix:  "%",
-    subtext: "Reduction in time spent on manual content scheduling tasks",
+    subtext: "Time saved on DM management",
     pill:    "TIME SAVED",
   },
 ];
@@ -114,7 +114,7 @@ function StatCol({ number, suffix, subtext, pill }) {
       }}
     >
       {/* Big number — Manrope 800 */}
-      <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 4, textAlign: "left" }}>
         <span
           className="results-stat-number"
           style={{
@@ -149,7 +149,7 @@ function StatCol({ number, suffix, subtext, pill }) {
           lineHeight: "25.6px",
           color:      "#E6E6E6",
           textAlign:  "center",
-          maxWidth:   220,
+          maxWidth:   280,
           margin:     0,
         }}
       >
