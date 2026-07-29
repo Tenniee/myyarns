@@ -188,7 +188,7 @@ function PricingCard({ plan }) {
  
           {/* Plan name */}
           <p style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700,
+            fontFamily: "'Sora', sans-serif", fontWeight: 700,
             fontSize: 24, lineHeight: "31.2px", color: "#191C1E", margin: "0 0 4px",
           }}>{plan.name}</p>
  
@@ -295,7 +295,7 @@ function PricingCard({ plan }) {
  
       {/* Plan name */}
       <p style={{
-        fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700,
+        fontFamily: "'Sora', sans-serif", fontWeight: 700,
         fontSize: 24, lineHeight: "31.2px", color: "#191C1E", margin: "0 0 4px",
       }}>{plan.name}</p>
  
@@ -399,7 +399,7 @@ export default function Pricing() {
         }
  
         .pricing-heading {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 800;
           font-size: clamp(32px, 4vw, 48px);
           line-height: 52.8px;
@@ -409,7 +409,7 @@ export default function Pricing() {
         }
  
         .pricing-subtext {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 500;
           font-size: 24px;
           line-height: 31.2px;
@@ -419,7 +419,7 @@ export default function Pricing() {
         }
  
         .pricing-desc {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 400;
           font-size: 18px;
           line-height: 28.8px;
@@ -568,7 +568,7 @@ export default function Pricing() {
             {/* Left — price comparison */}
             <div className="pricing-top-left">
               <p style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontFamily: "'Sora', sans-serif",
                 fontWeight: 700, fontSize: 24, lineHeight: "31.2px",
                 color: "#1A5C38", margin: 0,
               }}>MyYarns Growth = ₦24,500/agent.</p>
@@ -578,7 +578,7 @@ export default function Pricing() {
                 width: "fit-content",
               }}>
                 <span style={{
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontFamily: "'Sora', sans-serif",
                   fontWeight: 700, fontSize: 24, lineHeight: "31.2px", color: "white",
                 }}>67% cheaper.</span>
               </div>
@@ -669,7 +669,7 @@ export function CTASection() {
         }
  
         .cta-heading {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 700;
           font-size: clamp(28px, 3.5vw, 40px);
           line-height: 43.2px;

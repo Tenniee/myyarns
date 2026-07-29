@@ -143,7 +143,7 @@ export default function Hero() {
               {/* Headline */}
               <h1
                 style={{
-                  fontFamily:    "'Inter', sans-serif",
+                  fontFamily:    "'Sora', sans-serif",
                   fontWeight:    800,
                   fontSize:      "clamp(36px, 5.5vw, 64px)",
                   lineHeight:    1.1,
@@ -173,7 +173,7 @@ export default function Hero() {
               {/* Subtext */}
               <p
                 style={{
-                  fontFamily:  "'Inter', sans-serif",
+                  fontFamily:  "'Sora', sans-serif",
                   fontWeight:  400,
                   fontSize:    22,
                   lineHeight:  "30.88px",
@@ -197,7 +197,7 @@ export default function Hero() {
                              hover:scale-[1.03] hover:brightness-110
                              active:scale-[0.97]"
                   style={{
-                    fontFamily:  "'Inter', sans-serif",
+                    fontFamily:  "'Sora', sans-serif",
                     fontSize:    16,
                     background:  "#25D16F",
                     borderRadius: 9999,
@@ -229,7 +229,7 @@ export default function Hero() {
                              hover:bg-gray-50 hover:scale-[1.02]
                              active:scale-[0.97]"
                   style={{
-                    fontFamily:   "'Inter', sans-serif",
+                    fontFamily:   "'Sora', sans-serif",
                     fontSize:     16,
                     color:        "#0F0D0A",
                     background:   "white",
@@ -353,7 +353,7 @@ export default function Hero() {
                   </span>
                 </div>
                 <p style={{
-                  fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+                  fontFamily: "'Plus Jakarta Sans', 'Sora', sans-serif",
                   fontWeight: 700,
                   fontSize:   28,
                   lineHeight: "36.4px",

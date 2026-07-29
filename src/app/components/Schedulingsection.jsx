@@ -186,7 +186,7 @@ export default function SchedulingSection() {
         }
  
         .scheduling-heading {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 800;
           font-size: clamp(32px, 3.5vw, 48px);
           line-height: 52.8px;
@@ -197,7 +197,7 @@ export default function SchedulingSection() {
         }
  
         .scheduling-subhead {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 700;
           font-size: 24px;
           line-height: 31.2px;
@@ -207,7 +207,7 @@ export default function SchedulingSection() {
         }
  
         .scheduling-text {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 400;
           font-size: 18px;
           line-height: 28.8px;
@@ -231,7 +231,7 @@ export default function SchedulingSection() {
           padding: 8px 16px;
           cursor: pointer;
           transition: background 0.2s;
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 700;
           font-size: 12px;
           line-height: 12px;
@@ -561,7 +561,7 @@ export default function SchedulingSection() {
                       color: "#3C4A3F", textTransform: "uppercase",
                     }}>Instagram Growth</span>
                     <span style={{
-                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontFamily: "'Sora', sans-serif",
                       fontWeight: 700, fontSize: 24,
                       lineHeight: "31.2px", color: "#191C1E",
                     }}>+24.8%</span>
@@ -646,7 +646,7 @@ export default function SchedulingSection() {
                       color: "#3C4A3F", textTransform: "uppercase",
                     }}>Scheduled Today</span>
                     <span style={{
-                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontFamily: "'Sora', sans-serif",
                       fontWeight: 700, fontSize: 24,
                       lineHeight: "31.2px", color: "#191C1E",
                     }}>12 Posts</span>

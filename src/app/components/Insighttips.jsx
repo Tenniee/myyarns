@@ -103,7 +103,7 @@ function BlogCard({ image, tag, title, excerpt, link }) {
  
       {/* Title */}
       <h3 style={{
-        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        fontFamily: "'Sora', sans-serif",
         fontWeight: 700, fontSize: 24,
         lineHeight: "33px", letterSpacing: 0,
         color: "#191C1E", margin: "0 0 12px",
@@ -112,7 +112,7 @@ function BlogCard({ image, tag, title, excerpt, link }) {
  
       {/* Excerpt */}
       <p style={{
-        fontFamily: "'Manrope', sans-serif",
+        fontFamily: "'Sora', sans-serif",
         fontWeight: 400, fontSize: 16,
         lineHeight: "24px", color: "#3C4A3F",
         margin: "0 0 20px", flex: 1,
@@ -127,7 +127,7 @@ function BlogCard({ image, tag, title, excerpt, link }) {
           display: "inline-flex", alignItems: "center", gap: 6,
           background: "none", border: "none", padding: 0,
           cursor: "pointer",
-          fontFamily: "'Manrope', sans-serif",
+          fontFamily: "'Sora', sans-serif",
           fontWeight: 700, fontSize: 16,
           lineHeight: "24px", color: "#25D16F",
           alignSelf: "flex-start",
@@ -208,7 +208,7 @@ export default function InsightTips() {
         }
  
         .insight-heading {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 800;
           font-size: clamp(28px, 4vw, 48px);
           line-height: 1.1;

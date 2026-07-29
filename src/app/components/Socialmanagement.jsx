@@ -123,7 +123,7 @@ export default function SocialManagement() {
         }
  
         .sm-heading {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 800;
           font-size: clamp(32px, 3.5vw, 48px);
           line-height: 68px;
@@ -175,7 +175,7 @@ export default function SocialManagement() {
         }
  
         .sm-card-heading {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 700;
           font-size: 24px;
           line-height: 31.2px;

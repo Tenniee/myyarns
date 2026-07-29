@@ -71,7 +71,7 @@ export default function Marquee() {
             >
               <span
                 style={{
-                  fontFamily:    "'Plus Jakarta Sans', sans-serif",
+                  fontFamily:    "'Sora', sans-serif",
                   fontWeight:    700,
                   fontSize:      22,
                   lineHeight:    "48px",

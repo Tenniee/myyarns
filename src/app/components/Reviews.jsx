@@ -183,7 +183,7 @@ function ReviewCard({ pill, pillBg, pillColor, review, initials, name, position,
           {/* Name + position */}
           <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
             <span style={{
-              fontFamily: hov ? "'Plus Jakarta Sans', sans-serif" : "'Manrope', sans-serif",
+              fontFamily: hov ? "'Sora', sans-serif" : "'Manrope', sans-serif",
               fontWeight: hov ? 400 : 700,
               fontSize: 16, lineHeight: "24px",
               color: hov ? "#25D16F" : "#191C1E",
@@ -254,7 +254,7 @@ export default function Reviews() {
         }
  
         .reviews-heading {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 800;
           font-size: clamp(32px, 4vw, 48px);
           line-height: 52.8px;

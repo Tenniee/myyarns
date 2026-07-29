@@ -1,6 +1,7 @@
 'use client'
  
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import IG from '../../assets/FooterIG.svg';
 import FB from '../../assets/FooterFB.svg';
@@ -108,7 +109,7 @@ export default function Footer() {
         }
  
         .footer-brand-title {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Sora', sans-serif;
           font-weight: 800;
           font-size: 38px;
           line-height: 31.2px;
@@ -591,14 +592,15 @@ export default function Footer() {
                 <div className="footer-button-group">
  
                   {/* Chat button */}
-                  <button
+                  <Link
+                    href="/chat"
                     className="footer-btn footer-btn-chat"
                     onMouseEnter={() => setChatHov(true)}
                     onMouseLeave={() => setChatHov(false)}
                   >
                     <Image src={ChatIcon} width={15} height={15} alt="" />
                     <span>Chat Now</span>
-                  </button>
+                  </Link>
  
                   {/* Call button */}
                   <button

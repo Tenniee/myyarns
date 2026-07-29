@@ -143,7 +143,7 @@ function StatCol({ number, suffix, subtext, pill }) {
       <p
         className="results-stat-subtext"
         style={{
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Sora', sans-serif",
           fontWeight: 500,
           fontSize:   16,
           lineHeight: "25.6px",
@@ -321,7 +321,7 @@ export default function Results() {
         <h2
           className="results-heading"
           style={{
-            fontFamily:    "'Plus Jakarta Sans', sans-serif",
+            fontFamily:    "'Sora', sans-serif",
             fontWeight:    700,
             fontSize:      "clamp(32px, 6vw, 60px)",
             lineHeight:    1.1,

@@ -22,18 +22,18 @@ const PERSON_IMAGE   = GirlImage;
 // Left floating images — 4 items
 // { src, width, height, radius } — tweak size/radius per image
 const LEFT_FLOATS = [
-  { src: InstagramBlob, width: 120,  height: 120,  radius: 16 },
-  { src: TelegramBlob, width: 80,  height: 80,  radius: 20 },
-  { src: WhatsappBlob, width: 100,  height: 100,  radius: 12 },
-  { src: XBlob, width: 50,  height: 50,  radius: 16 },
+  { src: InstagramBlob, width: 100,  height: 100,  radius: 16 },
+  { src: TelegramBlob, width: 90,  height: 90,  radius: 20 },
+  { src: WhatsappBlob, width: 110,  height: 110,  radius: 12 },
+  { src: XBlob, width: 60,  height: 60,  radius: 16 },
 ];
  
 // Right floating images — 4 items
 const RIGHT_FLOATS = [
   { src: ThreadsBlob, width: 80,  height: 80,  radius: 16 },
   { src: FacebookBlob, width: 90,  height: 90,  radius: 20 },
-  { src: LinkedInBlob, width: 90,  height: 90,  radius: 12 },
-  { src: YoutubBlob, width: 72,  height: 72,  radius: 16 },
+  { src: LinkedInBlob, width: 100,  height: 100,  radius: 12 },
+  { src: YoutubBlob, width: 60,  height: 60,  radius: 16 },
 ];
  
 // ═══════════════════════════════════════════════════════════════════
@@ -334,7 +334,7 @@ export default function Integration() {
                 <h2
                   className="integration-headline"
                   style={{
-                    fontFamily:    "'Plus Jakarta Sans', sans-serif",
+                    fontFamily:    "'Sora', sans-serif",
                     fontWeight:    700,
                     letterSpacing: 0,
                     color:         "white",

@@ -12,6 +12,7 @@ import Pricing from "./components/Pricing";
 import CTASection from "./components/Ctasection";
 import Footer from "./components/Footer";
 import Integration from "./components/Integration";
+import ChatWidget from "./components/ChatWidget";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
       <Pricing />
       <CTASection />
       <Footer />
+      <ChatWidget />
     </main>
   );
 }
