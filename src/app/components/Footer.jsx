@@ -603,14 +603,15 @@ export default function Footer() {
                   </Link>
  
                   {/* Call button */}
-                  <button
+                  <Link
+                    href="/chat"
                     className="footer-btn footer-btn-call"
                     onMouseEnter={() => setCallHov(true)}
                     onMouseLeave={() => setCallHov(false)}
                   >
                     <PhoneIcon color="#25D16F" size={15} />
                     <span>Request Call</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -154,7 +154,6 @@ export default function ChatWidget() {
           bottom: 96px;
           right: 24px;
           width: 368px;
-          max-width: calc(100vw - 32px);
           height: 520px;
           max-height: calc(100vh - 140px);
           border-radius: 24px;
@@ -167,6 +166,7 @@ export default function ChatWidget() {
           flex-direction: column;
           overflow: hidden;
           z-index: 9999;
+          box-sizing: border-box;
           animation: widgetPanelIn 0.22s cubic-bezier(0.34,1.56,0.64,1);
         }
  
@@ -180,7 +180,13 @@ export default function ChatWidget() {
         .cw-chip:hover { border-color: #25D16F; }
  
         @media (max-width: 480px) {
-          .cw-panel { right: 16px; bottom: 88px; width: calc(100vw - 32px); }
+          .cw-panel {
+            left: 0px;
+            right: 0px;
+            width: auto;
+            bottom: 88px;
+            height: min(520px, calc(100dvh - 240px));
+          }
           .cw-launcher { right: 16px; bottom: 16px; }
         }
       `}</style>
