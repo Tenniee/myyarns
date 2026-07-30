@@ -646,36 +646,20 @@ export default function Navbar() {
 
           {/* Desktop center links */}
 
-          <ul style={{ display: "flex", alignItems: "center", gap: 2, listStyle: "none", margin: 0, padding: 0 }}
-
-            className="hidden lg:flex">
-
+          <ul className="hidden lg:flex items-center gap-0.5 list-none m-0 p-0">
             {links.map((l) => (
-
               <li key={l.label}>
-
                 <Link
-
                   href={l.href}
-
                   className="nav-link"
-
                   onMouseEnter={() => setActive(l.label)}
-
                   onMouseLeave={() => setActive(null)}
-
                 >
-
                   <span className="nav-dot" />
-
                   {l.label}
-
                 </Link>
-
               </li>
-
             ))}
-
           </ul>
 
 
