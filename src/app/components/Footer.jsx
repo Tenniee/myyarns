@@ -109,7 +109,7 @@ export default function Footer() {
         }
  
         .footer-brand-title {
-          font-family: 'Sora', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 800;
           font-size: 38px;
           line-height: 31.2px;
@@ -119,7 +119,7 @@ export default function Footer() {
         }
  
         .footer-brand-text {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 18px;
           line-height: 26px;
@@ -161,7 +161,7 @@ export default function Footer() {
         }
  
         .footer-col-heading {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 700;
           font-size: 15px;
           line-height: 12px;
@@ -178,7 +178,7 @@ export default function Footer() {
         }
  
         .footer-link {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 18px;
           line-height: 24px;
@@ -209,7 +209,7 @@ export default function Footer() {
         }
  
         .footer-support-label {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 12px;
           line-height: 15px;
@@ -233,7 +233,7 @@ export default function Footer() {
           border: none;
           padding: 12px 16px;
           cursor: pointer;
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 700;
           font-size: 14px;
           line-height: 16px;
@@ -280,7 +280,7 @@ export default function Footer() {
         }
  
         .footer-copyright {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 14px;
           line-height: 20px;
@@ -296,7 +296,7 @@ export default function Footer() {
         }
  
         .footer-bottom-link {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 500;
           font-size: 16px;
           line-height: 20px;

@@ -116,7 +116,7 @@ function ReviewCard({ pill, pillBg, pillColor, review, initials, name, position,
             background: pillBg,
           }}>
             <span style={{
-              fontFamily: "'Manrope', sans-serif",
+              fontFamily: "'Nunito', sans-serif",
               fontWeight: 700, fontSize: 10,
               lineHeight: "15px", letterSpacing: "0.5px",
               textTransform: "uppercase", color: pillColor,
@@ -127,7 +127,7 @@ function ReviewCard({ pill, pillBg, pillColor, review, initials, name, position,
  
       {/* ── Review text ── */}
       <p style={{
-        fontFamily: "'Manrope', sans-serif",
+        fontFamily: "'Nunito', sans-serif",
         fontWeight: 400, fontSize: 16,
         lineHeight: "24px", color: "#3C4A3F",
         margin: 0, flex: 1,
@@ -172,7 +172,7 @@ function ReviewCard({ pill, pillBg, pillColor, review, initials, name, position,
               transition: "all 0.3s ease",
             }}>
               <span style={{
-                fontFamily: "'Manrope', sans-serif",
+                fontFamily: "'Nunito', sans-serif",
                 fontWeight: 700, fontSize: 16,
                 lineHeight: "24px", color: "#006B58",
                 textTransform: "uppercase",
@@ -183,14 +183,14 @@ function ReviewCard({ pill, pillBg, pillColor, review, initials, name, position,
           {/* Name + position */}
           <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
             <span style={{
-              fontFamily: hov ? "'Sora', sans-serif" : "'Manrope', sans-serif",
+              fontFamily: hov ? "'Sora', sans-serif" : "'Nunito', sans-serif",
               fontWeight: hov ? 400 : 700,
               fontSize: 16, lineHeight: "24px",
               color: hov ? "#25D16F" : "#191C1E",
               transition: "color 0.3s, font-family 0.3s",
             }}>{name}</span>
             <span style={{
-              fontFamily: "'Manrope', sans-serif",
+              fontFamily: "'Nunito', sans-serif",
               fontWeight: 400, fontSize: hov ? 16 : 13,
               lineHeight: hov ? "24px" : "19.5px",
               color: "#3C4A3F",
@@ -243,7 +243,7 @@ export default function Reviews() {
         }
  
         .reviews-label {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 16px;
           line-height: 24px;
@@ -254,7 +254,7 @@ export default function Reviews() {
         }
  
         .reviews-heading {
-          font-family: 'Sora', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 800;
           font-size: clamp(32px, 4vw, 48px);
           line-height: 52.8px;
@@ -265,7 +265,7 @@ export default function Reviews() {
         }
  
         .reviews-subtext {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 18px;
           line-height: 28.8px;

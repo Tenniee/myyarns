@@ -123,7 +123,7 @@ export default function SocialManagement() {
         }
  
         .sm-heading {
-          font-family: 'Sora', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 800;
           font-size: clamp(32px, 3.5vw, 48px);
           line-height: 68px;
@@ -175,7 +175,7 @@ export default function SocialManagement() {
         }
  
         .sm-card-heading {
-          font-family: 'Sora', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 700;
           font-size: 24px;
           line-height: 31.2px;
@@ -184,7 +184,7 @@ export default function SocialManagement() {
         }
  
         .sm-card-text {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 16px;
           line-height: 24px;
@@ -324,7 +324,7 @@ export default function SocialManagement() {
                 paddingLeft: 16, paddingRight: 16,
               }}>
                 <span style={{
-                  fontFamily: "'Manrope', sans-serif",
+                  fontFamily: "'Nunito', sans-serif",
                   fontWeight: 600, fontSize: 13,
                   letterSpacing: "0.5px", textTransform: "uppercase",
                   color: "#25D16F",
@@ -371,7 +371,7 @@ export default function SocialManagement() {
                   }}
                 >
                   <span style={{
-                    fontFamily: "'Manrope', sans-serif",
+                    fontFamily: "'Nunito', sans-serif",
                     fontWeight: 700, fontSize: 18,
                     lineHeight: "24px", color: "white",
                   }}>
@@ -430,7 +430,7 @@ export default function SocialManagement() {
                         boxShadow: "0 0 6px rgba(37,209,111,0.7)",
                       }} />
                       <span style={{
-                        fontFamily: "'Manrope', sans-serif",
+                        fontFamily: "'Nunito', sans-serif",
                         fontWeight: 700, fontSize: 12,
                         lineHeight: "12px", letterSpacing: "1.2px",
                         textTransform: "uppercase", color: "#3C4A3F",
@@ -440,7 +440,7 @@ export default function SocialManagement() {
                     </div>
  
                     <p style={{
-                      fontFamily: "'Manrope', sans-serif",
+                      fontFamily: "'Nunito', sans-serif",
                       fontWeight: 400, fontSize: 14,
                       lineHeight: "20px", color: "#3C4A3F",
                       margin: 0,
@@ -450,7 +450,7 @@ export default function SocialManagement() {
  
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       <span style={{
-                        fontFamily: "'Manrope', sans-serif",
+                        fontFamily: "'Nunito', sans-serif",
                         fontWeight: 700, fontSize: 30,
                         lineHeight: "36px", color: "#191C1E",
                         flex: 1,

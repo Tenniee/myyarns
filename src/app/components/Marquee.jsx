@@ -28,6 +28,45 @@ export default function Marquee() {
   return (
     <>
       <style>{`
+        .item {
+          display: flex;
+          align-items: center;
+          gap: 32px;
+          padding: 0 32px;
+          white-space: nowrap;
+        }
+
+        .text {
+          font-family: "Sora", sans-serif;
+          font-weight: 700;
+          font-size: 22px;
+          line-height: 48px;
+          letter-spacing: -1px;
+          color: white;
+        }
+
+        .separator {
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+          .item {
+            gap: 16px;
+            padding: 0 16px;
+          }
+
+          .text {
+            font-size: 16px;
+            line-height: 32px;
+            letter-spacing: -0.5px;
+          }
+
+          .separator {
+            font-size: 10px;
+          }
+        }
+          
         @keyframes marqueeScroll {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -59,35 +98,12 @@ export default function Marquee() {
           }}
         >
           {doubled.map((text, i) => (
-            <div
-              key={i}
-              style={{
-                display:    "flex",
-                alignItems: "center",
-                gap:        32,
-                padding:    "0 32px",
-                whiteSpace: "nowrap",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily:    "'Sora', sans-serif",
-                  fontWeight:    700,
-                  fontSize:      22,
-                  lineHeight:    "48px",
-                  letterSpacing: "-1px",
-                  color:         "white",
-                }}
-              >
+            <div key={i} className='item'>
+              <span className='text'>
                 {text}
               </span>
-              <span
-                style={{
-                  color:    "rgba(255,255,255,0.5)",
-                  fontSize: 14,
-                }}
-                aria-hidden
-              >
+
+              <span className='separator' aria-hidden>
                 {SEPARATOR}
               </span>
             </div>

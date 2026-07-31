@@ -55,7 +55,7 @@ function Field({ label, children, hint }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       <label style={{
-        fontFamily: "'Manrope', sans-serif",
+        fontFamily: "'Nunito', sans-serif",
         fontWeight: 700,
         fontSize: 12,
         letterSpacing: "0.6px",
@@ -66,7 +66,7 @@ function Field({ label, children, hint }) {
       </label>
       {children}
       {hint && (
-        <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: 12.5, color: "#8A9A8C" }}>
+        <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: 12.5, color: "#8A9A8C" }}>
           {hint}
         </span>
       )}
@@ -75,7 +75,7 @@ function Field({ label, children, hint }) {
 }
  
 const inputStyle = (focused) => ({
-  fontFamily: "'Sora', sans-serif",
+  fontFamily: "'Nunito', sans-serif",
   fontSize: 16,
   color: "#0F0D0A",
   width: "100%",
@@ -175,7 +175,7 @@ export default function RequestCall() {
           gap: 16px;
         }
         .rc-pill-option {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 600;
           font-size: 13.5px;
           padding: 10px 14px;
@@ -211,7 +211,7 @@ export default function RequestCall() {
  
           <Link href="/" style={{ position: "relative", zIndex: 1, textDecoration: "none" }}>
             <span style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "'Nunito', sans-serif",
                 fontWeight: 800,
                 fontSize: 22,
                 color: "white",
@@ -224,14 +224,14 @@ export default function RequestCall() {
  
           <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", gap: 20 }}>
             <h1 style={{
-              fontFamily: "'Sora', sans-serif", fontWeight: 800,
+              fontFamily: "'Nunito', sans-serif", fontWeight: 800,
               fontSize: "clamp(28px, 3vw, 38px)", lineHeight: 1.15,
               letterSpacing: "-1px", color: "white", margin: 0, maxWidth: 380,
             }}>
               Talk to us before you commit to anything.
             </h1>
             <p style={{
-              fontFamily: "'Sora', sans-serif", fontWeight: 400, fontSize: 16,
+              fontFamily: "'Nunito', sans-serif", fontWeight: 400, fontSize: 16,
               lineHeight: "25px", color: "rgba(255,255,255,0.85)", margin: 0, maxWidth: 360,
             }}>
               15 minutes with our team, no pressure. Tell us what you're
@@ -247,7 +247,7 @@ export default function RequestCall() {
                   }}>
                     <CheckIcon />
                   </span>
-                  <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: 14.5, lineHeight: "21px", color: "rgba(255,255,255,0.92)" }}>
+                  <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: 14.5, lineHeight: "21px", color: "rgba(255,255,255,0.92)" }}>
                     {point}
                   </span>
                 </div>
@@ -261,10 +261,10 @@ export default function RequestCall() {
               background: "rgba(255,255,255,0.10)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
               padding: "14px 18px", boxShadow: "0 20px 40px rgba(0,0,0,0.18)",
             }}>
-              <p style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 10, letterSpacing: "1px", color: "rgba(255,255,255,0.75)", textTransform: "uppercase", margin: "0 0 6px" }}>
+              <p style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10, letterSpacing: "1px", color: "rgba(255,255,255,0.75)", textTransform: "uppercase", margin: "0 0 6px" }}>
                 Avg. response time
               </p>
-              <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 20, color: "white", margin: 0 }}>
+              <p style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 20, color: "white", margin: 0 }}>
                 Under 4 hours
               </p>
             </div>
@@ -283,27 +283,27 @@ export default function RequestCall() {
               }}>
                 <CheckCircle />
               </div>
-              <h2 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 26, color: "#0F0D0A", margin: 0 }}>
+              <h2 style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 800, fontSize: 26, color: "#0F0D0A", margin: 0 }}>
                 Request received
               </h2>
-              <p style={{ fontFamily: "'Sora', sans-serif", fontSize: 16, color: "#3C4A3F", margin: 0 }}>
+              <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 16, color: "#3C4A3F", margin: 0 }}>
                 Someone from our team will reach out at {form.workEmail || "your email"} within a few hours to find a time that works.
               </p>
             </div>
           ) : (
             <form className="rc-form-inner" onSubmit={handleSubmit}>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                <h2 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 30, letterSpacing: "-0.6px", color: "#0F0D0A", margin: 0 }}>
+                <h2 style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 800, fontSize: 30, letterSpacing: "-0.6px", color: "#0F0D0A", margin: 0 }}>
                   Request a call
                 </h2>
-                <p style={{ fontFamily: "'Sora', sans-serif", fontSize: 16, color: "#3C4A3F", margin: 0 }}>
+                <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 16, color: "#3C4A3F", margin: 0 }}>
                   Fill in your details and we'll be in touch.
                 </p>
               </div>
  
               {error && (
                 <div style={{
-                  fontFamily: "'Manrope', sans-serif", fontSize: 14, color: "#B3261E",
+                  fontFamily: "'Nunito', sans-serif", fontSize: 14, color: "#B3261E",
                   background: "rgba(179,38,30,0.06)", border: "1px solid rgba(179,38,30,0.15)",
                   borderRadius: 10, padding: "10px 14px",
                 }}>
@@ -396,7 +396,7 @@ export default function RequestCall() {
                   onBlur={() => setFocused(null)}
                   placeholder="Tell us a bit about your team and channels…"
                   rows={4}
-                  style={{ ...inputStyle(focused === "message"), height: "auto", padding: 14, resize: "vertical", fontFamily: "'Sora', sans-serif" }}
+                  style={{ ...inputStyle(focused === "message"), height: "auto", padding: 14, resize: "vertical", fontFamily: "'Nunito', sans-serif" }}
                 />
               </Field>
  
@@ -414,7 +414,7 @@ export default function RequestCall() {
                 }}>
                   {form.consent && <CheckIcon />}
                 </span>
-                <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: 13.5, lineHeight: "20px", color: "#3C4A3F" }}>
+                <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: 13.5, lineHeight: "20px", color: "#3C4A3F" }}>
                   I agree to be contacted by MyYarns about this request.
                 </span>
               </button>
@@ -426,7 +426,7 @@ export default function RequestCall() {
                 onMouseLeave={() => setBtnHov(false)}
                 style={{
                   display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-                  fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 16,
+                  fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 16,
                   color: "white", background: submitting ? "#8fdcb4" : "#25D16F",
                   borderRadius: 9999, height: 54, border: "none",
                   boxShadow: "0 20px 30px -10px rgba(0,109,63,0.35)",

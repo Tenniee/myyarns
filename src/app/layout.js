@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono, Manrope } from "next/font/google";
 
-import { DM_Sans, Plus_Jakarta_Sans, Outfit, Sora } from "next/font/google";
+import { DM_Sans, Plus_Jakarta_Sans, Outfit, Sora, Nunito } from "next/font/google";
 
 import "./globals.css";
 
@@ -32,7 +32,10 @@ const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
 });
 
-
+const nunito = Nunito({
+  subsets: ["latin"],
+  variable: "--font-nunito",
+})
 
 
 
@@ -57,9 +60,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${plusJakarta.variable} ${outfit.variable} ${sora.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${plusJakarta.variable} ${outfit.variable} ${sora.variable} ${nunito.variable} h-full antialiased`}
     >
-      <body style={{ fontFamily: "var(--font-dm-sans), sans-serif" }} className="min-h-full flex flex-col">{children}</body>
+      <body style={{ fontFamily: "var(--font-nunito), sans-serif" }} className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

@@ -76,7 +76,7 @@ function Field({ label, children }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       <label style={{
-        fontFamily: "'Manrope', sans-serif",
+        fontFamily: "'Nunito', sans-serif",
         fontWeight: 700,
         fontSize: 12,
         letterSpacing: "0.6px",
@@ -91,7 +91,7 @@ function Field({ label, children }) {
 }
  
 const inputStyle = (focused) => ({
-  fontFamily: "'Sora', sans-serif",
+  fontFamily: "'Nunito', sans-serif",
   fontSize: 16,
   color: "#0F0D0A",
   width: "100%",
@@ -185,7 +185,7 @@ export default function SignIn() {
  
           <Link href="/" style={{ position: "relative", zIndex: 1, textDecoration: "none" }}>
             <span style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "'Nunito', sans-serif",
                 fontWeight: 800,
                 fontSize: 22,
                 color: "white",
@@ -198,7 +198,7 @@ export default function SignIn() {
  
           <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
             <h1 style={{
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "'Nunito', sans-serif",
               fontWeight: 800,
               fontSize: "clamp(28px, 3vw, 40px)",
               lineHeight: 1.15,
@@ -210,7 +210,7 @@ export default function SignIn() {
               Welcome back. Your audience missed you.
             </h1>
             <p style={{
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "'Nunito', sans-serif",
               fontWeight: 400,
               fontSize: 17,
               lineHeight: "26px",
@@ -237,8 +237,8 @@ export default function SignIn() {
                   </svg>
                 </span>
                 <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                  <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 12, color: "white" }}>12 replies queued</span>
-                  <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.7)" }}>since you left</span>
+                  <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 12, color: "white" }}>12 replies queued</span>
+                  <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.7)" }}>since you left</span>
                 </div>
               </div>
             </FloatBadge>
@@ -250,7 +250,7 @@ export default function SignIn() {
           <form className="auth-form-inner" onSubmit={handleSubmit}>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               <h2 style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "'Nunito', sans-serif",
                 fontWeight: 800,
                 fontSize: 32,
                 letterSpacing: "-0.6px",
@@ -259,14 +259,14 @@ export default function SignIn() {
               }}>
                 Sign in
               </h2>
-              <p style={{ fontFamily: "'Sora', sans-serif", fontSize: 16, color: "#3C4A3F", margin: 0 }}>
+              <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 16, color: "#3C4A3F", margin: 0 }}>
                 Enter your details to access your dashboard.
               </p>
             </div>
  
             {error && (
               <div style={{
-                fontFamily: "'Manrope', sans-serif",
+                fontFamily: "'Nunito', sans-serif",
                 fontSize: 14,
                 color: "#B3261E",
                 background: "rgba(179,38,30,0.06)",
@@ -331,10 +331,10 @@ export default function SignIn() {
                 }}>
                   {remember && <CheckIcon />}
                 </span>
-                <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: 14, color: "#3C4A3F" }}>Remember me</span>
+                <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: 14, color: "#3C4A3F" }}>Remember me</span>
               </button>
  
-              <a href={FORGOT_HREF} style={{ fontFamily: "'Manrope', sans-serif", fontSize: 14, fontWeight: 700, color: "#25D16F", textDecoration: "none" }}>
+              <a href={FORGOT_HREF} style={{ fontFamily: "'Nunito', sans-serif", fontSize: 14, fontWeight: 700, color: "#25D16F", textDecoration: "none" }}>
                 Forgot password?
               </a>
             </div>
@@ -346,7 +346,7 @@ export default function SignIn() {
               onMouseLeave={() => setBtnHov(false)}
               style={{
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-                fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 16,
+                fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 16,
                 color: "white", background: submitting ? "#8fdcb4" : "#25D16F",
                 borderRadius: 9999, height: 54, border: "none",
                 boxShadow: "0 20px 30px -10px rgba(0,109,63,0.35)",
@@ -359,7 +359,7 @@ export default function SignIn() {
               {!submitting && <ArrowRight />}
             </button>
  
-            <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: 14, color: "#3C4A3F", textAlign: "center", margin: 0 }}>
+            <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 14, color: "#3C4A3F", textAlign: "center", margin: 0 }}>
               Don't have an account?{" "}
               <a href={SIGNUP_HREF} style={{ color: "#25D16F", fontWeight: 700, textDecoration: "none" }}>
                 Create one

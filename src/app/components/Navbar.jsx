@@ -16,7 +16,7 @@ const links = [
 
   { label: "Channels",    href: "/channels"    },
 
-  { label: "Pricing",     href: "/pricing"     },
+  { label: "Pricing",     href: "/#pricing"     },
 
   { label: "Blog",        href: "/blog"        },
 
@@ -176,7 +176,7 @@ export default function Navbar() {
 
           border-radius: 8px;
 
-          font-family: var(--font-manrope), Manrope, sans-serif;
+          font-family: var(--font-nunito), Nunito, sans-serif;
 
           font-size: 14px;
 
@@ -280,7 +280,7 @@ export default function Navbar() {
 
           border-radius: 9999px;
 
-          font-family: var(--font-manrope), Manrope, sans-serif;
+          font-family: var(--font-nunito), Nunito, sans-serif;
 
           font-size: 14px;
 
@@ -348,7 +348,7 @@ export default function Navbar() {
 
           color: white;
 
-          font-family: var(--font-manrope), Manrope, sans-serif;
+          font-family: var(--font-nunito), Nunito, sans-serif;
 
           font-size: 14px;
 
@@ -512,7 +512,7 @@ export default function Navbar() {
 
           border-radius: 12px;
 
-          font-family: var(--font-manrope), Manrope, sans-serif;
+          font-family: var(--font-nunito), Nunito, sans-serif;
 
           font-size: 18px;
 
@@ -568,7 +568,7 @@ export default function Navbar() {
 
           color: white;
 
-          font-family: var(--font-manrope), Manrope, sans-serif;
+          font-family: var(--font-nunito), Nunito, sans-serif;
 
           font-size: 16px;
 
@@ -600,7 +600,7 @@ export default function Navbar() {
 
           color: #3C4A3F;
 
-          font-family: var(--font-manrope), Manrope, sans-serif;
+          font-family: var(--font-nunito), Nunito, sans-serif;
 
           font-size: 16px;
 

@@ -113,12 +113,12 @@ function StatCol({ number, suffix, subtext, pill }) {
         flex:           1,
       }}
     >
-      {/* Big number — Manrope 800 */}
+      {/* Big number — Nunito 800 */}
       <div style={{ display: "flex", alignItems: "baseline", gap: 4, textAlign: "left" }}>
         <span
           className="results-stat-number"
           style={{
-            fontFamily:    "'Manrope', sans-serif",
+            fontFamily:    "'Nunito', sans-serif",
             fontWeight:    800,
             letterSpacing: "-1.92px",
             color:         "white",
@@ -129,7 +129,7 @@ function StatCol({ number, suffix, subtext, pill }) {
         <span
           className="results-stat-suffix"
           style={{
-            fontFamily:    "'Manrope', sans-serif",
+            fontFamily:    "'Nunito', sans-serif",
             fontWeight:    800,
             letterSpacing: "-1.92px",
             color:         "#25D16F",
@@ -143,7 +143,7 @@ function StatCol({ number, suffix, subtext, pill }) {
       <p
         className="results-stat-subtext"
         style={{
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "'Nunito', sans-serif",
           fontWeight: 500,
           fontSize:   16,
           lineHeight: "25.6px",
@@ -156,11 +156,11 @@ function StatCol({ number, suffix, subtext, pill }) {
         {subtext}
       </p>
  
-      {/* Small pill — Manrope 500 */}
+      {/* Small pill — Nunito 500 */}
       <GlassPill size="sm">
         <span
           style={{
-            fontFamily:    "'Manrope', sans-serif",
+            fontFamily:    "'Nunito', sans-serif",
             fontWeight:    500,
             fontSize:      11,
             lineHeight:    "16.5px",
@@ -304,7 +304,7 @@ export default function Results() {
           <GlassPill hasDot size="lg">
             <span
               style={{
-                fontFamily:    "'Manrope', sans-serif",
+                fontFamily:    "'Nunito', sans-serif",
                 fontWeight:    600,
                 fontSize:      13,
                 letterSpacing: "0.5px",
@@ -321,7 +321,7 @@ export default function Results() {
         <h2
           className="results-heading"
           style={{
-            fontFamily:    "'Sora', sans-serif",
+            fontFamily:    "'Nunito', sans-serif",
             fontWeight:    700,
             fontSize:      "clamp(32px, 6vw, 60px)",
             lineHeight:    1.1,

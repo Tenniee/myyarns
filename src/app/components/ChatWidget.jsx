@@ -73,7 +73,7 @@ function Bubble({ role, text }) {
       )}
       <div style={{
         maxWidth: "78%",
-        fontFamily: "'Sora', sans-serif",
+        fontFamily: "'Nunito', sans-serif",
         fontSize: 14,
         lineHeight: "21px",
         padding: "10px 14px",
@@ -172,7 +172,7 @@ export default function ChatWidget() {
  
         .cw-thread { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
         .cw-chip {
-          font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 13px;
+          font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 13px;
           color: #191C1E; background: white; border: 1px solid rgba(187,203,188,0.4);
           border-radius: 9999px; padding: 8px 14px; cursor: pointer; text-align: left;
           transition: border-color 0.15s;
@@ -218,10 +218,10 @@ export default function ChatWidget() {
               <SparkleIcon size={15} />
             </div>
             <div style={{ flex: 1 }}>
-              <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 14.5, color: "#191C1E", margin: 0 }}>
+              <p style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 14.5, color: "#191C1E", margin: 0 }}>
                 {ASSISTANT_NAME}
               </p>
-              <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: 11.5, color: "#25D16F", margin: 0, display: "flex", alignItems: "center", gap: 5 }}>
+              <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 11.5, color: "#25D16F", margin: 0, display: "flex", alignItems: "center", gap: 5 }}>
                 <span style={{ width: 6, height: 6, borderRadius: "9999px", background: "#25D16F", display: "inline-block" }} />
                 Online
               </p>
@@ -280,7 +280,7 @@ export default function ChatWidget() {
               placeholder="Type a message…"
               style={{
                 flex: 1, border: "none", outline: "none", background: "transparent",
-                fontFamily: "'Sora', sans-serif", fontSize: 14, color: "#0F0D0A", height: 36,
+                fontFamily: "'Nunito', sans-serif", fontSize: 14, color: "#0F0D0A", height: 36,
               }}
             />
             <button

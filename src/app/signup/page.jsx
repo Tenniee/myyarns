@@ -71,7 +71,7 @@ function Field({ label, children }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       <label style={{
-        fontFamily: "'Manrope', sans-serif",
+        fontFamily: "'Nunito', sans-serif",
         fontWeight: 700,
         fontSize: 12,
         letterSpacing: "0.6px",
@@ -86,7 +86,7 @@ function Field({ label, children }) {
 }
  
 const inputStyle = (focused) => ({
-  fontFamily: "'Sora', sans-serif",
+  fontFamily: "'Nunito', sans-serif",
   fontSize: 16,
   color: "#0F0D0A",
   width: "100%",
@@ -180,7 +180,7 @@ export default function SignUp() {
  
           <Link href="/" style={{ position: "relative", zIndex: 1, textDecoration: "none" }}>
             <span style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "'Nunito', sans-serif",
                 fontWeight: 800,
                 fontSize: 22,
                 color: "white",
@@ -193,7 +193,7 @@ export default function SignUp() {
  
           <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
             <h1 style={{
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "'Nunito', sans-serif",
               fontWeight: 800,
               fontSize: "clamp(28px, 3vw, 40px)",
               lineHeight: 1.15,
@@ -205,7 +205,7 @@ export default function SignUp() {
               Grow every channel from one dashboard.
             </h1>
             <p style={{
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "'Nunito', sans-serif",
               fontWeight: 400,
               fontSize: 17,
               lineHeight: "26px",
@@ -220,8 +220,8 @@ export default function SignUp() {
  
           <div style={{ height: 140, position: "relative", zIndex: 1 }}>
             <FloatBadge animClass="auth-fa" style={{ top: 0, left: 0, width: 190 }}>
-              <p style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 10, letterSpacing: "1px", color: "rgba(255,255,255,0.75)", textTransform: "uppercase", margin: "0 0 6px" }}>Growth Rate</p>
-              <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 22, color: "white", margin: 0 }}>+24.8%</p>
+              <p style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10, letterSpacing: "1px", color: "rgba(255,255,255,0.75)", textTransform: "uppercase", margin: "0 0 6px" }}>Growth Rate</p>
+              <p style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 22, color: "white", margin: 0 }}>+24.8%</p>
             </FloatBadge>
             <FloatBadge animClass="auth-fb" style={{ top: 20, left: 210, width: 160 }}>
               <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -238,7 +238,7 @@ export default function SignUp() {
           <form className="auth-form-inner" onSubmit={handleSubmit}>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               <h2 style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "'Nunito', sans-serif",
                 fontWeight: 800,
                 fontSize: 32,
                 letterSpacing: "-0.6px",
@@ -247,14 +247,14 @@ export default function SignUp() {
               }}>
                 Create your account
               </h2>
-              <p style={{ fontFamily: "'Sora', sans-serif", fontSize: 16, color: "#3C4A3F", margin: 0 }}>
+              <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 16, color: "#3C4A3F", margin: 0 }}>
                 Start managing every channel in one place.
               </p>
             </div>
  
             {error && (
               <div style={{
-                fontFamily: "'Manrope', sans-serif",
+                fontFamily: "'Nunito', sans-serif",
                 fontSize: 14,
                 color: "#B3261E",
                 background: "rgba(179,38,30,0.06)",
@@ -324,7 +324,7 @@ export default function SignUp() {
               className="group"
               style={{
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-                fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 16,
+                fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 16,
                 color: "white", background: submitting ? "#8fdcb4" : "#25D16F",
                 borderRadius: 9999, height: 54, border: "none",
                 boxShadow: "0 20px 30px -10px rgba(0,109,63,0.35)",
@@ -338,7 +338,7 @@ export default function SignUp() {
               {!submitting && <ArrowRight />}
             </button>
  
-            <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: 14, color: "#3C4A3F", textAlign: "center", margin: 0 }}>
+            <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 14, color: "#3C4A3F", textAlign: "center", margin: 0 }}>
               Already have an account?{" "}
               <a href={SIGNIN_HREF} style={{ color: "#25D16F", fontWeight: 700, textDecoration: "none" }}>
                 Sign in

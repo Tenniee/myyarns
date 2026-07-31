@@ -78,7 +78,7 @@ export default function CTASection() {
         }
  
         .cta-heading {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 700;
           font-size: clamp(28px, 3vw, 40px);
           line-height: 1.08;
@@ -88,7 +88,7 @@ export default function CTASection() {
         }
  
         .cta-subtext {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 20px;
           line-height: 28.8px;
@@ -125,7 +125,7 @@ export default function CTASection() {
           background: transparent;
           border: none;
           outline: none;
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-size: 16px;
           line-height: 24px;
           color: #6B7280;
@@ -139,7 +139,7 @@ export default function CTASection() {
           padding: 21.5px 32px 22.5px;
           border: none;
           cursor: pointer;
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 700;
           font-size: 15px;
           line-height: 12px;
@@ -172,7 +172,7 @@ export default function CTASection() {
         }
  
         .cta-check-label {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 12px;
           line-height: 15px;

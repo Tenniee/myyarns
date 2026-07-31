@@ -175,7 +175,7 @@ export default function SchedulingSection() {
         }
  
         .scheduling-label {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 700;
           font-size: 12px;
           line-height: 12px;
@@ -186,7 +186,7 @@ export default function SchedulingSection() {
         }
  
         .scheduling-heading {
-          font-family: 'Sora', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 800;
           font-size: clamp(32px, 3.5vw, 48px);
           line-height: 52.8px;
@@ -197,7 +197,7 @@ export default function SchedulingSection() {
         }
  
         .scheduling-subhead {
-          font-family: 'Sora', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 700;
           font-size: 24px;
           line-height: 31.2px;
@@ -207,7 +207,7 @@ export default function SchedulingSection() {
         }
  
         .scheduling-text {
-          font-family: 'Sora', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 18px;
           line-height: 28.8px;
@@ -231,7 +231,7 @@ export default function SchedulingSection() {
           padding: 8px 16px;
           cursor: pointer;
           transition: background 0.2s;
-          font-family: 'Sora', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 700;
           font-size: 12px;
           line-height: 12px;
@@ -472,7 +472,7 @@ export default function SchedulingSection() {
                       <Image src={SchedulingListIcon} alt="" style={{width: '150%'}}/>
                     </div>
                     <span style={{
-                      fontFamily: "'Manrope', sans-serif",
+                      fontFamily: "'Nunito', sans-serif",
                       fontWeight: 400, fontSize: 16,
                       lineHeight: "24px", color: "#191C1E",
                     }}>
@@ -500,7 +500,7 @@ export default function SchedulingSection() {
                 }}
               >
                 <span style={{
-                  fontFamily: "'Manrope', sans-serif",
+                  fontFamily: "'Nunito', sans-serif",
                   fontWeight: 700, fontSize: 18,
                   lineHeight: "24px", color: "white",
                 }}>
@@ -555,13 +555,13 @@ export default function SchedulingSection() {
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <span style={{
-                      fontFamily: "'Manrope', sans-serif",
+                      fontFamily: "'Nunito', sans-serif",
                       fontWeight: 700, fontSize: 12,
                       lineHeight: "12px", letterSpacing: "0.6px",
                       color: "#3C4A3F", textTransform: "uppercase",
                     }}>Instagram Growth</span>
                     <span style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "'Nunito', sans-serif",
                       fontWeight: 700, fontSize: 24,
                       lineHeight: "31.2px", color: "#191C1E",
                     }}>+24.8%</span>
@@ -577,7 +577,7 @@ export default function SchedulingSection() {
               >
                 {/* Header */}
                 <p style={{
-                  fontFamily: "'Manrope', sans-serif",
+                  fontFamily: "'Nunito', sans-serif",
                   fontWeight: 700, fontSize: 12,
                   lineHeight: "12px", letterSpacing: "0.6px",
                   textTransform: "uppercase", color: "#3C4A3F",
@@ -593,13 +593,13 @@ export default function SchedulingSection() {
                       {/* Name + pct */}
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <span style={{
-                          fontFamily: "'Manrope', sans-serif",
+                          fontFamily: "'Nunito', sans-serif",
                           fontWeight: 700, fontSize: 12,
                           lineHeight: "12px", letterSpacing: "0.6px",
                           color: s.color,
                         }}>{s.name}</span>
                         <span style={{
-                          fontFamily: "'Manrope', sans-serif",
+                          fontFamily: "'Nunito', sans-serif",
                           fontWeight: 700, fontSize: 12,
                           lineHeight: "12px", letterSpacing: "0.6px",
                           color: "#191C1E",
@@ -640,13 +640,13 @@ export default function SchedulingSection() {
                   {/* Text */}
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <span style={{
-                      fontFamily: "'Manrope', sans-serif",
+                      fontFamily: "'Nunito', sans-serif",
                       fontWeight: 700, fontSize: 12,
                       lineHeight: "12px", letterSpacing: "0.6px",
                       color: "#3C4A3F", textTransform: "uppercase",
                     }}>Scheduled Today</span>
                     <span style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "'Nunito', sans-serif",
                       fontWeight: 700, fontSize: 24,
                       lineHeight: "31.2px", color: "#191C1E",
                     }}>12 Posts</span>

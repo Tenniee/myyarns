@@ -319,7 +319,7 @@ export default function Integration() {
                 {/* Glass pill */}
                 <GlassPill>
                   <span style={{
-                    fontFamily:    "'Manrope', sans-serif",
+                    fontFamily:    "'Nunito', sans-serif",
                     fontWeight:    600,
                     fontSize:      13,
                     letterSpacing: "0.5px",
@@ -334,7 +334,7 @@ export default function Integration() {
                 <h2
                   className="integration-headline"
                   style={{
-                    fontFamily:    "'Sora', sans-serif",
+                    fontFamily:    "'Nunito', sans-serif",
                     fontWeight:    700,
                     letterSpacing: 0,
                     color:         "white",
@@ -349,7 +349,7 @@ export default function Integration() {
                 <p
                   className="integration-paragraph"
                   style={{
-                    fontFamily: "'Manrope', sans-serif",
+                    fontFamily: "'Nunito', sans-serif",
                     fontWeight: 400,
                     color:      "rgba(255,255,255,0.80)",
                     margin:      0,
@@ -380,7 +380,7 @@ export default function Integration() {
                   <span
                     className="integration-cta-text"
                     style={{
-                      fontFamily: "'Manrope', sans-serif",
+                      fontFamily: "'Nunito', sans-serif",
                       fontWeight: 700,
                       lineHeight: "24px",
                       color:      "white",

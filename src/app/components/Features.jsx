@@ -134,11 +134,11 @@ function FeatureItem({ title, sub, Icon }) {
       {/* Text */}
       <div style={{ display: "flex", flexDirection: "column", gap: 6, paddingTop: 4 }}>
         <p style={{
-          fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 400,
+          fontFamily: "'Nunito', sans-serif", fontWeight: 400,
           fontSize: 20, lineHeight: "30px", color: "#191C1E", margin: 0,
         }}>{title}</p>
         <p style={{
-          fontFamily: "'Manrope', sans-serif", fontWeight: 400,
+          fontFamily: "'Nunito', sans-serif", fontWeight: 400,
           fontSize: 16, lineHeight: "24px",
           color: "rgba(60,74,63,0.70)", margin: 0,
         }}>{sub}</p>
@@ -283,7 +283,7 @@ export default function Features() {
         }
  
         .section2-heading {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 800;
           font-size: clamp(28px, 5vw, 48px);
           line-height: 1.1;
@@ -295,7 +295,7 @@ export default function Features() {
         }
  
         .section2-subtext {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: clamp(18px, 2vw, 22px);
           line-height: 1.35;
@@ -413,7 +413,7 @@ export default function Features() {
         }
  
         .card-title {
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 700;
           font-size: 24px;
           line-height: 31.2px;
@@ -422,7 +422,7 @@ export default function Features() {
         }
  
         .card-text {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 18px;
           line-height: 24px;
@@ -654,7 +654,7 @@ export default function Features() {
           <PlainPill bg="#E6FAF2" border="1px solid rgba(0,109,63,0.10)">
             <Image src={FeaturesStar} alt="star" style={{ width: '6%' }} />
             <span style={{
-              fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 14,
+              fontFamily: "'Nunito', sans-serif", fontWeight: 600, fontSize: 14,
               lineHeight: "12px", letterSpacing: "0.6px", textTransform: "uppercase",
               color: "#1A5C38",
             }}>All-in-One Platform</span>
@@ -697,7 +697,7 @@ export default function Features() {
                   </div>
                   <PlainPill bg="#9EF3DA" border="none">
                     <span style={{
-                      fontFamily: "'ABeeZee', sans-serif", fontWeight: 700, fontSize: 10,
+                      fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
                       lineHeight: "15px", letterSpacing: "-0.5px", textTransform: "uppercase",
                       color: "#10715E",
                     }}>Most Loved</span>
@@ -718,7 +718,7 @@ export default function Features() {
                   style={{
                     display: "inline-flex", alignItems: "center", gap: 6,
                     background: "none", border: "none", padding: 0, cursor: "pointer",
-                    fontFamily: "'Manrope', sans-serif", fontWeight: 700,
+                    fontFamily: "'Nunito', sans-serif", fontWeight: 700,
                     fontSize: 16, lineHeight: "24px", color: "#1A5C38",
                     marginTop: "auto",
                   }}
@@ -803,7 +803,7 @@ export default function Features() {
                 </div>
                 <PlainPill bg="rgba(0,209,126,0.1)" border="none">
                   <span style={{
-                    fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 10,
+                    fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
                     lineHeight: "15px", letterSpacing: "-0.5px", textTransform: "uppercase",
                     color: "#1A5C38",
                   }}>Saves 10hrs/week</span>
@@ -827,7 +827,7 @@ export default function Features() {
                   }}>
                     <CheckCircle />
                     <span style={{
-                      fontFamily: "'Manrope', sans-serif", fontWeight: 700,
+                      fontFamily: "'Nunito', sans-serif", fontWeight: 700,
                       fontSize: 15, lineHeight: "16px", color: "#191C1E",
                     }}>{tag}</span>
                   </div>
@@ -862,18 +862,18 @@ export default function Features() {
                 {/* Response time */}
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   <p style={{
-                    fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 12,
+                    fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 12,
                     lineHeight: "15px", letterSpacing: "1px", textTransform: "uppercase",
                     color: "rgba(255,255,255,0.6)", margin: 0,
                   }}>Response Time</p>
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{
-                      fontFamily: "'Manrope', sans-serif", fontWeight: 700,
+                      fontFamily: "'Nunito', sans-serif", fontWeight: 700,
                       fontSize: 30, lineHeight: "36px", color: "white",
                     }}>1.4m</span>
                     <TrendDown />
                     <span style={{
-                      fontFamily: "'Manrope', sans-serif", fontWeight: 700,
+                      fontFamily: "'Nunito', sans-serif", fontWeight: 700,
                       fontSize: 14, color: "#25D16F",
                     }}>-12%</span>
                   </div>
@@ -886,18 +886,18 @@ export default function Features() {
                 {/* Satisfactory score */}
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   <p style={{
-                    fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 12,
+                    fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 12,
                     lineHeight: "15px", letterSpacing: "1px", textTransform: "uppercase",
                     color: "rgba(255,255,255,0.6)", margin: 0,
                   }}>Satisfactory Score</p>
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{
-                      fontFamily: "'Manrope', sans-serif", fontWeight: 700,
+                      fontFamily: "'Nunito', sans-serif", fontWeight: 700,
                       fontSize: 30, lineHeight: "36px", color: "white",
                     }}>4.9/5</span>
                     <TrendUp />
                     <span style={{
-                      fontFamily: "'Manrope', sans-serif", fontWeight: 700,
+                      fontFamily: "'Nunito', sans-serif", fontWeight: 700,
                       fontSize: 14, color: "#25D16F",
                     }}>+3%</span>
                   </div>
@@ -921,7 +921,7 @@ export default function Features() {
                 </div>
                 <PlainPill bg="#E6E8EA" border="none">
                   <span style={{
-                    fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: 12,
+                    fontFamily: "'Nunito', sans-serif", fontWeight: 500, fontSize: 12,
                     lineHeight: "15px", letterSpacing: "-0.5px", textTransform: "uppercase",
                     color: "#3C4A3F",
                   }}>24/7 Support</span>
@@ -941,7 +941,7 @@ export default function Features() {
                 <button className="card-5-button" style={{
                   borderRadius: 9999, background: "#25D16F", border: "none",
                   padding: "10.5px 24px 11.5px", cursor: "pointer",
-                  fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 15,
+                  fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 15,
                   lineHeight: "12px", letterSpacing: "0.6px", textAlign: "center", color: "white",
                   transition: "opacity 0.15s",
                 }}
@@ -952,7 +952,7 @@ export default function Features() {
                   borderRadius: 9999, background: "transparent",
                   border: "1px solid #BBCBBC",
                   padding: "10px 24px", cursor: "pointer",
-                  fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 15,
+                  fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 15,
                   lineHeight: "12px", letterSpacing: "0.6px", textAlign: "center", color: "#191C1E",
                   transition: "background 0.15s",
                 }}

@@ -161,7 +161,7 @@ function PricingCard({ plan }) {
           whiteSpace: "nowrap",
         }}>
           <span style={{
-            fontFamily: "'Manrope', sans-serif",
+            fontFamily: "'Nunito', sans-serif",
             fontWeight: 700, fontSize: 12, lineHeight: "16px",
             letterSpacing: "1.2px", textTransform: "uppercase", color: "white",
           }}>Most Popular</span>
@@ -181,25 +181,25 @@ function PricingCard({ plan }) {
  
           {/* Comparison */}
           <p style={{
-            fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 10,
+            fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
             lineHeight: "15px", letterSpacing: "0.5px", textTransform: "uppercase",
             color: "rgba(0,109,63,0.70)", margin: "0 0 8px",
           }}>{plan.comparison}</p>
  
           {/* Plan name */}
           <p style={{
-            fontFamily: "'Sora', sans-serif", fontWeight: 700,
+            fontFamily: "'Nunito', sans-serif", fontWeight: 700,
             fontSize: 24, lineHeight: "31.2px", color: "#191C1E", margin: "0 0 4px",
           }}>{plan.name}</p>
  
           {/* Price */}
           <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 20 }}>
             <span style={{
-              fontFamily: "'Manrope', sans-serif", fontWeight: 800,
+              fontFamily: "'Nunito', sans-serif", fontWeight: 800,
               fontSize: 36, lineHeight: "40px", color: "#25D16F",
             }}>{plan.price}</span>
             <span style={{
-              fontFamily: "'Manrope', sans-serif", fontWeight: 500,
+              fontFamily: "'Nunito', sans-serif", fontWeight: 500,
               fontSize: 16, lineHeight: "24px", color: "#3C4A3F",
             }}>{plan.period}</span>
           </div>
@@ -220,7 +220,7 @@ function PricingCard({ plan }) {
                 padding: "16px 0", cursor: "pointer",
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
                 background: "#25D16F",
-                fontFamily: "'Manrope', sans-serif", fontWeight: 700,
+                fontFamily: "'Nunito', sans-serif", fontWeight: 700,
                 fontSize: 16, color: "white",
                 transform: btnHov ? "scale(1.01)" : "scale(1)",
                 transition: "transform 0.15s",
@@ -243,7 +243,7 @@ function PricingCard({ plan }) {
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <FeatureIcon type={f.type} color={plan.iconColor} />
                 <span style={{
-                  fontFamily: "'Manrope', sans-serif", fontWeight: 400,
+                  fontFamily: "'Nunito', sans-serif", fontWeight: 400,
                   fontSize: 16, lineHeight: "24px",
                   color: f.dim ? "rgba(255,255,255,0.45)" : "#191C1E",
                 }}>{f.text}</span>
@@ -280,14 +280,14 @@ function PricingCard({ plan }) {
     >
       {/* Comparison line(s) */}
       <p style={{
-        fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 10,
+        fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
         lineHeight: "15px", letterSpacing: "0.5px", textTransform: "uppercase",
         color: "rgba(60,74,63,0.60)", margin: "0 0 4px",
       }}>{plan.comparison}</p>
  
       {plan.savingsTag && (
         <p style={{
-          fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 10,
+          fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
           lineHeight: "15px", letterSpacing: "-0.25px",
           color: "#006D3F", margin: "0 0 8px",
         }}>{plan.savingsTag}</p>
@@ -295,18 +295,18 @@ function PricingCard({ plan }) {
  
       {/* Plan name */}
       <p style={{
-        fontFamily: "'Sora', sans-serif", fontWeight: 700,
+        fontFamily: "'Nunito', sans-serif", fontWeight: 700,
         fontSize: 24, lineHeight: "31.2px", color: "#191C1E", margin: "0 0 4px",
       }}>{plan.name}</p>
  
       {/* Price */}
       <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 20 }}>
         <span style={{
-          fontFamily: "'Manrope', sans-serif", fontWeight: 800,
+          fontFamily: "'Nunito', sans-serif", fontWeight: 800,
           fontSize: 30, lineHeight: "36px", color: "#191C1E",
         }}>{plan.price}</span>
         <span style={{
-          fontFamily: "'Manrope', sans-serif", fontWeight: 500,
+          fontFamily: "'Nunito', sans-serif", fontWeight: 500,
           fontSize: 16, lineHeight: "24px", color: "#3C4A3F",
         }}>{plan.period}</span>
       </div>
@@ -321,7 +321,7 @@ function PricingCard({ plan }) {
           padding: "16px 0", cursor: "pointer", marginBottom: 24,
           display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
           background: btnHov ? "#25D16F" : "transparent",
-          fontFamily: "'Manrope', sans-serif", fontWeight: 700,
+          fontFamily: "'Nunito', sans-serif", fontWeight: 700,
           fontSize: 16,
           color: btnHov ? "white" : "#191C1E",
           transition: "background 0.2s, color 0.2s, transform 0.15s",
@@ -344,7 +344,7 @@ function PricingCard({ plan }) {
           <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <FeatureIcon type={f.type} color={plan.iconColor} />
             <span style={{
-              fontFamily: "'Manrope', sans-serif", fontWeight: 400,
+              fontFamily: "'Nunito', sans-serif", fontWeight: 400,
               fontSize: 16, lineHeight: "24px",
               color: f.dim ? "rgba(60,74,63,0.45)" : "#3C4A3F",
             }}>{f.text}</span>
@@ -399,7 +399,7 @@ export default function Pricing() {
         }
  
         .pricing-heading {
-          font-family: 'Sora', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 800;
           font-size: clamp(32px, 4vw, 48px);
           line-height: 52.8px;
@@ -409,7 +409,7 @@ export default function Pricing() {
         }
  
         .pricing-subtext {
-          font-family: 'Sora', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 500;
           font-size: 24px;
           line-height: 31.2px;
@@ -419,7 +419,7 @@ export default function Pricing() {
         }
  
         .pricing-desc {
-          font-family: 'Sora', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 18px;
           line-height: 28.8px;
@@ -559,7 +559,7 @@ export default function Pricing() {
         }
       `}</style>
  
-      <section className="pricing-x-pad" style={{ background: "white", paddingTop: 80, paddingBottom: 80 }}>
+      <section className="pricing-x-pad" id="pricing" style={{ background: "white", paddingTop: 80, paddingBottom: 80 }}>
         <div className="pricing-container">
  
           {/* ── Top div ── */}
@@ -568,7 +568,7 @@ export default function Pricing() {
             {/* Left — price comparison */}
             <div className="pricing-top-left">
               <p style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "'Nunito', sans-serif",
                 fontWeight: 700, fontSize: 24, lineHeight: "31.2px",
                 color: "#1A5C38", margin: 0,
               }}>MyYarns Growth = ₦24,500/agent.</p>
@@ -578,7 +578,7 @@ export default function Pricing() {
                 width: "fit-content",
               }}>
                 <span style={{
-                  fontFamily: "'Sora', sans-serif",
+                  fontFamily: "'Nunito', sans-serif",
                   fontWeight: 700, fontSize: 24, lineHeight: "31.2px", color: "white",
                 }}>67% cheaper.</span>
               </div>
@@ -669,7 +669,7 @@ export function CTASection() {
         }
  
         .cta-heading {
-          font-family: 'Sora', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 700;
           font-size: clamp(28px, 3.5vw, 40px);
           line-height: 43.2px;
@@ -679,7 +679,7 @@ export function CTASection() {
         }
  
         .cta-subtext {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 20px;
           line-height: 28.8px;
@@ -715,7 +715,7 @@ export function CTASection() {
           background: transparent;
           border: none;
           outline: none;
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-size: 16px;
           color: white;
           padding-left: 20px;
@@ -732,7 +732,7 @@ export function CTASection() {
           padding: 21.5px 32px 22.5px;
           border: none;
           cursor: pointer;
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 700;
           font-size: 15px;
           line-height: 12px;
@@ -766,7 +766,7 @@ export function CTASection() {
         }
  
         .cta-check-label {
-          font-family: 'Manrope', sans-serif;
+          font-family: 'Nunito', sans-serif;
           font-weight: 400;
           font-size: 12px;
           line-height: 15px;

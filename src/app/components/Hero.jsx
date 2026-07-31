@@ -143,7 +143,7 @@ export default function Hero() {
               {/* Headline */}
               <h1
                 style={{
-                  fontFamily:    "'Sora', sans-serif",
+                  fontFamily:    "'Nunito', sans-serif",
                   fontWeight:    800,
                   fontSize:      "clamp(36px, 5.5vw, 64px)",
                   lineHeight:    1.1,
@@ -173,9 +173,9 @@ export default function Hero() {
               {/* Subtext */}
               <p
                 style={{
-                  fontFamily:  "'Sora', sans-serif",
+                  fontFamily:  "'Nunito', sans-serif",
                   fontWeight:  400,
-                  fontSize:    22,
+                  fontSize:      "clamp(16px, 2.5vw, 22px)",
                   lineHeight:  "30.88px",
                   color:       "#0F0D0A",
                   maxWidth:    480,
@@ -197,7 +197,7 @@ export default function Hero() {
                              hover:scale-[1.03] hover:brightness-110
                              active:scale-[0.97]"
                   style={{
-                    fontFamily:  "'Sora', sans-serif",
+                    fontFamily:  "'Nunito', sans-serif",
                     fontSize:    16,
                     background:  "#25D16F",
                     borderRadius: 9999,
@@ -229,7 +229,7 @@ export default function Hero() {
                              hover:bg-gray-50 hover:scale-[1.02]
                              active:scale-[0.97]"
                   style={{
-                    fontFamily:   "'Sora', sans-serif",
+                    fontFamily:   "'Nunito', sans-serif",
                     fontSize:     16,
                     color:        "#0F0D0A",
                     background:   "white",
@@ -273,8 +273,8 @@ export default function Hero() {
                 </div>
                 <p
                   style={{
-                    fontFamily: "'Manrope', sans-serif",
-                    fontSize:   16,
+                    fontFamily: "'Nunito', sans-serif",
+                    fontSize: 'clamp (9px, 1.0vh, 16x)',
                     lineHeight: "25.6px",
                     color:      "#0F0D0A",
                     margin:     0,
@@ -341,7 +341,7 @@ export default function Hero() {
                     <polyline points="17 6 23 6 23 12"/>
                   </svg>
                   <span style={{
-                    fontFamily:    "'Manrope', sans-serif",
+                    fontFamily:    "'Nunito', sans-serif",
                     fontWeight:    700,
                     fontSize:      10,
                     lineHeight:    "15px",
@@ -353,7 +353,7 @@ export default function Hero() {
                   </span>
                 </div>
                 <p style={{
-                  fontFamily: "'Plus Jakarta Sans', 'Sora', sans-serif",
+                  fontFamily: "'Nunito', sans-serif",
                   fontWeight: 700,
                   fontSize:   28,
                   lineHeight: "36.4px",
@@ -397,7 +397,7 @@ export default function Hero() {
                     </svg>
                   </span>
                   <span style={{
-                    fontFamily:    "'Manrope', sans-serif",
+                    fontFamily:    "'Nunito', sans-serif",
                     fontWeight:    700,
                     fontSize:      10,
                     letterSpacing: "1px",
