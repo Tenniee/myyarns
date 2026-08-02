@@ -133,8 +133,10 @@ function FeatureIcon({ type, color }) {
 //   .pricing-feature-list  → vertical gap between feature rows
 //   .pricing-price-row     → space under the price
 //   .pricing-cta-wrap      → space under the CTA button
-// Tweak the numbers inside the @media (max-width: 768px) block to
-// adjust further.
+// Card WIDTH is now fully responsive via flex-basis/min-width/max-width
+// on .pricing-card-standard / .pricing-card-middle (see below) — do not
+// re-add fixed pixel widths or an inline flexShrink here, or the
+// overflow-on-smaller-desktops bug will come back.
 // ═══════════════════════════════════════════════════════════════════
 function PricingCard({ plan }) {
   const [hov, setHov] = useState(false);
@@ -151,7 +153,6 @@ function PricingCard({ plan }) {
           style={{
             borderRadius: 40,
             background: "white",
-            flexShrink: 0,
             transform: hov ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)",
             boxShadow: hov
               ? "0 32px 64px rgba(0,109,63,0.30)"
@@ -279,7 +280,6 @@ function PricingCard({ plan }) {
             ? "0 24px 48px rgba(0,109,63,0.12)"
             : "0 8px 32px rgba(0,109,63,0.05)",
           display: "flex", flexDirection: "column",
-          flexShrink: 0,
           transform: hov ? "translateY(-6px) scale(1.01)" : "translateY(0) scale(1)",
           transition: "transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s",
           overflow: "hidden",
@@ -436,30 +436,33 @@ export default function Pricing() {
           margin: 0;
         }
  
-        /* ── Cards row ── */
+        /* ── Cards row ──
+           Cards are flex-basis-0 flex items (flex: 1 1 0) with
+           min-width: 0 so they GROW/SHRINK to always fit in one row —
+           no horizontal scrolling, no overflow on smaller desktops.
+           max-width on the card classes below just stops them from
+           getting comically wide on ultra-wide screens. */
         .pricing-cards {
           display: flex;
           flex-direction: row;
+          flex-wrap: nowrap;
           gap: 24px;
           justify-content: center;
-          justify-content: safe center; /* prevents the overflow-clips-the-first-item bug in browsers that support it; falls back to plain center above */
-          align-items: center;
-          overflow-x: auto;
-          scroll-behavior: smooth;
-          scroll-snap-type: x mandatory;
-          -webkit-overflow-scrolling: touch;
+          align-items: stretch;
+          width: 100%;
         }
  
         .pricing-card-standard,
         .pricing-card-middle {
-          width: 396px;
-          height: 628px;
-          scroll-snap-align: start;
+          flex: 1 1 0;
+          min-width: 0;
+          max-width: 420px;
+          height: auto;
         }
  
         .pricing-card-middle {
-          width: 434px;
-          height: auto;
+          flex: 1.12 1 0;
+          max-width: 460px;
         }
  
         /* Standard card's own outer padding (was inline px, now
@@ -532,9 +535,11 @@ export default function Pricing() {
             text-align: left;
           }
  
+          /* Cards keep flexing (flex: 1 1 0 from the base rule still
+             applies) — just cap how wide they can get at this size. */
           .pricing-card-standard,
           .pricing-card-middle {
-            width: 350px;
+            max-width: 340px;
           }
         }
  
@@ -576,15 +581,16 @@ export default function Pricing() {
           .pricing-cards {
             flex-direction: column;
             gap: 20px;
-            overflow-x: unset;
-            scroll-snap-type: none;
           }
  
+          /* Stack full-width — override the flex-basis-0 growth rule
+             from above so each card takes the full row on its own. */
           .pricing-card-standard,
           .pricing-card-middle {
+            flex: 1 1 auto;
             width: 100%;
+            max-width: 100%;
             height: auto;
-            scroll-snap-align: unset;
           }
  
           .pricing-card-standard {
