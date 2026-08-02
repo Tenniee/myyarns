@@ -2,7 +2,7 @@
  
 import Image from "next/image";
 import { useState } from "react";
-import FeaturesMainImage from '../../assets/Features-image.svg';
+import FeaturesMainImage from '../../assets/Features-mainImage.webp';
 import FeaturesIcon1 from '../../assets/FeaturesIcon1.svg';
 import FeaturesIcon2 from '../../assets/FeaturesIcon2.svg';
 import FeaturesIcon3 from '../../assets/FeaturesIcon3.svg';

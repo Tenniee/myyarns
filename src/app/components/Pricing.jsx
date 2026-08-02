@@ -163,9 +163,8 @@ function PricingCard({ plan }) {
           }}
         >
           {/* Most Popular pill */}
-          <div style={{
+          <div className="pricing-popular-pill" style={{
             position: "absolute",
-            top: 10,
             left: "50%",
             transform: "translateX(-50%)",
             zIndex: 10,
@@ -498,6 +497,11 @@ export default function Pricing() {
           margin-bottom: 24px;
         }
  
+        /* "Most Popular" pill's vertical position — desktop default */
+        .pricing-popular-pill {
+          top: -16px;
+        }
+ 
         /* ════════════════════════════════════════════════════════
            RESPONSIVE BREAKPOINTS
         ════════════════════════════════════════════════════════ */
@@ -606,6 +610,12 @@ export default function Pricing() {
  
           .pricing-cta-wrap {
             margin-bottom: 16px;
+          }
+ 
+          /* Mobile-only: push the pill further up so it sits right at
+             the top edge of the box instead of the desktop -16px */
+          .pricing-popular-pill {
+            top: -28px;
           }
         }
  
