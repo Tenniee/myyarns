@@ -11,7 +11,7 @@ const LOGO_TEXT = "MyYarns";
 const SIGNIN_HREF = "/signin";
 const TERMS_HREF = "/terms";
 const PRIVACY_HREF = "/privacy";
-const SHOWCASE_IMAGE = "https://placehold.co/300x225/0B3D24/FFFFFF?text=Dashboard+Preview"; // ← swap for a real product screenshot
+const SHOWCASE_IMAGE = "../../assets/SignUpMainImage.svg"; // ← swap for a real product screenshot
 const TRUST_LOGO_IMAGE = "https://placehold.co/96x36/FFFFFF/135B36?text=Logos"; // ← swap for a real avatar/logo strip
 const ON_SUBMIT = async ({ fullName, email, password }) => {
   // ← wire up your real signup call here
@@ -316,10 +316,12 @@ export default function SignUp() {
                   boxSizing: "border-box",
                 }}
               >
-                <img
+                <Image
                   src={SHOWCASE_IMAGE}
                   alt="Dashboard preview"
                   style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 8 }}
+                  width={100}
+                  height={100}
                 />
               </div>
  

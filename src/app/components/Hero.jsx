@@ -49,7 +49,7 @@ const STACKED_CIRCLE_IMGS = [
 // Engage. Grow."). Increase to push it further down, decrease (or
 // use 0) to align it flush with the top of the headline.
 // ═══════════════════════════════════════════════════════════════════
-const RIGHT_COL_TOP_OFFSET = -0;
+const RIGHT_COL_TOP_OFFSET = -20;
  
 // ═══════════════════════════════════════════════════════════════════
 // POSITIONS — change numbers here to move any element

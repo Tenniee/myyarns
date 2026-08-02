@@ -442,6 +442,7 @@ export default function Pricing() {
           flex-direction: row;
           gap: 24px;
           justify-content: center;
+          justify-content: safe center; /* prevents the overflow-clips-the-first-item bug in browsers that support it; falls back to plain center above */
           align-items: center;
           overflow-x: auto;
           scroll-behavior: smooth;
