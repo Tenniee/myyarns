@@ -5,7 +5,7 @@ import { useState } from "react";
 import FirstImage from '../../assets/InsightImage1.svg';
 import SecondImage from '../../assets/InsightImage2.svg';
 import ThirdImage from '../../assets/InsightImage3.svg';
- 
+import Reveal from "./Reveal";
 // ═══════════════════════════════════════════════════════════════════
 // BLOG CARDS DATA — edit here
 // ═══════════════════════════════════════════════════════════════════
@@ -54,95 +54,97 @@ function BlogCard({ image, tag, title, excerpt, link }) {
   const [readHov, setReadHov] = useState(false);
  
   return (
-    <div
-      className="blog-card"
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => setHov(false)}
-      style={{
-        borderRadius: 24,
-        border: "1px solid rgba(187,203,188,0.30)",
-        padding: 32,
-        background: "rgba(255,255,255,0.75)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        display: "flex",
-        flexDirection: "column",
-        gap: 0,
-        cursor: "default",
-        transform: hov ? "translateY(-6px) scale(1.01)" : "translateY(0) scale(1)",
-        boxShadow: hov
-          ? "0 24px 48px rgba(0,0,0,0.10)"
-          : "0 2px 8px rgba(0,0,0,0.04)",
-        transition: "transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease",
-      }}
-    >
-      {/* Image + meta block */}
-      <div style={{ paddingBottom: 24 }}>
-        {/* Image */}
-        <div style={{
-          width: "100%", height: 170, borderRadius: 16,
-          overflow: "hidden", background: "#e8f5f0",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          color: "#bbb", fontSize: 13, marginBottom: 12,
-          position: "relative",
-        }}>
-          {image
-            ? <Image src={image} fill style={{ objectFit: "cover" }} alt={title} />
-            : "Image goes here"
-          }
-        </div>
- 
-        {/* Tag */}
-        <p style={{
-          fontFamily: "'Nunito', sans-serif",
-          fontWeight: 700, fontSize: 12,
-          lineHeight: "12px", letterSpacing: "0.6px",
-          color: "#25D16F", margin: 0,
-        }}>{tag}</p>
-      </div>
- 
-      {/* Title */}
-      <h3 style={{
-        fontFamily: "'Nunito', sans-serif",
-        fontWeight: 700, fontSize: 24,
-        lineHeight: "33px", letterSpacing: 0,
-        color: "#191C1E", margin: "0 0 12px",
-        textAlign: "left",
-      }}>{title}</h3>
- 
-      {/* Excerpt */}
-      <p style={{
-        fontFamily: "'Nunito', sans-serif",
-        fontWeight: 400, fontSize: 16,
-        lineHeight: "24px", color: "#3C4A3F",
-        margin: "0 0 20px", flex: 1,
-      }}>{excerpt}</p>
- 
-      {/* Read full story */}
-      <button
-        onMouseEnter={() => setReadHov(true)}
-        onMouseLeave={() => setReadHov(false)}
-        onClick={() => window.location.href = link}
+    <Reveal>
+      <div
+        className="blog-card"
+        onMouseEnter={() => setHov(true)}
+        onMouseLeave={() => setHov(false)}
         style={{
-          display: "inline-flex", alignItems: "center", gap: 6,
-          background: "none", border: "none", padding: 0,
-          cursor: "pointer",
-          fontFamily: "'Nunito', sans-serif",
-          fontWeight: 700, fontSize: 16,
-          lineHeight: "24px", color: "#25D16F",
-          alignSelf: "flex-start",
+          borderRadius: 24,
+          border: "1px solid rgba(187,203,188,0.30)",
+          padding: 32,
+          background: "rgba(255,255,255,0.75)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          display: "flex",
+          flexDirection: "column",
+          gap: 0,
+          cursor: "default",
+          transform: hov ? "translateY(-6px) scale(1.01)" : "translateY(0) scale(1)",
+          boxShadow: hov
+            ? "0 24px 48px rgba(0,0,0,0.10)"
+            : "0 2px 8px rgba(0,0,0,0.04)",
+          transition: "transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease",
         }}
       >
-        Read Full Story
-        <span style={{
-          display: "inline-flex",
-          transform: readHov ? "translateX(4px)" : "translateX(0)",
-          transition: "transform 0.22s cubic-bezier(0.34,1.56,0.64,1)",
-        }}>
-          <ArrowRight color="#25D16F" size={16} />
-        </span>
-      </button>
-    </div>
+        {/* Image + meta block */}
+        <div style={{ paddingBottom: 24 }}>
+          {/* Image */}
+          <div style={{
+            width: "100%", height: 170, borderRadius: 16,
+            overflow: "hidden", background: "#e8f5f0",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            color: "#bbb", fontSize: 13, marginBottom: 12,
+            position: "relative",
+          }}>
+            {image
+              ? <Image src={image} fill style={{ objectFit: "cover" }} alt={title} />
+              : "Image goes here"
+            }
+          </div>
+  
+          {/* Tag */}
+          <p style={{
+            fontFamily: "'Nunito', sans-serif",
+            fontWeight: 700, fontSize: 12,
+            lineHeight: "12px", letterSpacing: "0.6px",
+            color: "#25D16F", margin: 0,
+          }}>{tag}</p>
+        </div>
+  
+        {/* Title */}
+        <h3 style={{
+          fontFamily: "'Nunito', sans-serif",
+          fontWeight: 700, fontSize: 24,
+          lineHeight: "33px", letterSpacing: 0,
+          color: "#191C1E", margin: "0 0 12px",
+          textAlign: "left",
+        }}>{title}</h3>
+  
+        {/* Excerpt */}
+        <p style={{
+          fontFamily: "'Nunito', sans-serif",
+          fontWeight: 400, fontSize: 16,
+          lineHeight: "24px", color: "#3C4A3F",
+          margin: "0 0 20px", flex: 1,
+        }}>{excerpt}</p>
+  
+        {/* Read full story */}
+        <button
+          onMouseEnter={() => setReadHov(true)}
+          onMouseLeave={() => setReadHov(false)}
+          onClick={() => window.location.href = link}
+          style={{
+            display: "inline-flex", alignItems: "center", gap: 6,
+            background: "none", border: "none", padding: 0,
+            cursor: "pointer",
+            fontFamily: "'Nunito', sans-serif",
+            fontWeight: 700, fontSize: 16,
+            lineHeight: "24px", color: "#25D16F",
+            alignSelf: "flex-start",
+          }}
+        >
+          Read Full Story
+          <span style={{
+            display: "inline-flex",
+            transform: readHov ? "translateX(4px)" : "translateX(0)",
+            transition: "transform 0.22s cubic-bezier(0.34,1.56,0.64,1)",
+          }}>
+            <ArrowRight color="#25D16F" size={16} />
+          </span>
+        </button>
+      </div>
+    </Reveal>
   );
 }
  

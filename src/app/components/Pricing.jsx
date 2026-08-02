@@ -1,6 +1,7 @@
 "use client";
  
 import { useState } from "react";
+import Reveal from './Reveal';
  
 // ═══════════════════════════════════════════════════════════════════
 // PLAN DATA
@@ -123,6 +124,17 @@ function FeatureIcon({ type, color }) {
  
 // ═══════════════════════════════════════════════════════════════════
 // PRICING CARD
+//
+// Height on mobile is controlled by CSS classes (not inline pixel
+// values) so the responsive rules in the <style> block below can
+// actually shrink padding/gaps/min-height at the 768px breakpoint:
+//   .pricing-middle-inner  → middle card's bordered content box
+//                            (margin, padding, min-height)
+//   .pricing-feature-list  → vertical gap between feature rows
+//   .pricing-price-row     → space under the price
+//   .pricing-cta-wrap      → space under the CTA button
+// Tweak the numbers inside the @media (max-width: 768px) block to
+// adjust further.
 // ═══════════════════════════════════════════════════════════════════
 function PricingCard({ plan }) {
   const [hov, setHov] = useState(false);
@@ -131,227 +143,225 @@ function PricingCard({ plan }) {
  
   if (isMiddle) {
     return (
-      <div
-        onMouseEnter={() => setHov(true)}
-        onMouseLeave={() => setHov(false)}
-        className="pricing-card-middle"
-        style={{
-          borderRadius: 40,
-          background: "white",
-          flexShrink: 0,
-          transform: hov ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)",
-          boxShadow: hov
-            ? "0 32px 64px rgba(0,109,63,0.30)"
-            : "0 8px 32px rgba(0,109,63,0.18)",
-          transition: "transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s",
-          position: "relative",
-          zIndex: hov ? 10 : 2,
-          overflow: "visible",
-        }}
-      >
-        {/* Most Popular pill */}
-        <div style={{
-          position: "absolute",
-          top: 10,
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 10,
-          borderRadius: 9999, background: "#25D16F",
-          padding: "6px 24px", display: "inline-flex",
-          whiteSpace: "nowrap",
-        }}>
-          <span style={{
-            fontFamily: "'Nunito', sans-serif",
-            fontWeight: 700, fontSize: 12, lineHeight: "16px",
-            letterSpacing: "1.2px", textTransform: "uppercase", color: "white",
-          }}>Most Popular</span>
-        </div>
- 
-        {/* Inner border box */}
-        <div style={{
-          margin: "24px 16px",
-          borderRadius: 32,
-          border: "2px solid #25D16F",
-          padding: "36px 32px 32px",
-          display: "flex",
-          flexDirection: "column",
-          gap: 1.5,
-          minHeight: 648,
-        }}>
- 
-          {/* Comparison */}
-          <p style={{
-            fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
-            lineHeight: "15px", letterSpacing: "0.5px", textTransform: "uppercase",
-            color: "rgba(0,109,63,0.70)", margin: "0 0 8px",
-          }}>{plan.comparison}</p>
- 
-          {/* Plan name */}
-          <p style={{
-            fontFamily: "'Nunito', sans-serif", fontWeight: 700,
-            fontSize: 24, lineHeight: "31.2px", color: "#191C1E", margin: "0 0 4px",
-          }}>{plan.name}</p>
- 
-          {/* Price */}
-          <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 20 }}>
-            <span style={{
-              fontFamily: "'Nunito', sans-serif", fontWeight: 800,
-              fontSize: 36, lineHeight: "40px", color: "#25D16F",
-            }}>{plan.price}</span>
-            <span style={{
-              fontFamily: "'Nunito', sans-serif", fontWeight: 500,
-              fontSize: 16, lineHeight: "24px", color: "#3C4A3F",
-            }}>{plan.period}</span>
-          </div>
- 
-          {/* Button */}
+      <Reveal>
+        <div
+          onMouseEnter={() => setHov(true)}
+          onMouseLeave={() => setHov(false)}
+          className="pricing-card-middle"
+          style={{
+            borderRadius: 40,
+            background: "white",
+            flexShrink: 0,
+            transform: hov ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)",
+            boxShadow: hov
+              ? "0 32px 64px rgba(0,109,63,0.30)"
+              : "0 8px 32px rgba(0,109,63,0.18)",
+            transition: "transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s",
+            position: "relative",
+            zIndex: hov ? 10 : 2,
+            overflow: "visible",
+          }}
+        >
+          {/* Most Popular pill */}
           <div style={{
-            borderRadius: 9999,
-            background: "rgba(255,255,255,0.20)",
-            padding: 4,
-            marginBottom: 24,
-            boxShadow: "0 4px 6px -4px rgba(0,109,63,0.20), 0 10px 15px -3px rgba(0,109,63,0.20)",
+            position: "absolute",
+            top: 10,
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 10,
+            borderRadius: 9999, background: "#25D16F",
+            padding: "6px 24px", display: "inline-flex",
+            whiteSpace: "nowrap",
           }}>
-            <button
-              onMouseEnter={() => setBtnHov(true)}
-              onMouseLeave={() => setBtnHov(false)}
-              style={{
-                width: "100%", borderRadius: 9999, border: "none",
-                padding: "16px 0", cursor: "pointer",
-                display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-                background: "#25D16F",
-                fontFamily: "'Nunito', sans-serif", fontWeight: 700,
-                fontSize: 16, color: "white",
-                transform: btnHov ? "scale(1.01)" : "scale(1)",
-                transition: "transform 0.15s",
-              }}
-            >
-              {plan.btnLabel}
-              <span style={{
-                transform: btnHov ? "translateX(4px)" : "translateX(0)",
-                transition: "transform 0.2s cubic-bezier(0.34,1.56,0.64,1)",
-                display: "inline-flex",
-              }}>
-                <ArrowRight color="white" />
-              </span>
-            </button>
+            <span style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontWeight: 700, fontSize: 12, lineHeight: "16px",
+              letterSpacing: "1.2px", textTransform: "uppercase", color: "white",
+            }}>Most Popular</span>
           </div>
  
-          {/* Feature list */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            {plan.features.map((f, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <FeatureIcon type={f.type} color={plan.iconColor} />
+          {/* Inner border box */}
+          <div className="pricing-middle-inner" style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 1.5,
+          }}>
+ 
+            {/* Comparison */}
+            <p style={{
+              fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
+              lineHeight: "15px", letterSpacing: "0.5px", textTransform: "uppercase",
+              color: "rgba(0,109,63,0.70)", margin: "0 0 8px",
+            }}>{plan.comparison}</p>
+ 
+            {/* Plan name */}
+            <p style={{
+              fontFamily: "'Nunito', sans-serif", fontWeight: 700,
+              fontSize: 24, lineHeight: "31.2px", color: "#191C1E", margin: "0 0 4px",
+            }}>{plan.name}</p>
+ 
+            {/* Price */}
+            <div className="pricing-price-row" style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+              <span style={{
+                fontFamily: "'Nunito', sans-serif", fontWeight: 800,
+                fontSize: 36, lineHeight: "40px", color: "#25D16F",
+              }}>{plan.price}</span>
+              <span style={{
+                fontFamily: "'Nunito', sans-serif", fontWeight: 500,
+                fontSize: 16, lineHeight: "24px", color: "#3C4A3F",
+              }}>{plan.period}</span>
+            </div>
+ 
+            {/* Button */}
+            <div className="pricing-cta-wrap" style={{
+              borderRadius: 9999,
+              background: "rgba(255,255,255,0.20)",
+              padding: 4,
+              boxShadow: "0 4px 6px -4px rgba(0,109,63,0.20), 0 10px 15px -3px rgba(0,109,63,0.20)",
+            }}>
+              <button
+                onMouseEnter={() => setBtnHov(true)}
+                onMouseLeave={() => setBtnHov(false)}
+                style={{
+                  width: "100%", borderRadius: 9999, border: "none",
+                  padding: "16px 0", cursor: "pointer",
+                  display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+                  background: "#25D16F",
+                  fontFamily: "'Nunito', sans-serif", fontWeight: 700,
+                  fontSize: 16, color: "white",
+                  transform: btnHov ? "scale(1.01)" : "scale(1)",
+                  transition: "transform 0.15s",
+                }}
+              >
+                {plan.btnLabel}
                 <span style={{
-                  fontFamily: "'Nunito', sans-serif", fontWeight: 400,
-                  fontSize: 16, lineHeight: "24px",
-                  color: f.dim ? "rgba(255,255,255,0.45)" : "#191C1E",
-                }}>{f.text}</span>
-              </div>
-            ))}
+                  transform: btnHov ? "translateX(4px)" : "translateX(0)",
+                  transition: "transform 0.2s cubic-bezier(0.34,1.56,0.64,1)",
+                  display: "inline-flex",
+                }}>
+                  <ArrowRight color="white" />
+                </span>
+              </button>
+            </div>
+ 
+            {/* Feature list */}
+            <div className="pricing-feature-list" style={{ display: "flex", flexDirection: "column" }}>
+              {plan.features.map((f, i) => (
+                <div key={i} className="pricing-feature-item" style={{ display: "flex", alignItems: "center" }}>
+                  <FeatureIcon type={f.type} color={plan.iconColor} />
+                  <span style={{
+                    fontFamily: "'Nunito', sans-serif", fontWeight: 400,
+                    fontSize: 16, lineHeight: "24px",
+                    color: f.dim ? "rgba(255,255,255,0.45)" : "#191C1E",
+                  }}>{f.text}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </Reveal>
     );
   }
  
   // Standard card
   return (
-    <div
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => setHov(false)}
-      className="pricing-card-standard"
-      style={{
-        borderRadius: 40,
-        border: "1px solid white",
-        padding: 32,
-        background: "rgba(255,255,255,0.70)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        boxShadow: hov
-          ? "0 24px 48px rgba(0,109,63,0.12)"
-          : "0 8px 32px rgba(0,109,63,0.05)",
-        display: "flex", flexDirection: "column",
-        flexShrink: 0,
-        transform: hov ? "translateY(-6px) scale(1.01)" : "translateY(0) scale(1)",
-        transition: "transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s",
-        overflow: "hidden",
-      }}
-    >
-      {/* Comparison line(s) */}
-      <p style={{
-        fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
-        lineHeight: "15px", letterSpacing: "0.5px", textTransform: "uppercase",
-        color: "rgba(60,74,63,0.60)", margin: "0 0 4px",
-      }}>{plan.comparison}</p>
- 
-      {plan.savingsTag && (
-        <p style={{
-          fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
-          lineHeight: "15px", letterSpacing: "-0.25px",
-          color: "#006D3F", margin: "0 0 8px",
-        }}>{plan.savingsTag}</p>
-      )}
- 
-      {/* Plan name */}
-      <p style={{
-        fontFamily: "'Nunito', sans-serif", fontWeight: 700,
-        fontSize: 24, lineHeight: "31.2px", color: "#191C1E", margin: "0 0 4px",
-      }}>{plan.name}</p>
- 
-      {/* Price */}
-      <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 20 }}>
-        <span style={{
-          fontFamily: "'Nunito', sans-serif", fontWeight: 800,
-          fontSize: 30, lineHeight: "36px", color: "#191C1E",
-        }}>{plan.price}</span>
-        <span style={{
-          fontFamily: "'Nunito', sans-serif", fontWeight: 500,
-          fontSize: 16, lineHeight: "24px", color: "#3C4A3F",
-        }}>{plan.period}</span>
-      </div>
- 
-      {/* Button */}
-      <button
-        onMouseEnter={() => setBtnHov(true)}
-        onMouseLeave={() => setBtnHov(false)}
+    <Reveal delay={plan.id === "pro" ? 100 : 200}>
+      <div
+        onMouseEnter={() => setHov(true)}
+        onMouseLeave={() => setHov(false)}
+        className="pricing-card-standard"
         style={{
-          width: "100%", borderRadius: 9999,
-          border: "2px solid rgba(108,123,110,0.20)",
-          padding: "16px 0", cursor: "pointer", marginBottom: 24,
-          display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-          background: btnHov ? "#25D16F" : "transparent",
-          fontFamily: "'Nunito', sans-serif", fontWeight: 700,
-          fontSize: 16,
-          color: btnHov ? "white" : "#191C1E",
-          transition: "background 0.2s, color 0.2s, transform 0.15s",
-          transform: btnHov ? "scale(1.01)" : "scale(1)",
+          borderRadius: 40,
+          border: "1px solid white",
+          background: "rgba(255,255,255,0.70)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          boxShadow: hov
+            ? "0 24px 48px rgba(0,109,63,0.12)"
+            : "0 8px 32px rgba(0,109,63,0.05)",
+          display: "flex", flexDirection: "column",
+          flexShrink: 0,
+          transform: hov ? "translateY(-6px) scale(1.01)" : "translateY(0) scale(1)",
+          transition: "transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s",
+          overflow: "hidden",
         }}
       >
-        {plan.btnLabel}
-        <span style={{
-          transform: btnHov ? "translateX(4px)" : "translateX(0)",
-          transition: "transform 0.2s cubic-bezier(0.34,1.56,0.64,1)",
-          display: "inline-flex",
-        }}>
-          <ArrowRight color={btnHov ? "white" : "#191C1E"} />
-        </span>
-      </button>
+        {/* Comparison line(s) */}
+        <p style={{
+          fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
+          lineHeight: "15px", letterSpacing: "0.5px", textTransform: "uppercase",
+          color: "rgba(60,74,63,0.60)", margin: "0 0 4px",
+        }}>{plan.comparison}</p>
  
-      {/* Feature list */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-        {plan.features.map((f, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <FeatureIcon type={f.type} color={plan.iconColor} />
-            <span style={{
-              fontFamily: "'Nunito', sans-serif", fontWeight: 400,
-              fontSize: 16, lineHeight: "24px",
-              color: f.dim ? "rgba(60,74,63,0.45)" : "#3C4A3F",
-            }}>{f.text}</span>
-          </div>
-        ))}
+        {plan.savingsTag && (
+          <p style={{
+            fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
+            lineHeight: "15px", letterSpacing: "-0.25px",
+            color: "#006D3F", margin: "0 0 8px",
+          }}>{plan.savingsTag}</p>
+        )}
+ 
+        {/* Plan name */}
+        <p style={{
+          fontFamily: "'Nunito', sans-serif", fontWeight: 700,
+          fontSize: 24, lineHeight: "31.2px", color: "#191C1E", margin: "0 0 4px",
+        }}>{plan.name}</p>
+ 
+        {/* Price */}
+        <div className="pricing-price-row" style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+          <span style={{
+            fontFamily: "'Nunito', sans-serif", fontWeight: 800,
+            fontSize: 30, lineHeight: "36px", color: "#191C1E",
+          }}>{plan.price}</span>
+          <span style={{
+            fontFamily: "'Nunito', sans-serif", fontWeight: 500,
+            fontSize: 16, lineHeight: "24px", color: "#3C4A3F",
+          }}>{plan.period}</span>
+        </div>
+ 
+        {/* Button */}
+        <button
+          className="pricing-cta-wrap"
+          onMouseEnter={() => setBtnHov(true)}
+          onMouseLeave={() => setBtnHov(false)}
+          style={{
+            width: "100%", borderRadius: 9999,
+            border: "2px solid rgba(108,123,110,0.20)",
+            padding: "16px 0", cursor: "pointer",
+            display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+            background: btnHov ? "#25D16F" : "transparent",
+            fontFamily: "'Nunito', sans-serif", fontWeight: 700,
+            fontSize: 16,
+            color: btnHov ? "white" : "#191C1E",
+            transition: "background 0.2s, color 0.2s, transform 0.15s",
+            transform: btnHov ? "scale(1.01)" : "scale(1)",
+          }}
+        >
+          {plan.btnLabel}
+          <span style={{
+            transform: btnHov ? "translateX(4px)" : "translateX(0)",
+            transition: "transform 0.2s cubic-bezier(0.34,1.56,0.64,1)",
+            display: "inline-flex",
+          }}>
+            <ArrowRight color={btnHov ? "white" : "#191C1E"} />
+          </span>
+        </button>
+ 
+        {/* Feature list */}
+        <div className="pricing-feature-list" style={{ display: "flex", flexDirection: "column" }}>
+          {plan.features.map((f, i) => (
+            <div key={i} className="pricing-feature-item" style={{ display: "flex", alignItems: "center" }}>
+              <FeatureIcon type={f.type} color={plan.iconColor} />
+              <span style={{
+                fontFamily: "'Nunito', sans-serif", fontWeight: 400,
+                fontSize: 16, lineHeight: "24px",
+                color: f.dim ? "rgba(60,74,63,0.45)" : "#3C4A3F",
+              }}>{f.text}</span>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </Reveal>
   );
 }
  
@@ -452,6 +462,42 @@ export default function Pricing() {
           height: auto;
         }
  
+        /* Standard card's own outer padding (was inline px, now
+           class-driven so it can shrink on mobile) */
+        .pricing-card-standard {
+          padding: 32px;
+        }
+ 
+        /* Middle card's bordered inner content box */
+        .pricing-middle-inner {
+          margin: 24px 16px;
+          border-radius: 32px;
+          border: 2px solid #25D16F;
+          padding: 36px 32px 32px;
+          min-height: 648px;
+          box-sizing: border-box;
+        }
+ 
+        /* Gap between feature rows (both card types) */
+        .pricing-feature-list {
+          gap: 14px;
+        }
+ 
+        /* Gap between the feature icon and its label */
+        .pricing-feature-item {
+          gap: 12px;
+        }
+ 
+        /* Space under the price */
+        .pricing-price-row {
+          margin-bottom: 20px;
+        }
+ 
+        /* Space under the CTA button/pill */
+        .pricing-cta-wrap {
+          margin-bottom: 24px;
+        }
+ 
         /* ════════════════════════════════════════════════════════
            RESPONSIVE BREAKPOINTS
         ════════════════════════════════════════════════════════ */
@@ -487,7 +533,11 @@ export default function Pricing() {
           }
         }
  
-        /* ── Mobile: 768px and below ── */
+        /* ── Mobile: 768px and below ──
+           This is the block that actually shrinks the card height:
+           smaller outer/inner padding, a lower min-height on the
+           middle card (was a fixed 648px), and tighter gaps between
+           the feature rows. Adjust these numbers to taste. */
         @media (max-width: 768px) {
           .pricing-x-pad {
             padding-left: 24px;
@@ -531,6 +581,32 @@ export default function Pricing() {
             height: auto;
             scroll-snap-align: unset;
           }
+ 
+          .pricing-card-standard {
+            padding: 24px;
+          }
+ 
+          .pricing-middle-inner {
+            margin: 16px 12px;
+            padding: 24px 20px 20px;
+            min-height: auto;
+          }
+ 
+          .pricing-feature-list {
+            gap: 10px;
+          }
+ 
+          .pricing-feature-item {
+            gap: 8px;
+          }
+ 
+          .pricing-price-row {
+            margin-bottom: 14px;
+          }
+ 
+          .pricing-cta-wrap {
+            margin-bottom: 16px;
+          }
         }
  
         /* ── Small mobile: 480px and below ── */
@@ -552,9 +628,13 @@ export default function Pricing() {
             font-size: 13px;
           }
  
-          .pricing-card-standard,
-          .pricing-card-middle {
+          .pricing-card-standard {
             padding: 20px;
+          }
+ 
+          .pricing-middle-inner {
+            margin: 12px 10px;
+            padding: 20px 16px 16px;
           }
         }
       `}</style>

@@ -124,6 +124,43 @@ const KEYFRAMES = `
 // animation class assigned to each of the 7 squares (by index)
 const SQ_ANIM = ["fa","fb","fc","fd","fe","spin-once fb","spin-once fc"];
  
+// ═══════════════════════════════════════════════════════════════════
+// DEFAULT TRUST AVATARS ICON
+// Placeholder for TRUST_AVATARS_SRC — 3 overlapping circles in a
+// straight horizontal row (each one shifted right, 50% overlap onto
+// the previous), with a simple user glyph clipped inside each one.
+// Swap back to the real <Image src={TRUST_AVATARS_SRC} .../> whenever
+// real avatars are ready.
+// ═══════════════════════════════════════════════════════════════════
+function TrustAvatarsIcon({ width = 80, height = 48 }) {
+  const R  = 16;                 // circle radius
+  const cy = 24;                 // shared vertical center — same for all 3 = straight line
+  const centers = [16, 32, 48];  // cx of each circle, left → right, each later one drawn on top
+  const colors  = ["#006D3F", "#00D17E", "#25D16F"];
+ 
+  return (
+    <svg width={width} height={height} viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        {centers.map((cx, i) => (
+          <clipPath id={`trust-avatar-clip-${i}`} key={i}>
+            <circle cx={cx} cy={cy} r={R} />
+          </clipPath>
+        ))}
+      </defs>
+      {centers.map((cx, i) => (
+        <g key={i}>
+          <circle cx={cx} cy={cy} r={R} fill={colors[i]} stroke="white" strokeWidth={3} />
+          {/* default user glyph, clipped to the circle so the shoulders don't spill out */}
+          <g clipPath={`url(#trust-avatar-clip-${i})`}>
+            <circle cx={cx} cy={cy - 4} r={5.5} fill="white" fillOpacity={0.92} />
+            <path d={`M ${cx - 10} ${cy + 15} a 10 10 0 0 1 20 0 z`} fill="white" fillOpacity={0.92} />
+          </g>
+        </g>
+      ))}
+    </svg>
+  );
+}
+ 
 export default function Hero() {
   return (
     <>
@@ -152,7 +189,12 @@ export default function Hero() {
             {/* ══════════════════ LEFT ══════════════════ */}
             <div className="flex-1 flex flex-col gap-6 max-w-[580px]">
  
-              {/* Headline — same two-line layout on mobile and desktop */}
+              {/* Headline — same two-line layout on mobile and desktop.
+                  Everything that must sit on ONE line is grouped inside a
+                  single Reveal (Reveal renders as a block-level wrapper,
+                  so separate Reveals around each word forced separate
+                  lines — merging them back into one Reveal per line fixes
+                  that). */}
               <h1
                 style={{
                   fontFamily:    "'Nunito', sans-serif",
@@ -166,8 +208,6 @@ export default function Hero() {
               >
                 <Reveal delay={0}>
                   Manage.{" "}
-                </Reveal>
-                <Reveal delay={150}>
                   <span
                     style={{
                       background:           "linear-gradient(90deg, #00D17E 0%, #006D3F 100%)",
@@ -177,11 +217,9 @@ export default function Hero() {
                     }}
                   >
                     Engage.
-                  </span>
+                  </span>{" "}
+                  Grow.
                 </Reveal>
-                {" "}
-                Grow.
-                <br />
                 <Reveal delay={300}>
                   All In One Place.
                 </Reveal>
@@ -280,19 +318,14 @@ export default function Hero() {
  
               {/* Trusted by strip */}
               <div className="flex items-center gap-4 mt-2">
-                <div className="relative shrink-0" style={{ width: 112, height: 48 }}>
-                  <Image
-                    src={TRUST_AVATARS_SRC}
-                    alt="Trusted team avatars"
-                    fill
-                    className="object-contain"
-                  />
+                <div className="relative shrink-0" style={{ width: 80, height: 48 }}>
+                  <TrustAvatarsIcon width={80} height={48} />
                 </div>
                 <p
                   style={{
                     fontFamily: "'Nunito', sans-serif",
-                    fontSize: 'clamp(9px, 1.0vh, 16px)',
-                    lineHeight: "25.6px",
+                    fontSize: "clamp(13px, 1.3vw, 18px)",
+                    lineHeight: 1.5,
                     color:      "#0F0D0A",
                     margin:     0,
                   }}

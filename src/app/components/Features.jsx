@@ -18,6 +18,7 @@ import APILogo2 from '../../assets/APILogo2.svg';
 import APILogo3 from '../../assets/APILogo3.svg';
 import APILogo4 from '../../assets/APILogo4.svg';
 import APILogo5 from '../../assets/APILogo5.svg';
+import Reveal from "./Reveal";
  
 const logos = [APILogo1, APILogo2, APILogo3, APILogo4];
  
@@ -661,10 +662,12 @@ export default function Features() {
           </PlainPill>
  
           {/* Heading */}
-          <h2 className="section2-heading">
-            Everything to manage{" "}
-            <span style={{ color: "#25D16F" }}>social media at scale</span>
-          </h2>
+          <Reveal delay={200}>
+            <h2 className="section2-heading">
+              Everything to manage{" "}
+              <span style={{ color: "#25D16F" }}>social media at scale</span>
+            </h2>
+          </Reveal>
  
           {/* Subtext */}
           <p className="section2-subtext">
@@ -685,54 +688,56 @@ export default function Features() {
             {/* Card 1 — Unified Inbox */}
             <div className="card-1">
               {/* Left text */}
-              <div className="card-left">
-                {/* Icon + pill row */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <div className="card-icon" style={{
-                    width: 48, height: 48, borderRadius: 12,
-                    background: "rgba(0,209,126,0.2)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                  }}>
-                    <ChatIcon size={22} />
+              <Reveal>
+                <div className="card-left">
+                  {/* Icon + pill row */}
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <div className="card-icon" style={{
+                      width: 48, height: 48, borderRadius: 12,
+                      background: "rgba(0,209,126,0.2)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                    }}>
+                      <ChatIcon size={22} />
+                    </div>
+                    <PlainPill bg="#9EF3DA" border="none">
+                      <span style={{
+                        fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
+                        lineHeight: "15px", letterSpacing: "-0.5px", textTransform: "uppercase",
+                        color: "#10715E",
+                      }}>Most Loved</span>
+                    </PlainPill>
                   </div>
-                  <PlainPill bg="#9EF3DA" border="none">
+  
+                  <h3 className="card-title">Unified Social Inbox</h3>
+  
+                  <p className="card-text">
+                    Every DM, comment and mention from Instagram, Facebook, WhatsApp,
+                    LinkedIn and Twitter lands in one place. No more switching tabs.
+                  </p>
+  
+                  {/* Learn more */}
+                  <button
+                    onMouseEnter={() => setLearnHovered(true)}
+                    onMouseLeave={() => setLearnHovered(false)}
+                    style={{
+                      display: "inline-flex", alignItems: "center", gap: 6,
+                      background: "none", border: "none", padding: 0, cursor: "pointer",
+                      fontFamily: "'Nunito', sans-serif", fontWeight: 700,
+                      fontSize: 16, lineHeight: "24px", color: "#1A5C38",
+                      marginTop: "auto",
+                    }}
+                  >
+                    Learn more
                     <span style={{
-                      fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
-                      lineHeight: "15px", letterSpacing: "-0.5px", textTransform: "uppercase",
-                      color: "#10715E",
-                    }}>Most Loved</span>
-                  </PlainPill>
+                      display: "inline-flex",
+                      transform: learnHovered ? "translateX(4px)" : "translateX(0)",
+                      transition: "transform 0.2s cubic-bezier(0.34,1.56,0.64,1)",
+                    }}>
+                      <ArrowRight />
+                    </span>
+                  </button>
                 </div>
- 
-                <h3 className="card-title">Unified Social Inbox</h3>
- 
-                <p className="card-text">
-                  Every DM, comment and mention from Instagram, Facebook, WhatsApp,
-                  LinkedIn and Twitter lands in one place. No more switching tabs.
-                </p>
- 
-                {/* Learn more */}
-                <button
-                  onMouseEnter={() => setLearnHovered(true)}
-                  onMouseLeave={() => setLearnHovered(false)}
-                  style={{
-                    display: "inline-flex", alignItems: "center", gap: 6,
-                    background: "none", border: "none", padding: 0, cursor: "pointer",
-                    fontFamily: "'Nunito', sans-serif", fontWeight: 700,
-                    fontSize: 16, lineHeight: "24px", color: "#1A5C38",
-                    marginTop: "auto",
-                  }}
-                >
-                  Learn more
-                  <span style={{
-                    display: "inline-flex",
-                    transform: learnHovered ? "translateX(4px)" : "translateX(0)",
-                    transition: "transform 0.2s cubic-bezier(0.34,1.56,0.64,1)",
-                  }}>
-                    <ArrowRight />
-                  </span>
-                </button>
-              </div>
+              </Reveal>
  
               {/* Right image slot */}
               <div className="card-right">
@@ -741,268 +746,276 @@ export default function Features() {
             </div>
  
             {/* Card 2 — Team Collaboration */}
-            <div className="card-2">
-              {/* Icon */}
-              <div className="card-icon" style={{
-                width: 48, height: 48, borderRadius: 12,
-                background: "#A7B8D533",
-                display: "flex", alignItems: "center", justifyContent: "center",
-              }}>
-                <Image src={TeamCollabIcon} width={30} height={30} alt="" />
+            <Reveal>
+              <div className="card-2">
+                {/* Icon */}
+                <div className="card-icon" style={{
+                  width: 48, height: 48, borderRadius: 12,
+                  background: "#A7B8D533",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <Image src={TeamCollabIcon} width={30} height={30} alt="" />
+                </div>
+  
+                <h3 className="card-title">Team Collaboration</h3>
+  
+                <p className="card-text">
+                  Assign conversations, add internal
+                  notes, and set SLA timers. Everyone
+                  works from the same live environment.
+                </p>
+  
+                {/* Image slot — hidden on tablets/mobile */}
+                <div className="card-2-image">
+                  <Image src={TeamCollab} width={300} height={300} alt="" />
+                </div>
               </div>
- 
-              <h3 className="card-title">Team Collaboration</h3>
- 
-              <p className="card-text">
-                Assign conversations, add internal
-                notes, and set SLA timers. Everyone
-                works from the same live environment.
-              </p>
- 
-              {/* Image slot — hidden on tablets/mobile */}
-              <div className="card-2-image">
-                <Image src={TeamCollab} width={300} height={300} alt="" />
-              </div>
-            </div>
+            </Reveal>
           </div>
  
           {/* ── Row 2: Card 3 + Card 4 ── */}
           <div className="cards-row">
             {/* Card 3 — AI Auto-Replies */}
-            <div className="card-3">
-              {/* Decorative circles */}
-              <div aria-hidden style={{
-                position: "absolute",
-                right: CIRCLE_RIGHT_SIDE.right,
-                bottom: CIRCLE_RIGHT_SIDE.bottom,
-                width: CIRCLE_RIGHT_SIDE.size,
-                height: CIRCLE_RIGHT_SIDE.size,
-                borderRadius: "9999px",
-                background: "#191C1E", opacity: 0.08,
-                pointerEvents: "none",
-              }} />
-              <div aria-hidden style={{
-                position: "absolute",
-                right: CIRCLE_BOTTOM_RIGHT.right,
-                bottom: CIRCLE_BOTTOM_RIGHT.bottom,
-                width: CIRCLE_BOTTOM_RIGHT.size,
-                height: CIRCLE_BOTTOM_RIGHT.size,
-                borderRadius: "9999px",
-                background: "#191C1E", opacity: 0.06,
-                pointerEvents: "none",
-              }} />
- 
-              {/* Icon + pill row */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div className="card-icon" style={{
-                  width: 48, height: 48, borderRadius: 12,
-                  background: "rgba(0,209,126,0.1)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
-                  <Image src={Robot} width={30} height={30} alt="" />
-                </div>
-                <PlainPill bg="rgba(0,209,126,0.1)" border="none">
-                  <span style={{
-                    fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
-                    lineHeight: "15px", letterSpacing: "-0.5px", textTransform: "uppercase",
-                    color: "#1A5C38",
-                  }}>Saves 10hrs/week</span>
-                </PlainPill>
-              </div>
- 
-              <h3 className="card-title">AI Auto-Replies</h3>
- 
-              <p className="card-text">
-                Train your bot on FAQs, prices and policies. It handles 70%+ of
-                enquiries automatically around the clock, with human handover for complex queries.
-              </p>
- 
-              {/* Feature tags */}
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                {["24/7 Availability", "FAQ Ready"].map((tag) => (
-                  <div key={tag} className="feature-tag" style={{
-                    display: "inline-flex", alignItems: "center", gap: 8,
-                    borderRadius: 8, border: "1px solid rgba(187,203,188,0.3)",
-                    padding: "8px 16px", background: "white",
+            <Reveal>
+              <div className="card-3">
+                {/* Decorative circles */}
+                <div aria-hidden style={{
+                  position: "absolute",
+                  right: CIRCLE_RIGHT_SIDE.right,
+                  bottom: CIRCLE_RIGHT_SIDE.bottom,
+                  width: CIRCLE_RIGHT_SIDE.size,
+                  height: CIRCLE_RIGHT_SIDE.size,
+                  borderRadius: "9999px",
+                  background: "#191C1E", opacity: 0.08,
+                  pointerEvents: "none",
+                }} />
+                <div aria-hidden style={{
+                  position: "absolute",
+                  right: CIRCLE_BOTTOM_RIGHT.right,
+                  bottom: CIRCLE_BOTTOM_RIGHT.bottom,
+                  width: CIRCLE_BOTTOM_RIGHT.size,
+                  height: CIRCLE_BOTTOM_RIGHT.size,
+                  borderRadius: "9999px",
+                  background: "#191C1E", opacity: 0.06,
+                  pointerEvents: "none",
+                }} />
+  
+                {/* Icon + pill row */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <div className="card-icon" style={{
+                    width: 48, height: 48, borderRadius: 12,
+                    background: "rgba(0,209,126,0.1)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
                   }}>
-                    <CheckCircle />
-                    <span style={{
-                      fontFamily: "'Nunito', sans-serif", fontWeight: 700,
-                      fontSize: 15, lineHeight: "16px", color: "#191C1E",
-                    }}>{tag}</span>
+                    <Image src={Robot} width={30} height={30} alt="" />
                   </div>
-                ))}
+                  <PlainPill bg="rgba(0,209,126,0.1)" border="none">
+                    <span style={{
+                      fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 10,
+                      lineHeight: "15px", letterSpacing: "-0.5px", textTransform: "uppercase",
+                      color: "#1A5C38",
+                    }}>Saves 10hrs/week</span>
+                  </PlainPill>
+                </div>
+  
+                <h3 className="card-title">AI Auto-Replies</h3>
+  
+                <p className="card-text">
+                  Train your bot on FAQs, prices and policies. It handles 70%+ of
+                  enquiries automatically around the clock, with human handover for complex queries.
+                </p>
+  
+                {/* Feature tags */}
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  {["24/7 Availability", "FAQ Ready"].map((tag) => (
+                    <div key={tag} className="feature-tag" style={{
+                      display: "inline-flex", alignItems: "center", gap: 8,
+                      borderRadius: 8, border: "1px solid rgba(187,203,188,0.3)",
+                      padding: "8px 16px", background: "white",
+                    }}>
+                      <CheckCircle />
+                      <span style={{
+                        fontFamily: "'Nunito', sans-serif", fontWeight: 700,
+                        fontSize: 15, lineHeight: "16px", color: "#191C1E",
+                      }}>{tag}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </Reveal>
  
             {/* Card 4 — Analytics */}
-            <div className="card-4">
-              {/* Left text */}
-              <div className="card-left">
-                <div className="card-icon" style={{
-                  width: 48, height: 48, borderRadius: 12,
-                  background: "rgba(0,209,126,0.1)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
+            <Reveal>
+              <div className="card-4">
+                {/* Left text */}
+                <div className="card-left">
+                  <div className="card-icon" style={{
+                    width: 48, height: 48, borderRadius: 12,
+                    background: "rgba(0,209,126,0.1)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    <Image src={AnalyticsIcon} width={30} height={30} alt="" />
+                  </div>
+                  <h3 className="card-title">Advanced AI Analytics</h3>
+                  <p className="card-text">
+                    Response times, satisfaction
+                    scores, agent performance —
+                    all in real-time.
+                  </p>
+                </div>
+  
+                {/* Dark stat card — hidden on tablets/mobile */}
+                <div className="card-4-image dark-stat-card" style={{
+                  flexShrink: 0, width: 255, borderRadius: 12, background: "#2D3133",
+                  padding: "44px 24px", display: "flex", flexDirection: "column", gap: 24,
                 }}>
-                  <Image src={AnalyticsIcon} width={30} height={30} alt="" />
-                </div>
-                <h3 className="card-title">Advanced AI Analytics</h3>
-                <p className="card-text">
-                  Response times, satisfaction
-                  scores, agent performance —
-                  all in real-time.
-                </p>
-              </div>
- 
-              {/* Dark stat card — hidden on tablets/mobile */}
-              <div className="card-4-image dark-stat-card" style={{
-                flexShrink: 0, width: 255, borderRadius: 12, background: "#2D3133",
-                padding: "44px 24px", display: "flex", flexDirection: "column", gap: 24,
-              }}>
-                {/* Response time */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  <p style={{
-                    fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 12,
-                    lineHeight: "15px", letterSpacing: "1px", textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.6)", margin: 0,
-                  }}>Response Time</p>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <span style={{
-                      fontFamily: "'Nunito', sans-serif", fontWeight: 700,
-                      fontSize: 30, lineHeight: "36px", color: "white",
-                    }}>1.4m</span>
-                    <TrendDown />
-                    <span style={{
-                      fontFamily: "'Nunito', sans-serif", fontWeight: 700,
-                      fontSize: 14, color: "#25D16F",
-                    }}>-12%</span>
+                  {/* Response time */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    <p style={{
+                      fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 12,
+                      lineHeight: "15px", letterSpacing: "1px", textTransform: "uppercase",
+                      color: "rgba(255,255,255,0.6)", margin: 0,
+                    }}>Response Time</p>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{
+                        fontFamily: "'Nunito', sans-serif", fontWeight: 700,
+                        fontSize: 30, lineHeight: "36px", color: "white",
+                      }}>1.4m</span>
+                      <TrendDown />
+                      <span style={{
+                        fontFamily: "'Nunito', sans-serif", fontWeight: 700,
+                        fontSize: 14, color: "#25D16F",
+                      }}>-12%</span>
+                    </div>
+                    {/* Bar */}
+                    <div style={{ width: 207, height: 6, borderRadius: 9999, background: "rgba(255,255,255,0.1)", position: "relative" }}>
+                      <div style={{ width: 162, height: 6, borderRadius: 9999, background: "#25D16F", position: "absolute", top: 0, left: 0 }} />
+                    </div>
                   </div>
-                  {/* Bar */}
-                  <div style={{ width: 207, height: 6, borderRadius: 9999, background: "rgba(255,255,255,0.1)", position: "relative" }}>
-                    <div style={{ width: 162, height: 6, borderRadius: 9999, background: "#25D16F", position: "absolute", top: 0, left: 0 }} />
-                  </div>
-                </div>
- 
-                {/* Satisfactory score */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  <p style={{
-                    fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 12,
-                    lineHeight: "15px", letterSpacing: "1px", textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.6)", margin: 0,
-                  }}>Satisfactory Score</p>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <span style={{
-                      fontFamily: "'Nunito', sans-serif", fontWeight: 700,
-                      fontSize: 30, lineHeight: "36px", color: "white",
-                    }}>4.9/5</span>
-                    <TrendUp />
-                    <span style={{
-                      fontFamily: "'Nunito', sans-serif", fontWeight: 700,
-                      fontSize: 14, color: "#25D16F",
-                    }}>+3%</span>
+  
+                  {/* Satisfactory score */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    <p style={{
+                      fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 12,
+                      lineHeight: "15px", letterSpacing: "1px", textTransform: "uppercase",
+                      color: "rgba(255,255,255,0.6)", margin: 0,
+                    }}>Satisfactory Score</p>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{
+                        fontFamily: "'Nunito', sans-serif", fontWeight: 700,
+                        fontSize: 30, lineHeight: "36px", color: "white",
+                      }}>4.9/5</span>
+                      <TrendUp />
+                      <span style={{
+                        fontFamily: "'Nunito', sans-serif", fontWeight: 700,
+                        fontSize: 14, color: "#25D16F",
+                      }}>+3%</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
  
           {/* ── Row 3: Card 5 — Integrations (full width) ── */}
-          <div className="card-5">
-            {/* Left */}
-            <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 15, maxWidth: 563 }}>
-              {/* Icon + pill */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div className="card-icon" style={{
-                  width: 48, height: 48, borderRadius: 12,
-                  background: "#BBCBBC33",
+          <Reveal>
+            <div className="card-5">
+              {/* Left */}
+              <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 15, maxWidth: 563 }}>
+                {/* Icon + pill */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <div className="card-icon" style={{
+                    width: 48, height: 48, borderRadius: 12,
+                    background: "#BBCBBC33",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    <Image src={APIIcon} width={30} height={30} alt="" />
+                  </div>
+                  <PlainPill bg="#E6E8EA" border="none">
+                    <span style={{
+                      fontFamily: "'Nunito', sans-serif", fontWeight: 500, fontSize: 12,
+                      lineHeight: "15px", letterSpacing: "-0.5px", textTransform: "uppercase",
+                      color: "#3C4A3F",
+                    }}>24/7 Support</span>
+                  </PlainPill>
+                </div>
+  
+                <h3 className="card-title">API & Integrations</h3>
+  
+                <p className="card-text">
+                  Works with Shopify, WooCommerce, SendBaba, your CRM and any
+                  custom tool via API. Our open ecosystem ensures your data flows
+                  exactly where you need it most.
+                </p>
+  
+                {/* Buttons */}
+                <div className="card-5-buttons" style={{ display: "flex", gap: 12, marginTop: 4 }}>
+                  <button className="card-5-button" style={{
+                    borderRadius: 9999, background: "#25D16F", border: "none",
+                    padding: "10.5px 24px 11.5px", cursor: "pointer",
+                    fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 15,
+                    lineHeight: "12px", letterSpacing: "0.6px", textAlign: "center", color: "white",
+                    transition: "opacity 0.15s",
+                  }}
+                    onMouseEnter={e => e.currentTarget.style.opacity = "0.85"}
+                    onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+                  >Explore API</button>
+                  <button className="card-5-button" style={{
+                    borderRadius: 9999, background: "transparent",
+                    border: "1px solid #BBCBBC",
+                    padding: "10px 24px", cursor: "pointer",
+                    fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 15,
+                    lineHeight: "12px", letterSpacing: "0.6px", textAlign: "center", color: "#191C1E",
+                    transition: "background 0.15s",
+                  }}
+                    onMouseEnter={e => e.currentTarget.style.background = "rgba(0,0,0,0.03)"}
+                    onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+                  >Documentation</button>
+                </div>
+              </div>
+  
+              {/* Right — 2×3 grid of integration images */}
+              <div className="logos-grid" style={{
+                flex: 1, maxWidth: 563, display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gridTemplateRows: "repeat(2, auto)",
+                gap: 16, alignContent: "start",
+              }}>
+                {/* 4 small image slots */}
+                {logos.map((logo, i) => (
+                  <div
+                    key={i}
+                    className="logo-item"
+                    style={{
+                      height: 80,
+                      borderRadius: 24,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      ...(i === 3 ? { gridColumn: "1" } : {}),
+                    }}
+                  >
+                    <Image
+                      src={logo}
+                      width={200}
+                      height={200}
+                      style={{ objectFit: "contain", maxHeight: 80, width: "auto" }}
+                      alt={`API Logo ${i + 1}`}
+                    />
+                  </div>
+                ))}
+                {/* Last wide slot */}
+                <div style={{
+                  gridColumn: "2 / span 2", gridRow: 2,
+                  height: 88, borderRadius: 24, padding: 0,
+                  background: "transparent",
                   display: "flex", alignItems: "center", justifyContent: "center",
                 }}>
-                  <Image src={APIIcon} width={30} height={30} alt="" />
+                  <Image src={APILogo5} width={500} height={500} style={{ objectFit: "contain" }} alt="" />
                 </div>
-                <PlainPill bg="#E6E8EA" border="none">
-                  <span style={{
-                    fontFamily: "'Nunito', sans-serif", fontWeight: 500, fontSize: 12,
-                    lineHeight: "15px", letterSpacing: "-0.5px", textTransform: "uppercase",
-                    color: "#3C4A3F",
-                  }}>24/7 Support</span>
-                </PlainPill>
-              </div>
- 
-              <h3 className="card-title">API & Integrations</h3>
- 
-              <p className="card-text">
-                Works with Shopify, WooCommerce, SendBaba, your CRM and any
-                custom tool via API. Our open ecosystem ensures your data flows
-                exactly where you need it most.
-              </p>
- 
-              {/* Buttons */}
-              <div className="card-5-buttons" style={{ display: "flex", gap: 12, marginTop: 4 }}>
-                <button className="card-5-button" style={{
-                  borderRadius: 9999, background: "#25D16F", border: "none",
-                  padding: "10.5px 24px 11.5px", cursor: "pointer",
-                  fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 15,
-                  lineHeight: "12px", letterSpacing: "0.6px", textAlign: "center", color: "white",
-                  transition: "opacity 0.15s",
-                }}
-                  onMouseEnter={e => e.currentTarget.style.opacity = "0.85"}
-                  onMouseLeave={e => e.currentTarget.style.opacity = "1"}
-                >Explore API</button>
-                <button className="card-5-button" style={{
-                  borderRadius: 9999, background: "transparent",
-                  border: "1px solid #BBCBBC",
-                  padding: "10px 24px", cursor: "pointer",
-                  fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 15,
-                  lineHeight: "12px", letterSpacing: "0.6px", textAlign: "center", color: "#191C1E",
-                  transition: "background 0.15s",
-                }}
-                  onMouseEnter={e => e.currentTarget.style.background = "rgba(0,0,0,0.03)"}
-                  onMouseLeave={e => e.currentTarget.style.background = "transparent"}
-                >Documentation</button>
               </div>
             </div>
- 
-            {/* Right — 2×3 grid of integration images */}
-            <div className="logos-grid" style={{
-              flex: 1, maxWidth: 563, display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gridTemplateRows: "repeat(2, auto)",
-              gap: 16, alignContent: "start",
-            }}>
-              {/* 4 small image slots */}
-              {logos.map((logo, i) => (
-                <div
-                  key={i}
-                  className="logo-item"
-                  style={{
-                    height: 80,
-                    borderRadius: 24,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    ...(i === 3 ? { gridColumn: "1" } : {}),
-                  }}
-                >
-                  <Image
-                    src={logo}
-                    width={200}
-                    height={200}
-                    style={{ objectFit: "contain", maxHeight: 80, width: "auto" }}
-                    alt={`API Logo ${i + 1}`}
-                  />
-                </div>
-              ))}
-              {/* Last wide slot */}
-              <div style={{
-                gridColumn: "2 / span 2", gridRow: 2,
-                height: 88, borderRadius: 24, padding: 0,
-                background: "transparent",
-                display: "flex", alignItems: "center", justifyContent: "center",
-              }}>
-                <Image src={APILogo5} width={500} height={500} style={{ objectFit: "contain" }} alt="" />
-              </div>
-            </div>
-          </div>
+          </Reveal>
  
         </div>
       </div>

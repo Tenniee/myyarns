@@ -13,6 +13,8 @@ import SchedulingSectionCard2 from '../../assets/SchedulingSectionCard2.svg';
 import SchedulingCardIcon from '../../assets/SchedulingCard.svg';
 import SchedulingCalendarIcon from '../../assets/SchedulingCalendar.svg';
 import SchedulingLightningIcon from '../../assets/SchedulingLightning.svg';
+
+import Reveal from "./Reveal";
  
 // ═══════════════════════════════════════════════════════════════════
 // FLOATING CARD POSITIONS
@@ -520,27 +522,29 @@ export default function SchedulingSection() {
             <div className="scheduling-right">
  
               {/* Main image */}
-              <div className="scheduling-image">
-                {/* Shadow circle — top right */}
-                <div aria-hidden style={{
-                  position: "absolute",
-                  ...SHADOW_CIRCLE_TOP_RIGHT,
-                  width: 320, height: 320, borderRadius: "9999px",
-                  background: "rgba(0,107,88,0.05)",
-                  filter: "blur(64px)",
-                  pointerEvents: "none", zIndex: 1,
-                }} />
-                {/* Shadow circle — bottom left */}
-                <div aria-hidden style={{
-                  position: "absolute",
-                  ...SHADOW_CIRCLE_BOTTOM_LEFT,
-                  width: 320, height: 320, borderRadius: "9999px",
-                  background: "rgba(0,107,88,0.05)",
-                  filter: "blur(64px)",
-                  pointerEvents: "none", zIndex: 1,
-                }} />
-                <Image src={SchedulingRightImage} fill style={{ objectFit: "cover" }} alt="" />
-              </div>
+              <Reveal>
+                <div className="scheduling-image">
+                  {/* Shadow circle — top right */}
+                  <div aria-hidden style={{
+                    position: "absolute",
+                    ...SHADOW_CIRCLE_TOP_RIGHT,
+                    width: 320, height: 320, borderRadius: "9999px",
+                    background: "rgba(0,107,88,0.05)",
+                    filter: "blur(64px)",
+                    pointerEvents: "none", zIndex: 1,
+                  }} />
+                  {/* Shadow circle — bottom left */}
+                  <div aria-hidden style={{
+                    position: "absolute",
+                    ...SHADOW_CIRCLE_BOTTOM_LEFT,
+                    width: 320, height: 320, borderRadius: "9999px",
+                    background: "rgba(0,107,88,0.05)",
+                    filter: "blur(64px)",
+                    pointerEvents: "none", zIndex: 1,
+                  }} />
+                  <Image src={SchedulingRightImage} fill style={{ objectFit: "cover" }} alt="" />
+                </div>
+              </Reveal>
  
               {/* ── Floating card 1 — upper left ── */}
               <FloatCard pos={CARD1_POS} animClass="fA scheduling-float" style={{ padding: 16, minWidth: 212 }}>
@@ -587,39 +591,41 @@ export default function SchedulingSection() {
                 </p>
  
                 {/* Social bars */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                  {SOCIALS.map((s) => (
-                    <div key={s.name} style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-                      {/* Name + pct */}
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <span style={{
-                          fontFamily: "'Nunito', sans-serif",
-                          fontWeight: 700, fontSize: 12,
-                          lineHeight: "12px", letterSpacing: "0.6px",
-                          color: s.color,
-                        }}>{s.name}</span>
-                        <span style={{
-                          fontFamily: "'Nunito', sans-serif",
-                          fontWeight: 700, fontSize: 12,
-                          lineHeight: "12px", letterSpacing: "0.6px",
-                          color: "#191C1E",
-                        }}>{s.pct}</span>
-                      </div>
-                      {/* Bar track */}
-                      <div style={{
-                        width: "100%", height: 6, borderRadius: 9999,
-                        background: "rgba(60,74,63,0.10)", position: "relative",
-                      }}>
+                <Reveal delay={50}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                    {SOCIALS.map((s) => (
+                      <div key={s.name} style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+                        {/* Name + pct */}
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                          <span style={{
+                            fontFamily: "'Nunito', sans-serif",
+                            fontWeight: 700, fontSize: 12,
+                            lineHeight: "12px", letterSpacing: "0.6px",
+                            color: s.color,
+                          }}>{s.name}</span>
+                          <span style={{
+                            fontFamily: "'Nunito', sans-serif",
+                            fontWeight: 700, fontSize: 12,
+                            lineHeight: "12px", letterSpacing: "0.6px",
+                            color: "#191C1E",
+                          }}>{s.pct}</span>
+                        </div>
+                        {/* Bar track */}
                         <div style={{
-                          width: s.barW, height: 6,
-                          borderRadius: 9999, background: s.color,
-                          position: "absolute", top: 0, left: 0,
-                          maxWidth: "100%",
-                        }} />
+                          width: "100%", height: 6, borderRadius: 9999,
+                          background: "rgba(60,74,63,0.10)", position: "relative",
+                        }}>
+                          <div style={{
+                            width: s.barW, height: 6,
+                            borderRadius: 9999, background: s.color,
+                            position: "absolute", top: 0, left: 0,
+                            maxWidth: "100%",
+                          }} />
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                </Reveal>
               </FloatCard>
  
               {/* ── Floating card 3 — lower right ── */}

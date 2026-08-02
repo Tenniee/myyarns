@@ -2,6 +2,7 @@
  
 import Image from "next/image";
 import { useState } from "react";
+import Reveal from "./Reveal";
  
 // ═══════════════════════════════════════════════════════════════════
 // REVIEWS DATA — edit here
@@ -68,148 +69,150 @@ function ReviewCard({ pill, pillBg, pillColor, review, initials, name, position,
   const [hov, setHov] = useState(false);
  
   return (
-    <div
-      className="review-card"
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => setHov(false)}
-      style={{
-        borderRadius: 32,
-        border: "1px solid rgba(187,203,188,0.30)",
-        padding: hov ? 40 : 32,
-        gap: hov ? 56 : 24,
-        background: hov ? "rgba(0,109,63,0.05)" : "rgba(255,255,255,0.70)",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        width: hov ? 460 : 366,
-        transition: [
-          "width 0.35s cubic-bezier(0.34,1.56,0.64,1)",
-          "padding 0.35s ease",
-          "gap 0.35s ease",
-          "background 0.3s ease",
-          "box-shadow 0.3s ease",
-        ].join(", "),
-        boxShadow: hov
-          ? "0 20px 48px rgba(0,109,63,0.10)"
-          : "0 2px 8px rgba(0,0,0,0.04)",
-        cursor: "default",
-        flexShrink: 0,
-        zIndex: hov ? 10 : 1,
-        position: "relative",
-      }}
-    >
-      {/* ── Top row: stars + pill ── */}
-      <div style={{
-        display: "flex", flexDirection: "row",
-        justifyContent: "space-between", alignItems: "center",
-      }}>
-        {/* 5 stars */}
-        <div style={{ display: "flex", flexDirection: "row", gap: 2 }}>
-          {[0,1,2,3,4].map(i => <Star key={i} />)}
-        </div>
- 
-        {/* Pill */}
-        {pill && (
-          <div style={{
-            display: "inline-flex", alignItems: "center",
-            borderRadius: 9999, padding: "4px 12px",
-            background: pillBg,
-          }}>
-            <span style={{
-              fontFamily: "'Nunito', sans-serif",
-              fontWeight: 700, fontSize: 10,
-              lineHeight: "15px", letterSpacing: "0.5px",
-              textTransform: "uppercase", color: pillColor,
-            }}>{pill}</span>
+    <Reveal>
+      <div
+        className="review-card"
+        onMouseEnter={() => setHov(true)}
+        onMouseLeave={() => setHov(false)}
+        style={{
+          borderRadius: 32,
+          border: "1px solid rgba(187,203,188,0.30)",
+          padding: hov ? 40 : 32,
+          gap: hov ? 56 : 24,
+          background: hov ? "rgba(0,109,63,0.05)" : "rgba(255,255,255,0.70)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          width: hov ? 460 : 366,
+          transition: [
+            "width 0.35s cubic-bezier(0.34,1.56,0.64,1)",
+            "padding 0.35s ease",
+            "gap 0.35s ease",
+            "background 0.3s ease",
+            "box-shadow 0.3s ease",
+          ].join(", "),
+          boxShadow: hov
+            ? "0 20px 48px rgba(0,109,63,0.10)"
+            : "0 2px 8px rgba(0,0,0,0.04)",
+          cursor: "default",
+          flexShrink: 0,
+          zIndex: hov ? 10 : 1,
+          position: "relative",
+        }}
+      >
+        {/* ── Top row: stars + pill ── */}
+        <div style={{
+          display: "flex", flexDirection: "row",
+          justifyContent: "space-between", alignItems: "center",
+        }}>
+          {/* 5 stars */}
+          <div style={{ display: "flex", flexDirection: "row", gap: 2 }}>
+            {[0,1,2,3,4].map(i => <Star key={i} />)}
           </div>
-        )}
-      </div>
- 
-      {/* ── Review text ── */}
-      <p style={{
-        fontFamily: "'Nunito', sans-serif",
-        fontWeight: 400, fontSize: 16,
-        lineHeight: "24px", color: "#3C4A3F",
-        margin: 0, flex: 1,
-        display: "-webkit-box",
-        WebkitLineClamp: hov ? "unset" : 5,
-        WebkitBoxOrient: "vertical",
-        overflow: hov ? "visible" : "hidden",
-        transition: "all 0.3s ease",
-      }}>
-        "{review}"
-      </p>
- 
-      {/* ── Reviewer info ── */}
-      <div style={{
-        display: "flex", flexDirection: "row",
-        alignItems: "center", gap: 12,
-        justifyContent: "space-between",
-      }}>
-        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 12 }}>
-          {/* Avatar or initials box */}
-          {avatar ? (
+  
+          {/* Pill */}
+          {pill && (
             <div style={{
-              width: hov ? 56 : 48,
-              height: hov ? 56 : 48,
-              borderRadius: hov ? "9999px" : 16,
-              overflow: "hidden",
-              border: hov ? "1px solid rgba(0,109,63,0.20)" : "none",
-              flexShrink: 0,
-              transition: "all 0.3s ease",
-            }}>
-              <Image src={avatar} width={56} height={56} alt={name} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
-            </div>
-          ) : (
-            <div style={{
-              width: hov ? 56 : 48,
-              height: hov ? 56 : 48,
-              borderRadius: hov ? "9999px" : 16,
-              background: hov ? "#E6FAF2" : "rgba(158,243,218,0.30)",
-              border: hov ? "1px solid rgba(0,109,63,0.20)" : "none",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              flexShrink: 0,
-              transition: "all 0.3s ease",
+              display: "inline-flex", alignItems: "center",
+              borderRadius: 9999, padding: "4px 12px",
+              background: pillBg,
             }}>
               <span style={{
                 fontFamily: "'Nunito', sans-serif",
-                fontWeight: 700, fontSize: 16,
-                lineHeight: "24px", color: "#006B58",
-                textTransform: "uppercase",
-              }}>{initials}</span>
+                fontWeight: 700, fontSize: 10,
+                lineHeight: "15px", letterSpacing: "0.5px",
+                textTransform: "uppercase", color: pillColor,
+              }}>{pill}</span>
             </div>
           )}
- 
-          {/* Name + position */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            <span style={{
-              fontFamily: hov ? "'Sora', sans-serif" : "'Nunito', sans-serif",
-              fontWeight: hov ? 400 : 700,
-              fontSize: 16, lineHeight: "24px",
-              color: hov ? "#25D16F" : "#191C1E",
-              transition: "color 0.3s, font-family 0.3s",
-            }}>{name}</span>
-            <span style={{
-              fontFamily: "'Nunito', sans-serif",
-              fontWeight: 400, fontSize: hov ? 16 : 13,
-              lineHeight: hov ? "24px" : "19.5px",
-              color: "#3C4A3F",
-              transition: "font-size 0.3s",
-            }}>{position}</span>
-          </div>
         </div>
- 
-        {/* Quote mark — only on hover */}
-        {hov && (
-          <div style={{
-            animation: "fadeIn 0.25s ease forwards",
-            flexShrink: 0,
-          }}>
-            <QuoteMark />
+  
+        {/* ── Review text ── */}
+        <p style={{
+          fontFamily: "'Nunito', sans-serif",
+          fontWeight: 400, fontSize: 16,
+          lineHeight: "24px", color: "#3C4A3F",
+          margin: 0, flex: 1,
+          display: "-webkit-box",
+          WebkitLineClamp: hov ? "unset" : 5,
+          WebkitBoxOrient: "vertical",
+          overflow: hov ? "visible" : "hidden",
+          transition: "all 0.3s ease",
+        }}>
+          "{review}"
+        </p>
+  
+        {/* ── Reviewer info ── */}
+        <div style={{
+          display: "flex", flexDirection: "row",
+          alignItems: "center", gap: 12,
+          justifyContent: "space-between",
+        }}>
+          <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 12 }}>
+            {/* Avatar or initials box */}
+            {avatar ? (
+              <div style={{
+                width: hov ? 56 : 48,
+                height: hov ? 56 : 48,
+                borderRadius: hov ? "9999px" : 16,
+                overflow: "hidden",
+                border: hov ? "1px solid rgba(0,109,63,0.20)" : "none",
+                flexShrink: 0,
+                transition: "all 0.3s ease",
+              }}>
+                <Image src={avatar} width={56} height={56} alt={name} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+              </div>
+            ) : (
+              <div style={{
+                width: hov ? 56 : 48,
+                height: hov ? 56 : 48,
+                borderRadius: hov ? "9999px" : 16,
+                background: hov ? "#E6FAF2" : "rgba(158,243,218,0.30)",
+                border: hov ? "1px solid rgba(0,109,63,0.20)" : "none",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                flexShrink: 0,
+                transition: "all 0.3s ease",
+              }}>
+                <span style={{
+                  fontFamily: "'Nunito', sans-serif",
+                  fontWeight: 700, fontSize: 16,
+                  lineHeight: "24px", color: "#006B58",
+                  textTransform: "uppercase",
+                }}>{initials}</span>
+              </div>
+            )}
+  
+            {/* Name + position */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <span style={{
+                fontFamily: hov ? "'Sora', sans-serif" : "'Nunito', sans-serif",
+                fontWeight: hov ? 400 : 700,
+                fontSize: 16, lineHeight: "24px",
+                color: hov ? "#25D16F" : "#191C1E",
+                transition: "color 0.3s, font-family 0.3s",
+              }}>{name}</span>
+              <span style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontWeight: 400, fontSize: hov ? 16 : 13,
+                lineHeight: hov ? "24px" : "19.5px",
+                color: "#3C4A3F",
+                transition: "font-size 0.3s",
+              }}>{position}</span>
+            </div>
           </div>
-        )}
+  
+          {/* Quote mark — only on hover */}
+          {hov && (
+            <div style={{
+              animation: "fadeIn 0.25s ease forwards",
+              flexShrink: 0,
+            }}>
+              <QuoteMark />
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </Reveal>
   );
 }
  
@@ -399,7 +402,7 @@ export default function Reviews() {
  
           {/* ── Cards row ── */}
           <div className="reviews-cards">
-            {REVIEWS.map((r) => (
+            {REVIEWS.map((r, i) => (
               <ReviewCard key={r.name} {...r} />
             ))}
           </div>

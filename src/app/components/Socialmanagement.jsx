@@ -8,7 +8,8 @@ import SocialMediaIcon1 from '../../assets/SocialManagementIcon1.svg';
 import SocialMediaIcon2 from '../../assets/SocialManagementIcon2.svg';
 import SocialMediaIcon3 from '../../assets/SocialManagementIcon3.svg';
 import Lightning from '../../assets/SocialMediaLightning.svg';
- 
+import Reveal from "./Reveal"; 
+
 // ═══════════════════════════════════════════════════════════════════
 // FLOATING CARD POSITION — move here
 // ═══════════════════════════════════════════════════════════════════
@@ -348,119 +349,127 @@ export default function SocialManagement() {
                 </h2>
  
                 {/* Cards */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                  {CARDS.map((c) => <FeatureCard key={c.header} {...c} Icon={c.icon} />)}
-                </div>
+                <Reveal>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                    {CARDS.map((c) => <FeatureCard key={c.header} {...c} Icon={c.icon} />)}
+                  </div>
+                </Reveal>
  
                 {/* CTA button */}
-                <button
-                  onMouseEnter={() => setBtnHovered(true)}
-                  onMouseLeave={() => setBtnHovered(false)}
-                  style={{
-                    display: "inline-flex", alignItems: "center",
-                    gap: 12, alignSelf: "flex-start",
-                    borderRadius: 9999,
-                    background: "#25D16F",
-                    border: "none",
-                    paddingTop: 20, paddingBottom: 20,
-                    paddingLeft: 40, paddingRight: 40,
-                    cursor: "pointer",
-                    transition: "opacity 0.15s, transform 0.15s",
-                    opacity: btnHovered ? 0.88 : 1,
-                    transform: btnHovered ? "scale(1.02)" : "scale(1)",
-                  }}
-                >
-                  <span style={{
-                    fontFamily: "'Nunito', sans-serif",
-                    fontWeight: 700, fontSize: 18,
-                    lineHeight: "24px", color: "white",
-                  }}>
-                    Try Smart Scheduling
-                  </span>
-                  <span style={{
-                    display: "inline-flex",
-                    transform: btnHovered ? "translateX(4px)" : "translateX(0)",
-                    transition: "transform 0.25s cubic-bezier(0.34,1.56,0.64,1)",
-                  }}>
-                    <ArrowRight />
-                  </span>
-                </button>
+                <Reveal>
+                  <button
+                    onMouseEnter={() => setBtnHovered(true)}
+                    onMouseLeave={() => setBtnHovered(false)}
+                    style={{
+                      display: "inline-flex", alignItems: "center",
+                      gap: 12, alignSelf: "flex-start",
+                      borderRadius: 9999,
+                      background: "#25D16F",
+                      border: "none",
+                      paddingTop: 20, paddingBottom: 20,
+                      paddingLeft: 40, paddingRight: 40,
+                      cursor: "pointer",
+                      transition: "opacity 0.15s, transform 0.15s",
+                      opacity: btnHovered ? 0.88 : 1,
+                      transform: btnHovered ? "scale(1.02)" : "scale(1)",
+                    }}
+                  >
+                    <span style={{
+                      fontFamily: "'Nunito', sans-serif",
+                      fontWeight: 700, fontSize: 18,
+                      lineHeight: "24px", color: "white",
+                    }}>
+                      Try Smart Scheduling
+                    </span>
+                    <span style={{
+                      display: "inline-flex",
+                      transform: btnHovered ? "translateX(4px)" : "translateX(0)",
+                      transition: "transform 0.25s cubic-bezier(0.34,1.56,0.64,1)",
+                    }}>
+                      <ArrowRight />
+                    </span>
+                  </button>
+                </Reveal>
               </div>
  
               {/* ══ RIGHT COLUMN — hidden on mobile ══ */}
               <div className="sm-right">
  
                 {/* Image 1 */}
-                <div className="sm-image-1">
-                  <Image src={TopImage} fill style={{ objectFit: "cover" }} alt="" />
-                </div>
+                <Reveal>
+                  <div className="sm-image-1">
+                    <Image src={TopImage} fill style={{ objectFit: "cover" }} alt="" />
+                  </div>
+                </Reveal>
  
                 {/* Image 2 */}
-                <div className="sm-image-2">
-                  <Image src={BottomImage} fill style={{ objectFit: "cover", borderRadius: 40 }} alt="" />
-                  <div style={{
-                    width: "100%", height: 440,
-                    borderRadius: 16,
-                    background: "#f0f8f4",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "#aaa", fontSize: 14,
-                  }}>
-                    Image 2
+                <Reveal>
+                  <div className="sm-image-2">
+                      <Image src={BottomImage} fill style={{ objectFit: "cover", borderRadius: 40 }} alt="" />
+                      <div style={{
+                      width: "100%", height: 440,
+                      borderRadius: 16,
+                      background: "#f0f8f4",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      color: "#aaa", fontSize: 14,
+                    }}>
+                      Image 2
                   </div>
- 
+  
                   {/* Floating stat card */}
                   <div style={{
-                    position: "absolute",
-                    top: 100,
-                    right: FLOAT_CARD_POS.right,
-                    width: 171.7,
-                    borderRadius: 24,
-                    border: "1px solid rgba(255,255,255,0.4)",
-                    padding: 24,
-                    background: "rgba(255,255,255,0.92)",
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
-                    display: "flex", flexDirection: "column", gap: 12,
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.10)",
-                  }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                      <span style={{
-                        width: 8, height: 8, borderRadius: "9999px",
-                        background: "#25D16F", flexShrink: 0,
-                        boxShadow: "0 0 6px rgba(37,209,111,0.7)",
-                      }} />
-                      <span style={{
-                        fontFamily: "'Nunito', sans-serif",
-                        fontWeight: 700, fontSize: 12,
-                        lineHeight: "12px", letterSpacing: "1.2px",
-                        textTransform: "uppercase", color: "#3C4A3F",
-                      }}>
-                        Live Tracking
-                      </span>
-                    </div>
- 
-                    <p style={{
-                      fontFamily: "'Nunito', sans-serif",
-                      fontWeight: 400, fontSize: 14,
-                      lineHeight: "20px", color: "#3C4A3F",
-                      margin: 0,
+                      position: "absolute",
+                      top: 100,
+                      right: FLOAT_CARD_POS.right,
+                      width: 171.7,
+                      borderRadius: 24,
+                      border: "1px solid rgba(255,255,255,0.4)",
+                      padding: 24,
+                      background: "rgba(255,255,255,0.92)",
+                      backdropFilter: "blur(12px)",
+                      WebkitBackdropFilter: "blur(12px)",
+                      display: "flex", flexDirection: "column", gap: 12,
+                      boxShadow: "0 8px 32px rgba(0,0,0,0.10)",
                     }}>
-                      Response Rate
-                    </p>
- 
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <span style={{
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{
+                          width: 8, height: 8, borderRadius: "9999px",
+                          background: "#25D16F", flexShrink: 0,
+                          boxShadow: "0 0 6px rgba(37,209,111,0.7)",
+                        }} />
+                        <span style={{
+                          fontFamily: "'Nunito', sans-serif",
+                          fontWeight: 700, fontSize: 12,
+                          lineHeight: "12px", letterSpacing: "1.2px",
+                          textTransform: "uppercase", color: "#3C4A3F",
+                        }}>
+                          Live Tracking
+                        </span>
+                      </div>
+  
+                      <p style={{
                         fontFamily: "'Nunito', sans-serif",
-                        fontWeight: 700, fontSize: 30,
-                        lineHeight: "36px", color: "#191C1E",
-                        flex: 1,
+                        fontWeight: 400, fontSize: 14,
+                        lineHeight: "20px", color: "#3C4A3F",
+                        margin: 0,
                       }}>
-                        99.8%
-                      </span>
-                      <LightningIcon />
+                        Response Rate
+                      </p>
+  
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <span style={{
+                          fontFamily: "'Nunito', sans-serif",
+                          fontWeight: 700, fontSize: 30,
+                          lineHeight: "36px", color: "#191C1E",
+                          flex: 1,
+                        }}>
+                          99.8%
+                        </span>
+                        <LightningIcon />
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Reveal>
  
               </div>
             </div>
