@@ -12,6 +12,7 @@ import blob7 from '../../assets/WhatsApp-Icon-blob.svg'
 import blob8 from '../../assets/X(Twitter)-Icon-blob.svg'
 import blob9 from '../../assets/YouTube-Icon-blob.svg'
 import TrustAvatars from '../../assets/ContainerTrustAvatars.svg'
+import Reveal from './Reveal';
 // ═══════════════════════════════════════════════════════════════════
 // IMAGE SOURCES — swap these paths, nothing else needs to change
 // ═══════════════════════════════════════════════════════════════════
@@ -38,6 +39,17 @@ const STACKED_CIRCLE_IMGS = [
   blob8,
   blob2,
 ];
+ 
+// ═══════════════════════════════════════════════════════════════════
+// RIGHT COLUMN VERTICAL OFFSET
+// The parent row is now top-aligned (lg:items-start) instead of
+// vertically centered. This pushes the whole right-side visual block
+// down from the top of the left column by this many px — tuned to
+// land just a little past the end of the H1's first line ("Manage.
+// Engage. Grow."). Increase to push it further down, decrease (or
+// use 0) to align it flush with the top of the headline.
+// ═══════════════════════════════════════════════════════════════════
+const RIGHT_COL_TOP_OFFSET = -0;
  
 // ═══════════════════════════════════════════════════════════════════
 // POSITIONS — change numbers here to move any element
@@ -135,12 +147,12 @@ export default function Hero() {
         />
  
         <div className="page-container relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-10">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-10">
  
             {/* ══════════════════ LEFT ══════════════════ */}
             <div className="flex-1 flex flex-col gap-6 max-w-[580px]">
  
-              {/* Headline */}
+              {/* Headline — same two-line layout on mobile and desktop */}
               <h1
                 style={{
                   fontFamily:    "'Nunito', sans-serif",
@@ -152,22 +164,27 @@ export default function Hero() {
                   margin:        0,
                 }}
               >
-                Manage.
-                <br />
-                <span
-                  style={{
-                    background:             "linear-gradient(90deg, #00D17E 0%, #006D3F 100%)",
-                    WebkitBackgroundClip:   "text",
-                    WebkitTextFillColor:    "transparent",
-                    backgroundClip:        "text",
-                  }}
-                >
-                  Engage.
-                </span>
-                <br />
+                <Reveal delay={0}>
+                  Manage.{" "}
+                </Reveal>
+                <Reveal delay={150}>
+                  <span
+                    style={{
+                      background:           "linear-gradient(90deg, #00D17E 0%, #006D3F 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor:  "transparent",
+                      backgroundClip:       "text",
+                    }}
+                  >
+                    Engage.
+                  </span>
+                </Reveal>
+                {" "}
                 Grow.
                 <br />
-                All In One Place.
+                <Reveal delay={300}>
+                  All In One Place.
+                </Reveal>
               </h1>
  
               {/* Subtext */}
@@ -267,14 +284,14 @@ export default function Hero() {
                   <Image
                     src={TRUST_AVATARS_SRC}
                     alt="Trusted team avatars"
-                    
+                    fill
                     className="object-contain"
                   />
                 </div>
                 <p
                   style={{
                     fontFamily: "'Nunito', sans-serif",
-                    fontSize: 'clamp (9px, 1.0vh, 16x)',
+                    fontSize: 'clamp(9px, 1.0vh, 16px)',
                     lineHeight: "25.6px",
                     color:      "#0F0D0A",
                     margin:     0,
@@ -290,10 +307,12 @@ export default function Hero() {
             {/* ══════════════════ RIGHT ══════════════════
                 All positions controlled by the POS object at the top of the file.
                 Outer div height = bounding box. Increase if images overflow.
+                marginTop nudges the whole block down from the top of the left
+                column — see RIGHT_COL_TOP_OFFSET above to adjust.
             ════════════════════════════════════════════ */}
             <div
               className="relative hidden lg:block flex-1 w-full"
-              style={{ height: 560, minWidth: 0 }}
+              style={{ height: 560, minWidth: 0, marginTop: RIGHT_COL_TOP_OFFSET }}
             >
  
               {/* ── Main large image ── */}

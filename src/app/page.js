@@ -13,23 +13,61 @@ import CTASection from "./components/Ctasection";
 import Footer from "./components/Footer";
 import Integration from "./components/Integration";
 import ChatWidget from "./components/ChatWidget";
+import Reveal from "./components/Reveal";
 
 export default function Home() {
   return (
     <main>
       <Navbar />
-      <Hero />
-      <Marquee />
-      <Results />
-      <Features />
-      <SocialManagement />
-      <SchedulingSection />
-      <Integration />
-      <Reviews />
-      <Insighttips />
-      <Pricing />
-      <CTASection />
-      <Footer />
+
+      <Reveal>
+        <Hero />
+      </Reveal>
+
+      <Reveal>
+        <Marquee />
+      </Reveal>
+
+      <Reveal>
+        <Results />
+      </Reveal>
+
+      <Reveal>
+        <Features />
+      </Reveal>
+
+      <Reveal>
+        <SocialManagement />
+      </Reveal>
+
+      <Reveal>
+        <SchedulingSection />
+      </Reveal>
+
+      <Reveal>
+        <Reviews />
+      </Reveal>
+
+      <Reveal>
+        <Insighttips />
+      </Reveal>
+
+      <Reveal>
+        <Integration />
+      </Reveal>
+      
+      <Reveal>
+        <Pricing />
+      </Reveal>
+      
+      <Reveal>
+        <CTASection />
+      </Reveal>
+
+      <Reveal>
+        <Footer />
+      </Reveal>
+
       <ChatWidget />
     </main>
   );

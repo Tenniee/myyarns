@@ -27,7 +27,45 @@
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-nunito), sans-serif;
+}
+html, body{
+  background-color: #ffffff;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* blur-focus: text sharpens in as it rises */
+.reveal-blur {
+  filter: blur(8px);
+}
+.reveal-blur.reveal-visible {
+  filter: blur(0);
+}
+
+/* scale-up: subtle zoom-in feel */
+.reveal-scale {
+  transform: translateY(24px) scale(0.94);
+}
+.reveal-scale.reveal-visible {
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
 }

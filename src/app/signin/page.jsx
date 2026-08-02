@@ -9,10 +9,27 @@ import Link from "next/link";
 const LOGO_TEXT = "MyYarns";
 const SIGNUP_HREF = "/signup";
 const FORGOT_HREF = "/forgot-password";
+const TERMS_HREF = "/terms";
+const PRIVACY_HREF = "/privacy";
+const SHOWCASE_IMAGE = "https://placehold.co/452x320/0B3D24/FFFFFF?text=Dashboard+Preview"; // ← swap for a real product screenshot
+const TRUST_LOGO_IMAGE = "https://placehold.co/110x42/FFFFFF/135B36?text=Logos"; // ← swap for a real avatar/logo strip
 const ON_SUBMIT = async ({ email, password, remember }) => {
   // ← wire up your real signin call here
   console.log("signin", { email, password, remember });
 };
+ 
+// ═══════════════════════════════════════════════════════════════════
+// FLOATING BADGE POSITIONS
+// Each badge is positioned absolutely against the (unrotated) wrapper
+// that sits behind the rotated showcase image. Tweak `bottom` / `right`
+// below to move a badge — increasing `bottom` moves it up, increasing
+// `right` moves it further left.
+// ═══════════════════════════════════════════════════════════════════
+const FLOAT_BADGES = [
+  { id: "heart", bottom: -16, right: 24, icon: "heart" },
+  { id: "chat", bottom: 38, right: -14, icon: "chat" },
+  { id: "star", bottom: -6, right: 90, icon: "star" },
+];
  
 // ═══════════════════════════════════════════════════════════════════
 // ICONS
@@ -49,32 +66,64 @@ function CheckIcon() {
   );
 }
  
+function BadgeIcon({ type }) {
+  const common = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" };
+  if (type === "heart") {
+    return (
+      <svg {...common}>
+        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z" />
+      </svg>
+    );
+  }
+  if (type === "chat") {
+    return (
+      <svg {...common}>
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+    );
+  }
+  return (
+    <svg {...common}>
+      <polygon points="12 2 15 9 22 9.5 17 14.5 18.5 21.5 12 17.8 5.5 21.5 7 14.5 2 9.5 9 9" />
+    </svg>
+  );
+}
+ 
 // ═══════════════════════════════════════════════════════════════════
-// FLOATING BADGE
+// SMALL BUILDING BLOCKS
 // ═══════════════════════════════════════════════════════════════════
-function FloatBadge({ style, animClass, children }) {
+function FloatBadgeSm({ bottom, right, icon }) {
   return (
     <div
-      className={`absolute ${animClass}`}
+      className="auth-fb"
       style={{
-        borderRadius: 16,
+        position: "absolute",
+        bottom,
+        right,
+        width: 52,
+        height: 52,
+        borderRadius: 12,
         border: "1px solid rgba(255,255,255,0.18)",
-        background: "rgba(255,255,255,0.10)",
+        background: "rgba(255,255,255,0.14)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
-        padding: 16,
-        boxShadow: "0 20px 40px rgba(0,0,0,0.18)",
-        ...style,
+        boxShadow: "0 12px 24px rgba(0,0,0,0.20)",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingTop: 8,
+        paddingBottom: 9,
       }}
     >
-      {children}
+      <BadgeIcon type={icon} />
     </div>
   );
 }
  
 function Field({ label, children }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
       <label style={{
         fontFamily: "'Nunito', sans-serif",
         fontWeight: 700,
@@ -139,20 +188,43 @@ export default function SignIn() {
         .auth-fb { animation: authFloatB 6s ease-in-out 0.6s infinite; }
  
         .auth-shell {
-          min-height: 100vh;
+          height: 100vh;
           display: flex;
           flex-direction: row;
           background: white;
+          overflow: hidden;
         }
         .auth-brand-panel {
           flex: 0 0 44%;
           position: relative;
           overflow: hidden;
-          background: linear-gradient(160deg, #00D17E 0%, #006D3F 100%);
+          background: radial-gradient(120% 120% at 20% 0%, #135B36 0%, #06301D 100%);
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
-          padding: 56px;
+          height: 100%;
+          box-sizing: border-box;
+          padding: 4vh 3.5vw 3vh;
+        }
+        .auth-brand-top {
+          flex: 0 1 38%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 2vh;
+          min-height: 0;
+        }
+        .auth-brand-image {
+          flex: 1 1 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 0;
+          overflow: hidden;
+        }
+        .auth-brand-trust {
+          flex: 0 0 auto;
+          margin-top: 2vh;
+          margin-bottom: 1vh;
         }
         .auth-form-panel {
           flex: 1;
@@ -160,10 +232,14 @@ export default function SignIn() {
           align-items: center;
           justify-content: center;
           padding: 48px 24px;
+          background: #FAFAF4;
+          height: 100%;
+          box-sizing: border-box;
+          overflow-y: auto;
         }
         .auth-form-inner {
-          width: 100%;
-          max-width: 420px;
+          width: 448px;
+          max-width: 448px;
           display: flex;
           flex-direction: column;
           gap: 28px;
@@ -180,75 +256,127 @@ export default function SignIn() {
           <div
             aria-hidden
             className="absolute pointer-events-none rounded-full"
-            style={{ width: 500, height: 500, bottom: -200, left: -160, background: "rgba(255,255,255,0.08)", filter: "blur(80px)" }}
+            style={{ position: "absolute", width: 500, height: 500, bottom: -200, left: -160, background: "rgba(255,255,255,0.08)", filter: "blur(80px)" }}
           />
  
-          <Link href="/" style={{ position: "relative", zIndex: 1, textDecoration: "none" }}>
-            <span style={{
-                fontFamily: "'Nunito', sans-serif",
-                fontWeight: 800,
-                fontSize: 22,
-                color: "white",
-                position: "relative",
-                zIndex: 1,
-            }}>
-                {LOGO_TEXT}
-            </span>
-          </Link>
+          {/* Top ~38%: logo + header + subtext */}
+          <div className="auth-brand-top" style={{ position: "relative", zIndex: 1 }}>
+            <Link href="/" style={{ textDecoration: "none", marginBottom: "1vh" }}>
+              <span style={{
+                  fontFamily: "'Nunito', sans-serif",
+                  fontWeight: 800,
+                  fontSize: 22,
+                  color: "white",
+              }}>
+                  {LOGO_TEXT}
+              </span>
+            </Link>
  
-          <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
             <h1 style={{
               fontFamily: "'Nunito', sans-serif",
               fontWeight: 800,
-              fontSize: "clamp(28px, 3vw, 40px)",
+              fontSize: "clamp(24px, 2.6vw, 34px)",
               lineHeight: 1.15,
-              letterSpacing: "-1px",
+              letterSpacing: "-0.8px",
               color: "white",
               margin: 0,
-              maxWidth: 380,
+              maxWidth: 420,
             }}>
-              Welcome back. Your audience missed you.
+              Welcome back!
+              <br />
+              Let's get you back to your
+              <br />
+              <span style={{ color: "#00A859" }}>dashboard.</span>
             </h1>
+ 
             <p style={{
               fontFamily: "'Nunito', sans-serif",
               fontWeight: 400,
-              fontSize: 17,
-              lineHeight: "26px",
+              fontSize: 16,
+              lineHeight: "24px",
               color: "rgba(255,255,255,0.85)",
               margin: 0,
-              maxWidth: 360,
+              maxWidth: 380,
             }}>
-              Pick up your scheduled posts, automations, and analytics
-              right where you left off.
+              Pick up your scheduled posts, automations and analytics right where you left off.
             </p>
           </div>
  
-          <div style={{ height: 90, position: "relative", zIndex: 1 }}>
-            <FloatBadge animClass="auth-fa" style={{ top: 0, left: 0, width: 220 }}>
-              <div className="flex items-center gap-2" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{
-                  width: 34, height: 34, borderRadius: "9999px",
-                  background: "rgba(255,255,255,0.18)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  flexShrink: 0,
-                }}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                </span>
-                <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                  <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 12, color: "white" }}>12 replies queued</span>
-                  <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.7)" }}>since you left</span>
-                </div>
+          {/* Middle: showcase image + floating badges — fills remaining space, never overflows */}
+          <div className="auth-brand-image" style={{ position: "relative", zIndex: 1 }}>
+            <div style={{ position: "relative", height: "88%", maxHeight: 300, aspectRatio: "4 / 3" }}>
+              <div
+                className="auth-fa"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: 16,
+                  border: "1px solid rgba(255,255,255,0.18)",
+                  background: "rgba(255,255,255,0.06)",
+                  padding: 18,
+                  display: "flex",
+                  flexDirection: "column",
+                  transform: "rotate(3deg)",
+                  boxShadow: "0 30px 60px rgba(0,0,0,0.25)",
+                  boxSizing: "border-box",
+                }}
+              >
+                <img
+                  src={SHOWCASE_IMAGE}
+                  alt="Dashboard preview"
+                  style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 8 }}
+                />
               </div>
-            </FloatBadge>
+ 
+              {/* Floating badges — see FLOAT_BADGES above to reposition */}
+              {FLOAT_BADGES.map((b) => (
+                <FloatBadgeSm key={b.id} bottom={b.bottom} right={b.right} icon={b.icon} />
+              ))}
+            </div>
+          </div>
+ 
+          {/* Bottom: trust bar, with padding beneath it (auth-brand-panel bottom padding) */}
+          <div className="auth-brand-trust" style={{
+            position: "relative",
+            zIndex: 1,
+            width: 560,
+            maxWidth: "100%",
+            borderRadius: 16,
+            border: "1px solid rgba(255,255,255,0.18)",
+            background: "rgba(255,255,255,0.10)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            padding: "14px 18px",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 3.84,
+            boxSizing: "border-box",
+          }}>
+            <img
+              src={TRUST_LOGO_IMAGE}
+              alt="Teams using MyYarns"
+              style={{ width: 96, height: 36, objectFit: "contain", flexShrink: 0 }}
+            />
+            <p style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: 14,
+              lineHeight: "20px",
+              color: "white",
+              margin: 0,
+              display: "flex",
+              alignItems: "center",
+            }}>
+              <span style={{ fontWeight: 800 }}>2,500+&nbsp;teams&nbsp;</span>
+              <span style={{ fontWeight: 400 }}>trust MyYarns to grow their audience</span>
+            </p>
           </div>
         </div>
  
         {/* ══════════════ RIGHT — form ══════════════ */}
         <div className="auth-form-panel">
           <form className="auth-form-inner" onSubmit={handleSubmit}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, textAlign: "left" }}>
               <h2 style={{
                 fontFamily: "'Nunito', sans-serif",
                 fontWeight: 800,
@@ -260,7 +388,7 @@ export default function SignIn() {
                 Sign in
               </h2>
               <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 16, color: "#3C4A3F", margin: 0 }}>
-                Enter your details to access your dashboard.
+                Enter your details to access your dashboard
               </p>
             </div>
  
@@ -364,6 +492,20 @@ export default function SignIn() {
               <a href={SIGNUP_HREF} style={{ color: "#25D16F", fontWeight: 700, textDecoration: "none" }}>
                 Create one
               </a>
+            </p>
+ 
+            <p style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: 12,
+              lineHeight: "18px",
+              color: "#8A948C",
+              textAlign: "center",
+              margin: 0,
+            }}>
+              By clicking "Create account", you agree to our{" "}
+              <a href={TERMS_HREF} style={{ color: "#8A948C", textDecoration: "underline" }}>Terms of Service</a>{" "}
+              and{" "}
+              <a href={PRIVACY_HREF} style={{ color: "#8A948C", textDecoration: "underline" }}>Privacy Policy</a>.
             </p>
           </form>
         </div>

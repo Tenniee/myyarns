@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const STATS = [
   {
     number:  "10",
@@ -31,18 +33,29 @@ const BIG_CIRCLE = {
 };
  
 // ═══════════════════════════════════════════════════════════════════
+// BLURRED BLOB — move/resize/reposition here
+// ═══════════════════════════════════════════════════════════════════
+const BLOB = {
+  width:   500,
+  height:  500,
+  top:     "40%",
+  left:    -150,
+  zIndex:  0,
+};
+ 
+// ═══════════════════════════════════════════════════════════════════
 // GLASS PILL
 // ═══════════════════════════════════════════════════════════════════
 const GLIMMER_BORDER = `conic-gradient(
   from 270deg,
-  rgba(255,255,255,0.70)  0deg,
-  rgba(255,255,255,0.70)  120deg,
-  rgba(0,0,0,0.22)        150deg,
-  rgba(0,0,0,0.22)        180deg,
-  rgba(255,255,255,0.55)  210deg,
-  rgba(255,255,255,0.55)  330deg,
-  rgba(0,0,0,0.22)        360deg,
-  rgba(255,255,255,0.70)  400deg
+  rgba(0,0,0,0.18)   0deg,
+  rgba(0,0,0,0.18)   120deg,
+  rgba(0,0,0,0.35)   150deg,
+  rgba(0,0,0,0.35)   180deg,
+  rgba(0,0,0,0.12)   210deg,
+  rgba(0,0,0,0.12)   330deg,
+  rgba(0,0,0,0.35)   360deg,
+  rgba(0,0,0,0.18)   400deg
 )`;
  
 const MASK =
@@ -77,7 +90,7 @@ function GlassPill({ children, hasDot = false, size = "lg" }) {
           alignItems:   "center",
           gap:           hasDot ? 8 : 0,
           borderRadius: 9999,
-          background:   "rgba(255,255,255,0.20)",
+          background:   "rgba(0,0,0,0.05)",
           border:       "none",
           position:     "relative",
           zIndex:        1,
@@ -121,7 +134,7 @@ function StatCol({ number, suffix, subtext, pill }) {
             fontFamily:    "'Nunito', sans-serif",
             fontWeight:    800,
             letterSpacing: "-1.92px",
-            color:         "white",
+            color:         "#00D17E",
           }}
         >
           {number}
@@ -132,7 +145,7 @@ function StatCol({ number, suffix, subtext, pill }) {
             fontFamily:    "'Nunito', sans-serif",
             fontWeight:    800,
             letterSpacing: "-1.92px",
-            color:         "#25D16F",
+            color:         "#00D17E",
           }}
         >
           {suffix}
@@ -147,7 +160,7 @@ function StatCol({ number, suffix, subtext, pill }) {
           fontWeight: 500,
           fontSize:   16,
           lineHeight: "25.6px",
-          color:      "#E6E6E6",
+          color:      "#3C4A3FB2",
           textAlign:  "center",
           maxWidth:   280,
           margin:     0,
@@ -165,7 +178,7 @@ function StatCol({ number, suffix, subtext, pill }) {
             fontSize:      11,
             lineHeight:    "16.5px",
             letterSpacing: "1.1px",
-            color:         "#25D16F",
+            color:         "#0F6E56",
             textTransform: "uppercase",
           }}
         >
@@ -197,7 +210,7 @@ export default function Results() {
     <section
       className="page-x-pad results-section"
       style={{
-        background:    "#1A5C38",
+        background:    "#FFFFFF",
         position:      "relative",
         overflow:      "hidden",
       }}
@@ -234,21 +247,22 @@ export default function Results() {
  
         @media (max-width: 900px) {
           .results-section {
-            padding-top: 56px;
-            padding-bottom: 56px;
+            padding-top: 48px;
+            padding-bottom: 48px;
           }
           .results-heading {
-            margin-bottom: 40px;
+            margin-bottom: 28px;
           }
           .results-stats-row {
             flex-direction: column;
-            gap: 40px;
+            gap: 24px;
           }
           .results-stat-divider {
             display: none;
           }
           .results-stat-col {
             width: 100%;
+            gap: 10px !important;
           }
           .results-stat-subtext {
             max-width: 320px !important;
@@ -257,23 +271,24 @@ export default function Results() {
  
         @media (max-width: 480px) {
           .results-section {
-            padding-top: 40px;
-            padding-bottom: 40px;
+            padding-top: 32px;
+            padding-bottom: 32px;
           }
           .results-heading {
-            margin-bottom: 32px;
+            margin-bottom: 20px;
+            font-size: clamp(26px, 7vw, 36px) !important;
           }
           .results-stat-number {
-            font-size: 64px;
+            font-size: 44px;
             line-height: 1.1;
           }
           .results-stat-suffix {
-            font-size: 18px;
+            font-size: 15px;
             line-height: 1.1;
           }
           .results-stat-subtext {
-            font-size: 14px !important;
-            line-height: 22px !important;
+            font-size: 13px !important;
+            line-height: 19px !important;
           }
         }
       `}</style>
@@ -297,6 +312,26 @@ export default function Results() {
         }}
       />
  
+      {/* ── Blurred blob ── */}
+      <div
+        aria-hidden
+        style={{
+          position:      "absolute",
+          width:         BLOB.width,
+          height:        BLOB.height,
+          top:           BLOB.top,
+          left:          BLOB.left,
+          maxWidth:      "80vw",
+          maxHeight:     "80vw",
+          borderRadius:  "9999px",
+          background:    "#00D17E1A",
+          opacity:       0.1,
+          filter:        "blur(120px)",
+          zIndex:        BLOB.zIndex,
+          pointerEvents: "none",
+        }}
+      />
+ 
       <div className="page-container" style={{ position: "relative", zIndex: 1 }}>
  
         {/* ── Top pill — left aligned ── */}
@@ -308,7 +343,7 @@ export default function Results() {
                 fontWeight:    600,
                 fontSize:      13,
                 letterSpacing: "0.5px",
-                color:         "white",
+                color:         "#1A5C38",
                 textTransform: "uppercase",
               }}
             >
@@ -318,29 +353,31 @@ export default function Results() {
         </div>
  
         {/* ── Heading — left aligned ── */}
-        <h2
-          className="results-heading"
-          style={{
-            fontFamily:    "'Nunito', sans-serif",
-            fontWeight:    700,
-            fontSize:      "clamp(32px, 6vw, 60px)",
-            lineHeight:    1.1,
-            letterSpacing: "-1px",
-            color:         "white",
-            textAlign:     "left",
-            margin:        "0 0 64px",
-          }}
-        >
-          Powering Your{" "}
-          <span style={{ color: "#01D17E" }}>Social Growth</span>
-        </h2>
+        <Reveal delay={120}>
+          <h2
+            className="results-heading"
+            style={{
+              fontFamily:    "'Nunito', sans-serif",
+              fontWeight:    700,
+              fontSize:      "clamp(32px, 6vw, 60px)",
+              lineHeight:    1.1,
+              letterSpacing: "-1px",
+              color:         "#000000",
+              textAlign:     "left",
+              margin:        "0 0 64px",
+            }}
+          >
+            Powering Your{" "}
+            <span style={{ color: "#01D17E" }}>Social Growth</span>
+          </h2>
+        </Reveal>
  
         {/* ── Stats row ── */}
         <div className="results-stats-row">
           {STATS.map((stat, i) => (
             <>
-              <StatCol key={stat.pill} {...stat} />
-              {i < STATS.length - 1 && <StatDivider key={`div-${i}`} />}
+                <StatCol key={stat.pill} {...stat} />
+                {i < STATS.length - 1 && <StatDivider key={`div-${i}`} />}
             </>
           ))}
         </div>
