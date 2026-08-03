@@ -2,6 +2,12 @@
  
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import SocialIcon from '../../assets/signin-blob.svg';
+import SocialIcon2 from '../../assets/Sign-in-yt.svg';
+import SocialIcon3 from '../../assets/signin-tt.svg';
+import MainImage from '../../assets/Main-Card(1).svg';
+import TrustLogo from '../../assets/TrustLogo.svg';
  
 // ═══════════════════════════════════════════════════════════════════
 // SWAP POINTS
@@ -11,8 +17,8 @@ const SIGNUP_HREF = "/signup";
 const FORGOT_HREF = "/forgot-password";
 const TERMS_HREF = "/terms";
 const PRIVACY_HREF = "/privacy";
-const SHOWCASE_IMAGE = "https://placehold.co/452x320/0B3D24/FFFFFF?text=Dashboard+Preview"; // ← swap for a real product screenshot
-const TRUST_LOGO_IMAGE = "https://placehold.co/110x42/FFFFFF/135B36?text=Logos"; // ← swap for a real avatar/logo strip
+const SHOWCASE_IMAGE = MainImage; // ← swap for a real product screenshot
+const TRUST_LOGO_IMAGE = TrustLogo; // ← swap for a real avatar/logo strip
 const ON_SUBMIT = async ({ email, password, remember }) => {
   // ← wire up your real signin call here
   console.log("signin", { email, password, remember });
@@ -26,9 +32,9 @@ const ON_SUBMIT = async ({ email, password, remember }) => {
 // `right` moves it further left.
 // ═══════════════════════════════════════════════════════════════════
 const FLOAT_BADGES = [
-  { id: "heart", bottom: -16, right: 24, icon: "heart" },
-  { id: "chat", bottom: 38, right: -14, icon: "chat" },
-  { id: "star", bottom: -6, right: 90, icon: "star" },
+  { id: "heart", bottom: -45, right: 24, icon: "heart" },
+  { id: "chat", bottom: -45, right: -30, icon: "chat" },
+  { id: "star", bottom: -45, right: 77, icon: "star" },
 ];
  
 // ═══════════════════════════════════════════════════════════════════
@@ -70,22 +76,16 @@ function BadgeIcon({ type }) {
   const common = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" };
   if (type === "heart") {
     return (
-      <svg {...common}>
-        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z" />
-      </svg>
+      <Image src={SocialIcon} alt="Heart icon" width={70} height={70} />
     );
   }
   if (type === "chat") {
     return (
-      <svg {...common}>
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
+      <Image src={SocialIcon2} alt="Chat icon" width={70} height={70} />
     );
   }
   return (
-    <svg {...common}>
-      <polygon points="12 2 15 9 22 9.5 17 14.5 18.5 21.5 12 17.8 5.5 21.5 7 14.5 2 9.5 9 9" />
-    </svg>
+    <Image src={SocialIcon3} alt="Star icon" width={70} height={70} />
   );
 }
  
@@ -100,14 +100,14 @@ function FloatBadgeSm({ bottom, right, icon }) {
         position: "absolute",
         bottom,
         right,
-        width: 52,
-        height: 52,
+        width: 100,
+        height: 100,
         borderRadius: 12,
-        border: "1px solid rgba(255,255,255,0.18)",
-        background: "rgba(255,255,255,0.14)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        boxShadow: "0 12px 24px rgba(0,0,0,0.20)",
+        //border: "1px solid rgba(255,255,255,0.18)",
+        //background: "rgba(255,255,255,0.14)",
+        //backdropFilter: "blur(12px)",
+        //WebkitBackdropFilter: "blur(12px)",
+        //boxShadow: "0 12px 24px rgba(0,0,0,0.20)",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
@@ -308,23 +308,25 @@ export default function SignIn() {
               <div
                 className="auth-fa"
                 style={{
-                  width: "100%",
-                  height: "100%",
+                  width: "110%",
+                  height: "120%",
                   borderRadius: 16,
-                  border: "1px solid rgba(255,255,255,0.18)",
-                  background: "rgba(255,255,255,0.06)",
+                  //border: "1px solid rgba(255,255,255,0.18)",
+                  //background: "rgba(255,255,255,0.06)",
                   padding: 18,
                   display: "flex",
                   flexDirection: "column",
                   transform: "rotate(3deg)",
-                  boxShadow: "0 30px 60px rgba(0,0,0,0.25)",
+                  //boxShadow: "0 30px 60px rgba(0,0,0,0.25)",
                   boxSizing: "border-box",
                 }}
               >
-                <img
+                <Image
                   src={SHOWCASE_IMAGE}
                   alt="Dashboard preview"
                   style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 8 }}
+                  width={100}
+                  height={100}
                 />
               </div>
  
@@ -353,7 +355,7 @@ export default function SignIn() {
             gap: 3.84,
             boxSizing: "border-box",
           }}>
-            <img
+            <Image
               src={TRUST_LOGO_IMAGE}
               alt="Teams using MyYarns"
               style={{ width: 96, height: 36, objectFit: "contain", flexShrink: 0 }}

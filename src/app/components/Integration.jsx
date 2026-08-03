@@ -1,7 +1,7 @@
 "use client";
  
 import { useState } from "react";
-import IntegrationPhoto from "../../assets/Integrations-photo.webp";
+import IntegrationPhoto from "../../assets/Integrations-photo(2).svg";
 import Image from "next/image";
 import social from "../../assets/Social-Icons.svg";
 import social1 from "../../assets/Social-Icons(1).svg";
@@ -108,7 +108,7 @@ export default function IntegrationSplit() {
         .split-shell {
           display: flex;
           flex-direction: row;
-          min-height: 100vh;
+          max-height: 80vh;
           background: white;
         }
  

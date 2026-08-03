@@ -9,7 +9,7 @@ import Chat from '../../assets/Chat.svg';
 import Star from '../../assets/Star.svg';
 
 import MainImage from '../../assets/Main-Card(1).svg';
-import TrustLogo from '../../assets/TrustLogo.svg';
+import TrustLogo from '../../assets/signup-trust.svg';
  
 // ═══════════════════════════════════════════════════════════════════
 // SWAP POINTS
@@ -278,11 +278,10 @@ export default function SignUp() {
               margin: 0,
               maxWidth: 420,
             }}>
-              Welcome back!
+              Grow every channel 
               <br />
-              Let's get you back to your
-              <br />
-              <span style={{ color: "#00A859" }}>dashboard.</span>
+              from {" "}
+              <span style={{ color: "#00A859" }}>One dashboard.</span>
             </h1>
  
             <p style={{
@@ -294,7 +293,7 @@ export default function SignUp() {
               margin: 0,
               maxWidth: 380,
             }}>
-              Pick up your scheduled posts, automations and analytics right where you left off.
+              Join 2,500+ teams scheduling, analyzing and engaging their audience across every platform that matters.
             </p>
           </div>
  
@@ -348,10 +347,12 @@ export default function SignUp() {
             gap: 3.84,
             boxSizing: "border-box",
           }}>
-            <img
+            <Image
               src={TRUST_LOGO_IMAGE}
               alt="Teams using MyYarns"
               style={{ width: 96, height: 36, objectFit: "contain", flexShrink: 0 }}
+              width={96}
+              height={36}
             />
             <p style={{
               fontFamily: "'Nunito', sans-serif",
