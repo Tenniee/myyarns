@@ -38,7 +38,7 @@ const PLATFORM_ICONS = [
 // width/height rules further down (it's a "hug" box, so it grows with
 // its content — these just anchor it over the image).
 // ═══════════════════════════════════════════════════════════════════
-const TRUST_BADGE_POS = { top: 480, left: 32 };
+const TRUST_BADGE_POS = { top: 380, left: 32 };
  
 // ═══════════════════════════════════════════════════════════════════
 // ICONS

@@ -604,7 +604,7 @@ export default function Footer() {
  
                   {/* Call button */}
                   <Link
-                    href="/chat"
+                    href="/request-call"
                     className="footer-btn footer-btn-call"
                     onMouseEnter={() => setCallHov(true)}
                     onMouseLeave={() => setCallHov(false)}

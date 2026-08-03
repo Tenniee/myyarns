@@ -13,6 +13,7 @@ import blob8 from '../../assets/X(Twitter)-Icon-blob.svg'
 import blob9 from '../../assets/YouTube-Icon-blob.svg'
 import TrustAvatars from '../../assets/ContainerTrustAvatars.svg'
 import Reveal from './Reveal';
+import Link from "next/link";
 // ═══════════════════════════════════════════════════════════════════
 // IMAGE SOURCES — swap these paths, nothing else needs to change
 // ═══════════════════════════════════════════════════════════════════
@@ -246,11 +247,12 @@ export default function Hero() {
               <div className="flex flex-wrap items-center gap-4 mt-2">
  
                 {/* Start Scheduling Now */}
-                <button
+                <Link
+                  href="/request-call"
                   className="group flex items-center gap-3 text-white font-semibold
-                             transition-all duration-200
-                             hover:scale-[1.03] hover:brightness-110
-                             active:scale-[0.97]"
+                            transition-all duration-200
+                            hover:scale-[1.03] hover:brightness-110
+                            active:scale-[0.97]"
                   style={{
                     fontFamily:  "'Nunito', sans-serif",
                     fontSize:    16,
@@ -263,9 +265,12 @@ export default function Hero() {
                     boxShadow:   "0 25px 50px -12px rgba(0,209,126,0.30)",
                     cursor:      "pointer",
                     whiteSpace:  "nowrap",
+                    textDecoration: "none",
+                    display: "inline-flex",
+                    alignItems: "center",
                   }}
                 >
-                  Start Scheduling Now
+                  Schedule a demo Now
                   <svg
                     className="transition-transform duration-200 group-hover:translate-x-1"
                     width="18" height="18" viewBox="0 0 24 24"
@@ -275,7 +280,7 @@ export default function Hero() {
                     <line x1="5" y1="12" x2="19" y2="12"/>
                     <polyline points="12 5 19 12 12 19"/>
                   </svg>
-                </button>
+                </Link>
  
                 {/* Watch Demo */}
                 <button

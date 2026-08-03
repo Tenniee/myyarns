@@ -639,7 +639,7 @@ export default function Features() {
                 alt=""
                 width={751}
                 height={419}
-                style={{ width: "100%", height: "auto", borderRadius: 24 }}
+                style={{ width: "100%", height: "auto", borderRadius: 24, marginBottom: '-3vh' }}
               />
             </div>
           </div>

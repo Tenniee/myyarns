@@ -35,8 +35,8 @@ const ON_SUBMIT = async ({ fullName, email, password }) => {
 // ═══════════════════════════════════════════════════════════════════
 const FLOAT_BADGES = [
   { id: "heart", bottom: 2, right: 22, icon: "heart" },   // bottom-right
-  { id: "chat", top: 26, left: 24, icon: "chat" },          // top-left
-  { id: "star", top: 26, right: 24, icon: "star" },         // top-right
+  { id: "chat", top: 40, left: 24, icon: "chat" },          // top-left
+  { id: "star", top: 40, right: 24, icon: "star" },         // top-right
 ];
  
 // ═══════════════════════════════════════════════════════════════════
@@ -299,7 +299,7 @@ export default function SignUp() {
  
           {/* Middle: showcase image (tilted LEFT) + floating badges — fills remaining space, never overflows */}
           <div className="auth-brand-image" style={{ position: "relative", zIndex: 1 }}>
-            <div style={{ position: "relative", height: "100%", maxHeight: 400 }}>
+            <div style={{ position: "relative", height: "100%", maxHeight: 450 }}>
               <div
                 className="auth-fa"
                 style={{
