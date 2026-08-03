@@ -7,7 +7,7 @@ import SocialIcon from '../../assets/signin-blob.svg';
 import SocialIcon2 from '../../assets/Sign-in-yt.svg';
 import SocialIcon3 from '../../assets/signin-tt.svg';
 import MainImage from '../../assets/Main-Card(1).svg';
-import TrustLogo from '../../assets/TrustLogo.svg';
+import TrustLogo from '../../assets/signup-trust.svg';
  
 // ═══════════════════════════════════════════════════════════════════
 // SWAP POINTS
@@ -32,9 +32,9 @@ const ON_SUBMIT = async ({ email, password, remember }) => {
 // `right` moves it further left.
 // ═══════════════════════════════════════════════════════════════════
 const FLOAT_BADGES = [
-  { id: "heart", bottom: -45, right: 24, icon: "heart" },
-  { id: "chat", bottom: -45, right: -30, icon: "chat" },
-  { id: "star", bottom: -45, right: 77, icon: "star" },
+  { id: "heart", bottom: -45, right: -34, icon: "heart" },
+  { id: "chat", bottom: 185, right: 300, icon: "chat" },
+  { id: "star", bottom: 195, right: -27, icon: "star" },
 ];
  
 // ═══════════════════════════════════════════════════════════════════
