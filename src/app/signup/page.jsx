@@ -3,6 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+
+import Heart from '../../assets/Heart.svg';
+import Chat from '../../assets/Chat.svg';
+import Star from '../../assets/Star.svg';
+
+import MainImage from '../../assets/Main-Card(1).svg';
+import TrustLogo from '../../assets/TrustLogo.svg';
  
 // ═══════════════════════════════════════════════════════════════════
 // SWAP POINTS
@@ -11,8 +18,8 @@ const LOGO_TEXT = "MyYarns";
 const SIGNIN_HREF = "/signin";
 const TERMS_HREF = "/terms";
 const PRIVACY_HREF = "/privacy";
-const SHOWCASE_IMAGE = "../../assets/SignUpMainImage.svg"; // ← swap for a real product screenshot
-const TRUST_LOGO_IMAGE = "https://placehold.co/96x36/FFFFFF/135B36?text=Logos"; // ← swap for a real avatar/logo strip
+const SHOWCASE_IMAGE = MainImage;
+const TRUST_LOGO_IMAGE = TrustLogo; // ← swap for a real avatar/logo strip
 const ON_SUBMIT = async ({ fullName, email, password }) => {
   // ← wire up your real signup call here
   console.log("signup", { fullName, email, password });
@@ -63,22 +70,16 @@ function BadgeIcon({ type }) {
   const common = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" };
   if (type === "heart") {
     return (
-      <svg {...common}>
-        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z" />
-      </svg>
+      <Image src={Heart} alt="Heart icon" width={90} height={90} />
     );
   }
   if (type === "chat") {
     return (
-      <svg {...common}>
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
+      <Image src={Chat} alt="Chat icon" width={90} height={90} />
     );
   }
   return (
-    <svg {...common}>
-      <polygon points="12 2 15 9 22 9.5 17 14.5 18.5 21.5 12 17.8 5.5 21.5 7 14.5 2 9.5 9 9" />
-    </svg>
+    <Image src={Star} alt="Star icon" width={90} height={90} />
   );
 }
  
@@ -95,20 +96,20 @@ function FloatBadgeSm({ top, bottom, left, right, icon }) {
         bottom,
         left,
         right,
-        width: 44,
-        height: 44,
+        width: 70,
+        height: 70,
         borderRadius: 12,
-        border: "1px solid rgba(255,255,255,0.18)",
-        background: "rgba(255,255,255,0.14)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        boxShadow: "0 12px 24px rgba(0,0,0,0.20)",
+        //border: "1px solid rgba(255,255,255,0.18)",
+        //background: "rgba(255,255,255,0.14)",
+        //backdropFilter: "blur(12px)",
+        //WebkitBackdropFilter: "blur(12px)",
+        //boxShadow: "0 12px 24px rgba(0,0,0,0.20)",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: 7,
-        paddingBottom: 8,
+        paddingTop: 0,
+        paddingBottom: 0,
       }}
     >
       <BadgeIcon type={icon} />
@@ -299,20 +300,17 @@ export default function SignUp() {
  
           {/* Middle: showcase image (tilted LEFT) + floating badges — fills remaining space, never overflows */}
           <div className="auth-brand-image" style={{ position: "relative", zIndex: 1 }}>
-            <div style={{ position: "relative", height: "88%", maxHeight: 300, aspectRatio: "4 / 3" }}>
+            <div style={{ position: "relative", height: "100%", maxHeight: 400 }}>
               <div
                 className="auth-fa"
                 style={{
                   width: "100%",
                   height: "100%",
                   borderRadius: 16,
-                  border: "1px solid rgba(255,255,255,0.18)",
-                  background: "rgba(255,255,255,0.06)",
                   padding: 18,
                   display: "flex",
                   flexDirection: "column",
                   transform: "rotate(-3deg)", // negative degree = counter-clockwise = tilts left (signin uses +3deg / clockwise = tilts right)
-                  boxShadow: "0 30px 60px rgba(0,0,0,0.25)",
                   boxSizing: "border-box",
                 }}
               >
@@ -320,8 +318,8 @@ export default function SignUp() {
                   src={SHOWCASE_IMAGE}
                   alt="Dashboard preview"
                   style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 8 }}
-                  width={100}
-                  height={100}
+                  width={80}
+                  height={80}
                 />
               </div>
  

@@ -471,13 +471,17 @@ export default function Pricing() {
           padding: 32px;
         }
  
-        /* Middle card's bordered inner content box */
+        /* Middle card's bordered inner content box.
+           min-height is just a safety floor now (content naturally
+           sits around ~570px thanks to its own margin/padding), so
+           the Growth card ends up only slightly taller than the
+           other two instead of being forced to a fixed 648px. */
         .pricing-middle-inner {
           margin: 24px 16px;
           border-radius: 32px;
           border: 2px solid #25D16F;
           padding: 36px 32px 32px;
-          min-height: 648px;
+          min-height: 520px;
           box-sizing: border-box;
         }
  

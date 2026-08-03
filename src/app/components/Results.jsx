@@ -272,7 +272,8 @@ export default function Results() {
         @media (max-width: 480px) {
           .results-section {
             padding-top: 32px;
-            padding-bottom: 32px;
+            padding-bottom: 12px;
+            margin-bottom: -10px;
           }
           .results-heading {
             margin-bottom: 20px;

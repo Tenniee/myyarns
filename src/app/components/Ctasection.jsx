@@ -268,14 +268,16 @@ export default function CTASection() {
       <div aria-hidden className="cta-circle" style={{
         top:        CIRCLE_TL.top,
         left:       CIRCLE_TL.left,
-        background: "#9EF3DA",
+        //background: "#9EF3DA",
+        background: "#ffffff",
       }} />
  
       {/* Bottom-right circle — move via CIRCLE_BR */}
       <div aria-hidden className="cta-circle" style={{
         bottom:     CIRCLE_BR.bottom,
         right:      CIRCLE_BR.right,
-        background: "#1A5C38",
+        //background: "#1A5C38",
+        background: "#ffffff",
       }} />
  
       {/* ── Inner rectangle ── */}

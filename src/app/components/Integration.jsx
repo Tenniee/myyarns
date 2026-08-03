@@ -1,118 +1,49 @@
 "use client";
  
-import Image from "next/image";
 import { useState } from "react";
-import BackgroundImage from '../../assets/Integration-bg.svg';
-import FacebookBlob from '../../assets/Facebook.svg';
-import LinkedInBlob from '../../assets/LinkedIn.svg';
-import ThreadsBlob from '../../assets/Threads.svg';
-import TelegramBlob from '../../assets/Telegram.svg';
-import WhatsappBlob from '../../assets/WhatsApp.svg';
-import InstagramBlob from '../../assets/Instagram.svg';
-import XBlob from '../../assets/Integration-X.svg';
-import YoutubBlob from '../../assets/YouTube.svg';
-import GirlImage from '../../assets/smiling-young-woman-engaged-with-her-smartphone1.svg';
+import IntegrationPhoto from "../../assets/Integrations-photo.webp";
+import Image from "next/image";
+import social from "../../assets/Social-Icons.svg";
+import social1 from "../../assets/Social-Icons(1).svg";
+import social2 from "../../assets/Social-Icons(2).svg";
+import social3 from "../../assets/Social-Icons(3).svg";
+import social4 from "../../assets/Social-Icons(4).svg";
+import social5 from "../../assets/Social-Icons(5).svg";
+import social6 from "../../assets/Social-Icons(6).svg";
+import social7 from "../../assets/Social-Icons(7).svg";
  
 // ═══════════════════════════════════════════════════════════════════
-// IMAGE SOURCES — swap paths here
+// SWAP POINTS — replace with your real assets/copy, nothing else
+// needs to change
 // ═══════════════════════════════════════════════════════════════════
-const BG_IMAGE       = BackgroundImage;
-const PERSON_IMAGE   = GirlImage;
+const MAIN_IMAGE_SRC = IntegrationPhoto; // ← swap for the real left-side photo
+const BUTTON_HREF = "#integrate";
  
-// Left floating images — 4 items
-// { src, width, height, radius } — tweak size/radius per image
-const LEFT_FLOATS = [
-  { src: InstagramBlob, width: 100,  height: 100,  radius: 16 },
-  { src: TelegramBlob, width: 90,  height: 90,  radius: 20 },
-  { src: WhatsappBlob, width: 110,  height: 110,  radius: 12 },
-  { src: XBlob, width: 60,  height: 60,  radius: 16 },
-];
- 
-// Right floating images — 4 items
-const RIGHT_FLOATS = [
-  { src: ThreadsBlob, width: 80,  height: 80,  radius: 16 },
-  { src: FacebookBlob, width: 90,  height: 90,  radius: 20 },
-  { src: LinkedInBlob, width: 100,  height: 100,  radius: 12 },
-  { src: YoutubBlob, width: 60,  height: 60,  radius: 16 },
-];
- 
-// ═══════════════════════════════════════════════════════════════════
-// FLOATING IMAGE POSITIONS — move these to reposition any image
-// positions are relative to the person image container
-// ═══════════════════════════════════════════════════════════════════
-const LEFT_POS = [
-  { top:  60,  left: -80  },
-  { top: 230,  left: -96  },
-  { top: 360,  left: -72  },
-  { top: 480,  left: -88  },
-];
- 
-const RIGHT_POS = [
-  { top:  80,  right: -80 },
-  { top: 210,  right: -76 },
-  { top: 350,  right: -92 },
-  { top: 520,  right: -88 },
+// The 8 platform icons in the row. Swap `Icon` for your real logo
+// components/SVGs — these are generic placeholder glyphs so nothing
+// trademarked is baked in by default.
+const PLATFORM_ICONS = [
+  { id: "chat",   bg: "#25D16F", icon: "chat"   },
+  { id: "camera", bg: "#006D3F", icon: "camera" },
+  { id: "play",   bg: "#00A859", icon: "play"   },
+  { id: "send",   bg: "#25D16F", icon: "send"   },
+  { id: "at",     bg: "#006D3F", icon: "at"     },
+  { id: "hash",   bg: "#00A859", icon: "hash"   },
+  { id: "heart",  bg: "#25D16F", icon: "heart"  },
+  { id: "share",  bg: "#006D3F", icon: "share"  },
 ];
  
 // ═══════════════════════════════════════════════════════════════════
-// GLASS PILL — same final version we agreed on
+// TRUST BADGE POSITION — move via top/left, resize via the card's own
+// width/height rules further down (it's a "hug" box, so it grows with
+// its content — these just anchor it over the image).
 // ═══════════════════════════════════════════════════════════════════
-const GLIMMER_BORDER = `conic-gradient(
-  from 270deg,
-  rgba(255,255,255,0.70)  0deg,
-  rgba(255,255,255,0.70)  120deg,
-  rgba(0,0,0,0.22)        150deg,
-  rgba(0,0,0,0.22)        180deg,
-  rgba(255,255,255,0.55)  210deg,
-  rgba(255,255,255,0.55)  330deg,
-  rgba(0,0,0,0.22)        360deg,
-  rgba(255,255,255,0.70)  400deg
-)`;
-const MASK = "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)";
- 
-function GlassPill({ children }) {
-  return (
-    <div style={{ position: "relative", display: "inline-flex" }}>
-      {/* Glimmer border ring — slightly thinner (1px) */}
-      <div
-        aria-hidden
-        style={{
-          position:            "absolute",
-          inset:               -1,
-          borderRadius:        9999,
-          background:          GLIMMER_BORDER,
-          WebkitMask:          MASK,
-          WebkitMaskComposite: "xor",
-          maskComposite:       "exclude",
-          padding:             1,
-          pointerEvents:       "none",
-          width:               "48%",
-        }}
-      />
-      {/* Pill body */}
-      <div style={{
-        display:      "inline-flex",
-        alignItems:   "center",
-        borderRadius: 9999,
-        background:   "rgba(255,255,255,0.20)",
-        border:       "none",
-        position:     "relative",
-        zIndex:        1,
-        paddingTop:    5,
-        paddingBottom: 5,
-        paddingLeft:   16,
-        paddingRight:  16,
-      }}>
-        {children}
-      </div>
-    </div>
-  );
-}
+const TRUST_BADGE_POS = { top: 560, left: 32 };
  
 // ═══════════════════════════════════════════════════════════════════
-// ARROW RIGHT
+// ICONS
 // ═══════════════════════════════════════════════════════════════════
-function ArrowRight({ color = "white", size = 16 }) {
+function ArrowRight({ color = "white", size = 18 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
       stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -122,332 +53,302 @@ function ArrowRight({ color = "white", size = 16 }) {
   );
 }
  
-// ═══════════════════════════════════════════════════════════════════
-// FLOATING IMAGE — resonates left↔right toward the person image
-// side: "left" pulses right (toward center), "right" pulses left
-// Hidden below the "integration-float" breakpoint — see <style> below.
-// ═══════════════════════════════════════════════════════════════════
-function FloatImg({ src, width, height, radius, pos, side, delay = 0 }) {
-  const animName = side === "left" ? "resL" : "resR";
+// simple two-person glyph for the trust badge's circular icon
+function PeopleIcon({ size = 20 }) {
   return (
-    <div
-      className="integration-float"
-      style={{
-        position:     "absolute",
-        ...pos,
-        width,
-        height,
-        borderRadius: radius,
-        overflow:     "hidden",
-        animation:    `${animName} 3s ease-in-out ${delay}s infinite`,
-        zIndex:        10,
-      }}
-    >
-      {/* swap with your image — placeholder shown if src missing */}
-        {src && (
-          <Image
-            src={src}
-            alt=""
-            fill
-            style={{ objectFit: "cover" }}
-          />
-        )}
-    </div>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
+      stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
   );
 }
  
-// ═══════════════════════════════════════════════════════════════════
-// MAIN COMPONENT
-// ═══════════════════════════════════════════════════════════════════
-export default function Integration() {
+// generic placeholder glyphs for the platform icon row — swap for real logos
+function PlatformGlyph({ type, size = 24 }) {
+  const common = { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
+  switch (type) {
+    case "chat":
+      return <Image src={social} alt="chat" width={size} height={size} />;
+    case "camera":
+      return <Image src={social1} alt="camera" width={size} height={size} />;
+    case "play":
+      return <Image src={social2} alt="play" width={size} height={size} />;
+    case "send":
+      return <Image src={social3} alt="send" width={size} height={size} />;
+    case "at":
+      return <Image src={social4} alt="at" width={size} height={size} />;
+    case "hash":
+      return <Image src={social5} alt="hash" width={size} height={size} />;
+    case "heart":
+      return <Image src={social6} alt="heart" width={size} height={size} />;
+    case "share":
+      return <Image src={social7} alt="share" width={size} height={size} />;
+    default:
+      return null;
+  }
+}
+ 
+export default function IntegrationSplit() {
   const [btnHov, setBtnHov] = useState(false);
  
   return (
     <>
       <style>{`
-        /* Left floats pulse rightward (toward the person) */
-        @keyframes resL {
-          0%,100% { transform: translateX(0px); }
-          50%      { transform: translateX(8px); }
+        @keyframes iconBounce {
+          0%, 100% { transform: translateY(0); }
+          50%      { transform: translateY(-6px); }
         }
-        /* Right floats pulse leftward (toward the person) */
-        @keyframes resR {
-          0%,100% { transform: translateX(0px); }
-          50%      { transform: translateX(-8px); }
+        .icon-bounce {
+          animation: iconBounce 1.8s ease-in-out infinite;
         }
  
-        .integration-section {
-          max-height: 700px;
-        }
-        .integration-flex {
+        .split-shell {
           display: flex;
           flex-direction: row;
+          min-height: 100vh;
+          background: white;
+        }
+ 
+        .split-image-col {
+          flex: 0 0 50%;
+          position: relative;
+          overflow: hidden;
+        }
+ 
+        .split-content-col {
+          flex: 1;
+          display: flex;
           align-items: center;
-          justify-content: space-between;
-          gap: 48px;
-        }
-        .integration-left {
-          width: 478px;
-        }
-        .integration-headline {
-          font-size: 40px;
-          line-height: 48px;
-        }
-        .integration-paragraph {
-          font-size: 19px;
-          line-height: 30.88px;
-        }
-        .integration-cta {
-          padding: 20px 40px;
-        }
-        .integration-cta-text {
-          font-size: 16px;
-        }
-        .integration-right-container {
-          width: 425px;
-          height: 638px;
-          margin-right: 120px;
+          padding: 80px;
+          box-sizing: border-box;
         }
  
-        /* ── Large tablets / small laptops — tighten spacing, shrink photo ── */
-        @media (max-width: 1150px) {
-          .integration-right-container {
-            width: 340px;
-            height: 500px;
-            margin-right: 40px;
-          }
-          .integration-left {
-            width: 420px;
-          }
+        .split-headline {
+          font-family: 'Nunito', sans-serif;
+          font-weight: 800;
+          font-size: clamp(34px, 4vw, 52px);
+          line-height: 1.15;
+          letter-spacing: -1px;
+          margin: 0;
         }
  
-        /* ── Tablets and below — stack text above image, drop the floating
-             icons since their absolute offsets would overflow a narrow column ── */
         @media (max-width: 900px) {
-          .integration-section {
-            max-height: none;
-          }
-          .integration-flex {
-            flex-direction: column;
-            gap: 40px;
-          }
-          .integration-left {
-            width: 100%;
-            align-items: center;
-            text-align: center;
-          }
-          .integration-headline {
-            font-size: 32px;
-            line-height: 40px;
-          }
-          .integration-paragraph {
-            font-size: 17px;
-            line-height: 27px;
-          }
-          .integration-cta {
-            align-self: center !important;
-          }
-          .integration-float {
-            display: none;
-          }
-          .integration-right-container {
-            width: 100%;
-            max-width: 340px;
-            height: 420px;
-            margin-right: 0;
-          }
-        }
- 
-        /* ── Phones — trim further, drop the photo and its space entirely ── */
-        @media (max-width: 480px) {
-          .integration-headline {
-            font-size: 26px;
-            line-height: 33px;
-          }
-          .integration-paragraph {
-            font-size: 15px;
-            line-height: 24px;
-          }
-          .integration-cta {
-            padding: 16px 28px !important;
-          }
-          .integration-cta-text {
-            font-size: 14px !important;
-          }
-          .integration-right-container {
-            display: none;
-          }
-          .integration-flex {
-            gap: 0;
-          }
+          .split-image-col { display: none; }
+          .split-content-col { padding: 40px 24px; }
         }
       `}</style>
  
-      <section className="integration-section" style={{
-        position:   "relative",
-        width:      "100%",
-        overflow:   "hidden",
-        padding:     10,
-      }}>
+      <div className="split-shell">
  
-        {/* ── Background image ── */}
-        <div style={{
-          position: "absolute", inset: 0, zIndex: 0,
-        }}>
-          {/* swap src with BG_IMAGE when ready */}
-          <Image src={BG_IMAGE} fill style={{ objectFit: "cover" }} alt="" />
-        </div>
+        {/* ══════════════ LEFT — full-bleed image ══════════════ */}
+        <div className="split-image-col">
+          {/*<Image
+            src={IntegrationPhoto}
+            alt="Team using MyYarns"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+            width={100}
+            height={100}
+            loading="eager"
+          />*/}
+
+          <Image
+            src={MAIN_IMAGE_SRC}
+            alt="Team using MyYarns"
+            style={{
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
  
-        {/* ── Content ── */}
-        <div
-          className="page-x-pad"
-          style={{ position: "relative", zIndex: 1, paddingTop: 80, paddingBottom: 80 }}
-        >
-          <div className="page-container">
-            <div className="integration-flex">
+          {/* gradient overlay — #00261199 (60% alpha) on the left fading to 0% on the right */}
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(90deg, #00261199 0%, rgba(0,38,17,0) 100%)",
+            }}
+          />
  
-              {/* ══ LEFT TEXT ══ */}
-              <div
-                className="integration-left"
-                style={{
-                  flexShrink:    0,
-                  display:       "flex",
-                  flexDirection: "column",
-                  gap:            31.4,
-                }}
-              >
-                {/* Glass pill */}
-                <GlassPill>
-                  <span style={{
-                    fontFamily:    "'Nunito', sans-serif",
-                    fontWeight:    600,
-                    fontSize:      13,
-                    letterSpacing: "0.5px",
-                    textTransform: "uppercase",
-                    color:         "white",
-                  }}>
-                    Our Seamless Integration
-                  </span>
-                </GlassPill>
- 
-                {/* Headline */}
-                <h2
-                  className="integration-headline"
-                  style={{
-                    fontFamily:    "'Nunito', sans-serif",
-                    fontWeight:    700,
-                    letterSpacing: 0,
-                    color:         "white",
-                    margin:         0,
-                    whiteSpace:    "pre-line",
-                  }}
-                >
-                  {"Seamless Integration\nOf Effortless\nManagement"}
-                </h2>
- 
-                {/* Paragraph */}
-                <p
-                  className="integration-paragraph"
-                  style={{
-                    fontFamily: "'Nunito', sans-serif",
-                    fontWeight: 400,
-                    color:      "rgba(255,255,255,0.80)",
-                    margin:      0,
-                  }}
-                >
-                  Connect all your favourite social platforms in one place for smooth team management and seamlessly integrate your tools.
-                </p>
- 
-                {/* CTA button */}
-                <button
-                  className="integration-cta"
-                  onMouseEnter={() => setBtnHov(true)}
-                  onMouseLeave={() => setBtnHov(false)}
-                  style={{
-                    display:       "inline-flex",
-                    alignItems:    "center",
-                    gap:            12,
-                    alignSelf:     "flex-start",
-                    borderRadius:  9999,
-                    background:    "#25D16F",
-                    border:        "none",
-                    cursor:        "pointer",
-                    transition:    "opacity 0.15s, transform 0.15s",
-                    opacity:       btnHov ? 0.88 : 1,
-                    transform:     btnHov ? "scale(1.02)" : "scale(1)",
-                  }}
-                >
-                  <span
-                    className="integration-cta-text"
-                    style={{
-                      fontFamily: "'Nunito', sans-serif",
-                      fontWeight: 700,
-                      lineHeight: "24px",
-                      color:      "white",
-                    }}
-                  >
-                    One-Click Integration
-                  </span>
-                  <span style={{
-                    display:   "inline-flex",
-                    transform: btnHov ? "translateX(4px)" : "translateX(0)",
-                    transition:"transform 0.22s cubic-bezier(0.34,1.56,0.64,1)",
-                  }}>
-                    <ArrowRight />
-                  </span>
-                </button>
-              </div>
- 
-              {/* ══ RIGHT: person image + floating images ══ */}
-              <div className="integration-right-container" style={{
-                position: "relative",
-                flexShrink:0,
+          {/* Trust badge card */}
+          <div style={{
+            position: "absolute",
+            top: TRUST_BADGE_POS.top,
+            left: TRUST_BADGE_POS.left,
+            maxWidth: 320,
+            borderRadius: 16,
+            border: "1px solid rgba(255,255,255,0.18)",
+            background: "rgba(255,255,255,0.10)",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
+            padding: 16,
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 16,
+          }}>
+            <div style={{
+              width: 40,
+              height: 40,
+              borderRadius: 9999,
+              background: "#25D16F",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexShrink: 0,
+            }}>
+              <PeopleIcon size={20} />
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <span style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontWeight: 800,
+                fontSize: 15,
+                lineHeight: "20px",
+                color: "white",
               }}>
- 
-                {/* Left floating images */}
-                {LEFT_FLOATS.map((img, i) => (
-                  <FloatImg
-                    key={`lf-${i}`}
-                    src={img.src}
-                    width={img.width}
-                    height={img.height}
-                    radius={img.radius}
-                    pos={LEFT_POS[i]}
-                    side="left"
-                    delay={i * 0.4}
-                  />
-                ))}
- 
-                {/* Person image */}
-                <div style={{
-                  position:     "relative",
-                  width:        "100%",
-                  height:       "100%",
-                  borderRadius: 24,
-                  overflow:     "hidden",
-                }}>
-                  <Image src={PERSON_IMAGE} fill style={{ objectFit: "cover" }} alt="Integration" />
-                </div>
- 
-                {/* Right floating images */}
-                {RIGHT_FLOATS.map((img, i) => (
-                  <FloatImg
-                    key={`rf-${i}`}
-                    src={img.src}
-                    width={img.width}
-                    height={img.height}
-                    radius={img.radius}
-                    pos={RIGHT_POS[i]}
-                    side="right"
-                    delay={i * 0.4}
-                  />
-                ))}
- 
-              </div>
+                2,500+ teams
+              </span>
+              <span style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontWeight: 400,
+                fontSize: 13,
+                lineHeight: "18px",
+                color: "rgba(255,255,255,0.85)",
+              }}>
+                growing with MyYarns
+              </span>
             </div>
           </div>
         </div>
-      </section>
+ 
+        {/* ══════════════ RIGHT — content ══════════════ */}
+        <div className="split-content-col">
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 28, textAlign: "left", maxWidth: 560 }}>
+ 
+            {/* Pill */}
+            <div style={{
+              display: "inline-flex",
+              alignItems: "center",
+              borderRadius: 9999,
+              border: "1px solid #006D3F1A",
+              background: "#E6FAF2",
+              padding: "6px 16px",
+            }}>
+              <span style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontWeight: 700,
+                fontSize: 12,
+                letterSpacing: "1px",
+                textTransform: "uppercase",
+                color: "#25D16F",
+              }}>
+                One Seamless Integration
+              </span>
+            </div>
+ 
+            {/* Headline — exact 3-line break on desktop, wraps naturally on mobile */}
+            <h1 className="split-headline">
+              <span style={{ color: "#595959" }}>Grow </span>
+              <span style={{ color: "#25D16F" }}>every</span>
+              <br className="lg-only-break" />{" "}
+              <span style={{ color: "#25D16F" }}>channel</span>
+              <span style={{ color: "#595959" }}> from</span>
+              <br className="lg-only-break" />{" "}
+              <span style={{ color: "#595959" }}>one dashboard.</span>
+            </h1>
+ 
+            {/* Subtext */}
+            <p style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontWeight: 400,
+              fontSize: 18,
+              lineHeight: "28px",
+              color: "#131927",
+              margin: 0,
+              maxWidth: 480,
+            }}>
+              Connect all your favourite social platforms in one place for smooth team management and seamlessly integrate your tools.
+            </p>
+ 
+            {/* Platform icon row — bounce animation, staggered delay per icon */}
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 16 }}>
+              {PLATFORM_ICONS.map((p, i) => (
+                <div
+                  key={p.id}
+                  className="icon-bounce"
+                  style={{
+                    width: 24,
+                    height: 24,
+                    borderRadius: "9999px",
+                    background: 'transparent',
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    animationDelay: `${i * 120}ms`,
+                  }}
+                >
+                  <PlatformGlyph type={p.icon} size={19} />
+                </div>
+              ))}
+            </div>
+ 
+            {/* CTA button */}
+            <a
+              href={BUTTON_HREF}
+              onMouseEnter={() => setBtnHov(true)}
+              onMouseLeave={() => setBtnHov(false)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 12,
+                borderRadius: 9999,
+                padding: "20px 40px",
+                background: "#25D16F",
+                textDecoration: "none",
+                fontFamily: "'Nunito', sans-serif",
+                fontWeight: 700,
+                fontSize: 16,
+                color: "white",
+                boxShadow: btnHov
+                  ? "0 24px 40px -8px rgba(37,209,111,0.50)"
+                  : "0 16px 32px -10px rgba(37,209,111,0.35)",
+                transform: btnHov ? "scale(1.03)" : "scale(1)",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease",
+                filter: btnHov ? "brightness(1.06)" : "brightness(1)",
+              }}
+            >
+              One-Click Integration
+              <span style={{
+                display: "inline-flex",
+                transform: btnHov ? "translateX(4px)" : "translateX(0)",
+                transition: "transform 0.2s cubic-bezier(0.34,1.56,0.64,1)",
+              }}>
+                <ArrowRight />
+              </span>
+            </a>
+ 
+          </div>
+        </div>
+      </div>
+ 
+      <style>{`
+        .lg-only-break { display: block; }
+        @media (max-width: 900px) {
+          .lg-only-break { display: none; }
+        }
+      `}</style>
     </>
   );
 }

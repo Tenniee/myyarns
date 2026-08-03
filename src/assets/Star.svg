@@ -1,0 +1,31 @@
+<svg width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_dd_385_297)">
+<g clip-path="url(#clip0_385_297)">
+<rect x="17.8535" y="2" width="56" height="56" rx="16" transform="rotate(5.99997 17.8535 2)" fill="black"/>
+<path d="M39.111 43.7007C37.7435 43.5569 36.624 42.947 35.7526 41.8708C34.8811 40.7947 34.5173 39.5729 34.661 38.2054C34.8047 36.8379 35.4147 35.7185 36.4908 34.847C37.567 33.9756 38.7888 33.6117 40.1562 33.7554C40.6328 33.8055 41.0671 33.9088 41.4591 34.0652C41.8512 34.2216 42.2217 34.4334 42.5707 34.7005L43.9491 21.5852L51.4081 22.3692L50.8854 27.3418L45.9128 26.8192L44.6062 39.2507C44.4625 40.6182 43.8525 41.7376 42.7764 42.6091C41.7002 43.4805 40.4784 43.8444 39.111 43.7007Z" fill="white"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_dd_385_297" x="0" y="0" width="85.5469" height="85.5469" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="4" operator="erode" in="SourceAlpha" result="effect1_dropShadow_385_297"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="3"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_385_297"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="3" operator="erode" in="SourceAlpha" result="effect2_dropShadow_385_297"/>
+<feOffset dy="10"/>
+<feGaussianBlur stdDeviation="7.5"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="effect1_dropShadow_385_297" result="effect2_dropShadow_385_297"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_385_297" result="shape"/>
+</filter>
+<clipPath id="clip0_385_297">
+<rect x="17.8535" y="2" width="56" height="56" rx="16" transform="rotate(5.99997 17.8535 2)" fill="white"/>
+</clipPath>
+</defs>
+</svg>
