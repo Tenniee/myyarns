@@ -34,9 +34,9 @@ const ON_SUBMIT = async ({ fullName, email, password }) => {
 // (e.g. bottom+right for a bottom-right badge); leave the others out.
 // ═══════════════════════════════════════════════════════════════════
 const FLOAT_BADGES = [
-  { id: "heart", bottom: -16, right: 24, icon: "heart" },   // bottom-right
-  { id: "chat", top: -16, left: 24, icon: "chat" },          // top-left
-  { id: "star", top: -16, right: 24, icon: "star" },         // top-right
+  { id: "heart", bottom: 2, right: 22, icon: "heart" },   // bottom-right
+  { id: "chat", top: 26, left: 24, icon: "chat" },          // top-left
+  { id: "star", top: 26, right: 24, icon: "star" },         // top-right
 ];
  
 // ═══════════════════════════════════════════════════════════════════
