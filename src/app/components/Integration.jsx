@@ -141,7 +141,7 @@ export default function IntegrationSplit() {
         }
       `}</style>
  
-      <div className="split-shell">
+      <div className="split-shell" id="developers">
  
         {/* ══════════════ LEFT — full-bleed image ══════════════ */}
         <div className="split-image-col">

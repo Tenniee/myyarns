@@ -608,7 +608,7 @@ export default function Features() {
       {/* ════════════════════════════════════════════════════════
           SECTION 1 — Feature items (left) + hero image (right)
       ════════════════════════════════════════════════════════ */}
-      <div className="page-x-pad">
+      <div className="page-x-pad" id="features">
         <div className="page-container">
           <div className="section1-container">
             {/* Left — 3 stacked feature items */}

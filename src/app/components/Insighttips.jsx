@@ -400,7 +400,7 @@ export default function InsightTips() {
         }
       `}</style>
  
-      <div className="insight-x-pad">
+      <div className="insight-x-pad" id="blog">
         <div className="insight-container">
  
           {/* ── Header row ── */}

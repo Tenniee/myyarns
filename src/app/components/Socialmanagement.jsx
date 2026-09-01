@@ -304,7 +304,7 @@ export default function SocialManagement() {
         }
       `}</style>
  
-      <div style={{ background: '#ffff' }}>
+      <div style={{ background: '#ffff' }} id="channels">
         <section
           className="sm-x-pad"
           style={{
