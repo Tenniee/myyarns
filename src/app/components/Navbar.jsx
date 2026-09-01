@@ -12,15 +12,15 @@ import logoImage from "../../assets/myyarnsLogo.svg";
 
 const links = [
 
-  { label: "Features",    href: "/features"    },
+  { label: "Features",    href: "/#features"    },
 
-  { label: "Channels",    href: "/channels"    },
+  { label: "Channels",    href: "/#channels"    },
 
   { label: "Pricing",     href: "/#pricing"     },
 
-  { label: "Blog",        href: "/blog"        },
+  { label: "Blog",        href: "/#blog"        },
 
-  { label: "Developers",  href: "/developers"  },
+  { label: "Developers",  href: "/#developers"  },
 
 ];
 
